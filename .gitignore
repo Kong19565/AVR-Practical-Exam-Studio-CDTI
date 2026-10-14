@@ -1,0 +1,29 @@
+# Large archives and extracted sets
+*.rar
+*.zip
+*.7z
+*.tar.gz
+Practical_Exam/Prepare_For_Test_Extracted/
+Practical_Exam/Open_Sesami_Extracted/
+Practical_Exam/*.rar
+Practical_Exam/*.zip
+
+# Binary compilation artifacts
+*.hex
+*.elf
+*.o
+*.obj
+
+# Temp and cache
+__pycache__/
+*.pyc
+.tempmediaStorage/
+.system_generated/
+*.tmp
+*.log
+node_modules/
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
