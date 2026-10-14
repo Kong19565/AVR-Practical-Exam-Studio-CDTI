@@ -197,7 +197,7 @@ const STUDIO_REPORT = {
             <!-- Section 4: Algorithm Flowchart -->
             <div class="report-section">
               <h3 class="report-section-title">4. ผังงานกระบวนการทำงานของระบบ (System Algorithm Flowchart)</h3>
-              <div class="report-flowchart-box" style="text-align: center; margin: 15px 0; background: rgba(0,0,0,0.02); border: 1px dashed var(--border); border-radius: 6px; padding: 15px;">
+              <div class="report-flowchart-box" style="text-align: center; margin: 15px 0; background: var(--bg-main, #0b1120); border: 1px solid var(--border); border-radius: 8px; padding: 18px 10px; overflow-x: auto; display: flex; justify-content: center; align-items: center;">
                 ${typeof STUDIO_FLOWCHARTS !== 'undefined' ? STUDIO_FLOWCHARTS.generateSvg(lab.id) : ''}
               </div>
             </div>
@@ -353,6 +353,40 @@ pre {
   padding: 6px 12px;
   border-radius: 6px;
 }
+.report-flowchart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 14px 10px;
+  margin: 14px 0;
+  overflow-x: auto;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.report-flowchart-container svg,
+.report-flowchart-box svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+@media print {
+  .report-flowchart-container {
+    background: #0f172a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    padding: 10px 0 !important;
+    margin: 10px 0 !important;
+    border: 1px solid #475569 !important;
+  }
+  .report-flowchart-container svg {
+    max-width: 88% !important;
+    height: auto !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -437,7 +471,7 @@ pre {
   </table>
 
   <h3>4. ผังงานกระบวนการทำงานของระบบ (System Algorithm Flowchart)</h3>
-  <div style="text-align: center; margin: 10px 0; break-inside: avoid; page-break-inside: avoid;">
+  <div class="report-flowchart-container">
     ${svgContent}
   </div>
 

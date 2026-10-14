@@ -22,6 +22,7 @@ __pycache__/
 *.tmp
 *.log
 node_modules/
+scratch/
 
 # OS files
 Thumbs.db

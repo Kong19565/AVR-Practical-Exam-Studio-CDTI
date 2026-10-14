@@ -2252,6 +2252,24 @@ pre.code-display {
   overflow-y: auto;
 }
 
+.report-flowchart-box {
+  background: #0b1120 !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 12px;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.report-flowchart-box svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
 /* ==========================================================================
    Hardware Component Cheatsheet Cards (7-Segment, LCD, LED, Buttons, etc.)
    ========================================================================== */
