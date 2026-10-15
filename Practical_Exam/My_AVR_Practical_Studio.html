@@ -1533,6 +1533,204 @@ pre.code-display {
   color: #64748b;
 }
 
+/* Interactive Bezel Tactile Hardware Controls (SW1, SW2, Home) */
+.lcd-bezel-hardware-controls {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.lcd-bezel-sw-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.lcd-sw-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+}
+.lcd-bezel-btn {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  border: 1.5px solid #475569;
+  border-radius: 6px;
+  color: #f1f5f9;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.12s ease;
+  user-select: none;
+}
+.lcd-bezel-btn:hover {
+  border-color: #38bdf8;
+  background: linear-gradient(180deg, #1e3a8a 0%, #1e293b 100%);
+  transform: translateY(-1px);
+}
+.lcd-bezel-btn:active,
+.lcd-bezel-btn.pressed {
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+  border-color: #38bdf8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: translateY(1px);
+}
+.lcd-bezel-btn.btn-home {
+  background: linear-gradient(180deg, #475569 0%, #334155 100%);
+  border-color: #64748b;
+}
+.lcd-btn-cap {
+  font-size: 11px;
+  font-weight: 700;
+}
+.lcd-btn-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  color: #94a3b8;
+}
+.lcd-bezel-btn:active .lcd-btn-sub,
+.lcd-bezel-btn.pressed .lcd-btn-sub {
+  color: #e0f2fe;
+}
+.lcd-fsm-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.fsm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+.fsm-dot.active {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+.fsm-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #cbd5e1;
+}
+
+/* Simulation Mode Selector Bar */
+.lcd-mode-selector-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 14px;
+}
+.lcd-mode-selector-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lcd-mode-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.lcd-mode-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.lcd-mode-btn:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+.lcd-mode-btn.active {
+  background: rgba(2, 132, 199, 0.18);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.25);
+}
+
+/* Dynamic Toolbars for Marquee, FSM Buttons, and Alerts */
+.lcd-dynamic-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+.lcd-page-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.lcd-page-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.lcd-page-btn:hover {
+  border-color: var(--primary);
+}
+.lcd-page-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+.lcd-speed-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.lcd-speed-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
 /* Text Inputs Card */
 .lcd-input-card {
   background: var(--bg-surface);
@@ -10288,6 +10486,8 @@ const THAI_FONT_IMPROVED = {"0xA1": {"label": "ก (Ko Kai)", "bytes": [14, 17, 
 
 const STUDIO_CGRAM = {
   activeTab: 'customizer', // 'customizer' | 'cgram' | 'thai_audit'
+  simMode: 'static',       // 'static' | 'marquee' | 'buttons' | 'blink'
+  activeButton: null,      // 'sw1' | 'sw2' | 'home'
   line1: 'HELLO WORLD! {0}',
   line2: 'CDTI EMBEDDED   ',
   lcdTheme: 'green',       // 'green' | 'blue'
@@ -10298,6 +10498,34 @@ const STUDIO_CGRAM = {
   isDrawing: false,
   drawMode: 1,             // 1 = paint, 0 = erase
   lastFocusedLine: 1,
+
+  // Interactive Marquee State
+  marqueePlaying: false,
+  marqueeDir: 'left',      // 'left' | 'right'
+  marqueeSpeed: 300,       // 150, 300, 600
+  marqueeTarget: 'both',   // '1' | '2' | 'both'
+  marqueeOffset1: 0,
+  marqueeOffset2: 0,
+  marqueeTimer: null,
+  marqueeLine1: 'WELCOME TO CDTI EMBEDDED STUDIO 2026! {0}',
+  marqueeLine2: 'MICROCHIP ATMEGA328P 16MHZ SYSTEM {6}    ',
+
+  // Interactive Finite State Machine (FSM) Buttons State
+  activePage: 1,           // 1, 2, 3
+  buttonPages: {
+    1: { title: "หน้า 1: เริ่มต้น (Home)", l1: "SYSTEM READY    ", l2: "PRESS SW1 / SW2 " },
+    2: { title: "หน้า 2: กด SW1 (Pin 2)", l1: "SW1 ACTIVATED   ", l2: "MODE: RUNNING {0}" },
+    3: { title: "หน้า 3: กด SW2 (Pin 3)", l1: "SW2 ACTIVATED   ", l2: "TEMP: 28.5{1}C {6}" }
+  },
+
+  // Interactive Blink & Alert State
+  blinkPlaying: false,
+  blinkType: 'display',    // 'display' | 'text' | 'cursor'
+  blinkSpeed: 500,         // 250, 500, 1000
+  blinkState: true,
+  blinkTimer: null,
+  blinkLine1: '! EMERGENCY ALERT !',
+  blinkLine2: 'OVERHEAT {6} STOP   ',
 
   STORAGE_KEY_SLOTS: 'AVR_STUDIO_CGRAM_SLOTS_V3',
   STORAGE_KEY_NAMES: 'AVR_STUDIO_CGRAM_NAMES_V3',
@@ -10503,6 +10731,27 @@ const STUDIO_CGRAM = {
     }
 
     return `
+      <!-- Simulation Mode Selector Bar -->
+      <div class="lcd-mode-selector-bar">
+        <div class="lcd-mode-selector-label">
+          <span>🕹️ โหมดการจำลอง LCD:</span>
+        </div>
+        <div class="lcd-mode-btn-group">
+          <button class="lcd-mode-btn ${this.simMode === 'static' ? 'active' : ''}" onclick="STUDIO_CGRAM.setSimMode('static')" title="โหมดข้อความคงที่มาตรฐาน">
+            <span>📝</span> ข้อความคงที่ (Static)
+          </button>
+          <button class="lcd-mode-btn ${this.simMode === 'marquee' ? 'active' : ''}" onclick="STUDIO_CGRAM.setSimMode('marquee')" title="โหมดข้อความวิ่งวนซ้ำอัตโนมัติ">
+            <span>⏩</span> ข้อความวิ่ง (Marquee Scroll)
+          </button>
+          <button class="lcd-mode-btn ${this.simMode === 'buttons' ? 'active' : ''}" onclick="STUDIO_CGRAM.setSimMode('buttons')" title="โหมดสลับหน้าจอด้วยปุ่มกด FSM">
+            <span>🔘</span> สวิตช์ปุ่มกดสลับหน้า (Button FSM)
+          </button>
+          <button class="lcd-mode-btn ${this.simMode === 'blink' ? 'active' : ''}" onclick="STUDIO_CGRAM.setSimMode('blink')" title="โหมดไฟกะพริบแจ้งเตือนความผิดปกติ">
+            <span>🚨</span> ไฟกะพริบแจ้งเตือน (Blink Alert)
+          </button>
+        </div>
+      </div>
+
       <div class="lcd-customizer-grid">
         <!-- Left: Virtual LCD 16x2 Screen & Inputs -->
         <div class="lcd-left-panel">
@@ -10522,6 +10771,38 @@ const STUDIO_CGRAM = {
               ${screenHtml}
             </div>
 
+            <!-- Interactive Tactile Push-Buttons on Bezel (SW1, SW2, Home) -->
+            <div class="lcd-bezel-hardware-controls">
+              <div class="lcd-bezel-sw-group">
+                <span class="lcd-sw-label">TACTILE INPUTS:</span>
+                <button class="lcd-bezel-btn ${this.activeButton === 'sw1' ? 'pressed' : ''}"
+                        id="lcd-btn-sw1"
+                        onclick="STUDIO_CGRAM.pressVirtualButton('sw1')"
+                        title="สวิตช์ SW1 (ต่อขา Digital Pin 2 / PD2 แบบ Active-Low)">
+                  <span class="lcd-btn-cap">🔘 กด SW1</span>
+                  <span class="lcd-btn-sub">Pin 2 (PD2)</span>
+                </button>
+                <button class="lcd-bezel-btn ${this.activeButton === 'sw2' ? 'pressed' : ''}"
+                        id="lcd-btn-sw2"
+                        onclick="STUDIO_CGRAM.pressVirtualButton('sw2')"
+                        title="สวิตช์ SW2 (ต่อขา Digital Pin 3 / PD3 แบบ Active-Low)">
+                  <span class="lcd-btn-cap">🔘 กด SW2</span>
+                  <span class="lcd-btn-sub">Pin 3 (PD3)</span>
+                </button>
+                <button class="lcd-bezel-btn btn-home ${this.activeButton === 'home' ? 'pressed' : ''}"
+                        id="lcd-btn-home"
+                        onclick="STUDIO_CGRAM.pressVirtualButton('home')"
+                        title="สวิตช์ Reset / หน้าหลัก (Page 1)">
+                  <span class="lcd-btn-cap">🏠 Reset / Home</span>
+                  <span class="lcd-btn-sub">Page 1</span>
+                </button>
+              </div>
+              <div class="lcd-fsm-status-indicator" id="lcd-fsm-indicator">
+                <span class="fsm-dot ${this.activePage > 1 ? 'active' : ''}"></span>
+                <span class="fsm-text">${this.getFsmStatusText()}</span>
+              </div>
+            </div>
+
             <div class="lcd-bezel-bottom">
               <div class="lcd-pin-header">
                 <span>VSS</span><span>VDD</span><span>V0</span><span>RS</span><span>RW</span><span>E</span>
@@ -10531,73 +10812,18 @@ const STUDIO_CGRAM = {
             </div>
           </div>
 
-          <!-- Text Input Controls -->
+          <!-- Dynamic Controls Card based on Simulation Mode -->
           <div class="lcd-input-card">
-            <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-              <span>✏️ กำหนดข้อความและการจัดวาง (Text & Spacing Controls)</span>
-              <span style="font-size: 11px; color: var(--primary);">16 ตัวอักษรต่อบรรทัด</span>
-            </div>
-
-            <!-- Slot Insert Bar -->
+            <!-- Common Slot Insert Bar -->
             <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 4px;">
-              💡 จอ LCD 1602 (HD44780) แสดงตัวอักษรภาษาอังกฤษ ASCII และอักขระพิเศษ CGRAM 8 ตัวที่วาดเอง {0}-{7}:
+              💡 จอ LCD 1602 (HD44780) แสดงตัวอักษร ASCII และอักขระพิเศษ CGRAM 8 ตัวที่วาดเอง {0}-{7}:
             </div>
             <div class="lcd-slot-insert-bar">
               <span style="font-size: 11px; font-weight: 600; color: var(--primary);">แทรก CGRAM:</span>
               ${slotChipsHtml}
             </div>
 
-            <!-- Line 1 Control -->
-            <div class="lcd-input-row">
-              <label>บรรทัดที่ 1 (0x80):</label>
-              <div class="lcd-input-wrapper">
-                <input type="text" id="lcd-input-l1" maxlength="32" value="${this.escapeHtml(this.line1)}"
-                  onfocus="STUDIO_CGRAM.lastFocusedLine = 1"
-                  oninput="STUDIO_CGRAM.onLineChange(1, this.value)"
-                  placeholder="ข้อความบรรทัด 1 เช่น HELLO {0}">
-                <span class="lcd-len-badge" id="lcd-len-l1">${this.countDisplayCols(this.line1)}/16</span>
-              </div>
-            </div>
-
-            <!-- Line 2 Control -->
-            <div class="lcd-input-row">
-              <label>บรรทัดที่ 2 (0xC0):</label>
-              <div class="lcd-input-wrapper">
-                <input type="text" id="lcd-input-l2" maxlength="32" value="${this.escapeHtml(this.line2)}"
-                  onfocus="STUDIO_CGRAM.lastFocusedLine = 2"
-                  oninput="STUDIO_CGRAM.onLineChange(2, this.value)"
-                  placeholder="ข้อความบรรทัด 2 เช่น CDTI EMBEDDED">
-                <span class="lcd-len-badge" id="lcd-len-l2">${this.countDisplayCols(this.line2)}/16</span>
-              </div>
-            </div>
-
-            <!-- Quick Alignment Toolbar -->
-            <div class="lcd-align-toolbar">
-              <span style="font-size: 12px; font-weight: 600; color: var(--text-muted); align-self: center;">การจัดตำแหน่ง:</span>
-              <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.setAlignment('left')" title="ชิดซ้ายทั้ง 2 บรรทัด">⬅️ ชิดซ้าย</button>
-              <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.setAlignment('center')" title="กึ่งกลางจอ 16 ช่อง">↔️ กึ่งกลาง</button>
-              <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.setAlignment('right')" title="ชิดขวา">➡️ ชิดขวา</button>
-              <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.shiftText('right')" title="ขยับวรรคไปทางขวา 1 ช่อง">⏩ เลื่อนขวา</button>
-              <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.shiftText('left')" title="ขยับวรรคไปทางซ้าย 1 ช่อง">⏪ เลื่อนซ้าย</button>
-              <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.clearLcd()" title="ล้างหน้าจอ">🔄 ล้างข้อความ</button>
-            </div>
-
-            <!-- Quick Lab Exam Presets -->
-            <div class="lcd-presets-bar">
-              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
-                🎯 พรีเซ็ตโจทย์ข้อสอบยอดนิยม (Exam Presets):
-              </div>
-              <div class="lcd-preset-chips">
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t501')">T5.01: Hello World {0}</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t502')">T5.02: ID & Name</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t503')">T5.03: Button Status</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t504')">T5.04: Counter 00-99</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t506')">T5.06: Temp {1}C {6}</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t507')">T5.07: Water Level {7}</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t509')">T5.09: PIN Lock</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('thai_slots')">🎨 Custom Chars {0}{1}{2}</button>
-              </div>
-            </div>
+            ${this.renderModeControlBody()}
           </div>
         </div>
 
@@ -10607,7 +10833,9 @@ const STUDIO_CGRAM = {
             <div class="lcd-code-header">
               <div>
                 <h4 style="margin: 0; font-size: 14px; color: var(--text-main);">⚡ ซอร์สโค้ดภาษาซี (Embedded C / AVR-GCC)</h4>
-                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">มีฟังก์ชันโหลด CGRAM ที่คุณวาดไว้พร้อมคำสั่งพิมพ์ DDRAM ครบชุด</p>
+                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">
+                  ${this.getModeCodeDescription()}
+                </p>
               </div>
               <button class="btn btn-primary btn-sm" onclick="STUDIO_CGRAM.applyToActiveLab()">
                 🚀 นำข้อความนี้ไปใส่ในแล็บปัจจุบัน
@@ -10618,7 +10846,9 @@ const STUDIO_CGRAM = {
             <div class="lcd-code-header" style="margin-top: 14px;">
               <div>
                 <h4 style="margin: 0; font-size: 14px; color: var(--text-main);">🏛️ ซอร์สโค้ดภาษาแอสเซมบลี (AVR Assembly GNU Syntax)</h4>
-                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">ส่งตำแหน่งและข้อมูลอักขระพิเศษผ่านพอร์ต 4-bit</p>
+                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">
+                  โครงสร้างคำสั่ง Assembly ตรงตามโหมดที่เลือก
+                </p>
               </div>
               <button class="btn btn-secondary btn-sm" onclick="STUDIO_CGRAM.copyAsmCode()">📋 คัดลอก ASM</button>
             </div>
@@ -10629,26 +10859,592 @@ const STUDIO_CGRAM = {
     `;
   },
 
-  // Insert token like {0} into line 1 or line 2
-  insertSlotToken: function(slotNum) {
-    const inputId = (this.lastFocusedLine === 2) ? 'lcd-input-l2' : 'lcd-input-l1';
-    const input = document.getElementById(inputId);
-    const token = `{${slotNum}}`;
+  setSimMode: function(mode) {
+    this.stopMarquee();
+    this.stopBlink();
+    this.simMode = mode;
+    this.activeButton = null;
+    const content = document.getElementById("studio-tab-cgram");
+    if (content) {
+      content.innerHTML = this.renderEditor();
+    }
+    if (mode === 'marquee') {
+      this.startMarquee();
+    } else if (mode === 'blink') {
+      this.startBlink();
+    }
+  },
 
+  renderModeControlBody: function() {
+    if (this.simMode === 'marquee') {
+      return `
+        <!-- Marquee Controls Toolbar -->
+        <div class="lcd-dynamic-toolbar">
+          <button class="btn-sm btn-primary" id="lcd-marquee-play-btn" onclick="STUDIO_CGRAM.toggleMarqueePlay()">
+            ${this.marqueePlaying ? '⏸️ หยุดเลื่อน (Pause)' : '▶️ เริ่มเลื่อน (Play)'}
+          </button>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            <span style="font-size: 11.5px; color: var(--text-muted);">ทิศทาง:</span>
+            <button class="btn-sm ${this.marqueeDir === 'left' ? 'btn-primary' : 'btn-secondary'}" onclick="STUDIO_CGRAM.setMarqueeDir('left')">⬅️ วิ่งซ้าย (0x18)</button>
+            <button class="btn-sm ${this.marqueeDir === 'right' ? 'btn-primary' : 'btn-secondary'}" onclick="STUDIO_CGRAM.setMarqueeDir('right')">➡️ วิ่งขวา (0x1C)</button>
+          </div>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            <span style="font-size: 11.5px; color: var(--text-muted);">ความเร็ว:</span>
+            <button class="lcd-speed-btn ${this.marqueeSpeed === 150 ? 'active' : ''}" onclick="STUDIO_CGRAM.setMarqueeSpeed(150)">⚡ 150ms</button>
+            <button class="lcd-speed-btn ${this.marqueeSpeed === 300 ? 'active' : ''}" onclick="STUDIO_CGRAM.setMarqueeSpeed(300)">⏱️ 300ms</button>
+            <button class="lcd-speed-btn ${this.marqueeSpeed === 600 ? 'active' : ''}" onclick="STUDIO_CGRAM.setMarqueeSpeed(600)">🐢 600ms</button>
+          </div>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            <span style="font-size: 11.5px; color: var(--text-muted);">บรรทัด:</span>
+            <button class="lcd-speed-btn ${this.marqueeTarget === '1' ? 'active' : ''}" onclick="STUDIO_CGRAM.setMarqueeTarget('1')">บรรทัด 1</button>
+            <button class="lcd-speed-btn ${this.marqueeTarget === '2' ? 'active' : ''}" onclick="STUDIO_CGRAM.setMarqueeTarget('2')">บรรทัด 2</button>
+            <button class="lcd-speed-btn ${this.marqueeTarget === 'both' ? 'active' : ''}" onclick="STUDIO_CGRAM.setMarqueeTarget('both')">ทั้ง 2 แถว</button>
+          </div>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.resetMarqueeOffset()" title="เริ่มเลื่อนใหม่ตั้งแต่ตัวอักษรแรก">🔄 รีเซ็ต</button>
+        </div>
+
+        <!-- Marquee Text Inputs (allows up to 60 characters) -->
+        <div class="lcd-input-row">
+          <label>ข้อความวิ่งบรรทัดที่ 1 (รองรับข้อความยาว & เลื่อนวนซ้ำอัตโนมัติ):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-l1" maxlength="60" value="${this.escapeHtml(this.marqueeLine1)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 1"
+              oninput="STUDIO_CGRAM.onMarqueeLineChange(1, this.value)"
+              placeholder="ใส่ข้อความวิ่งยาวๆ เช่น WELCOME TO CDTI EMBEDDED {0}">
+            <span class="lcd-len-badge" id="lcd-len-l1">${this.marqueeLine1.length} ตัว</span>
+          </div>
+        </div>
+
+        <div class="lcd-input-row">
+          <label>ข้อความวิ่งบรรทัดที่ 2:</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-l2" maxlength="60" value="${this.escapeHtml(this.marqueeLine2)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 2"
+              oninput="STUDIO_CGRAM.onMarqueeLineChange(2, this.value)"
+              placeholder="ใส่ข้อความวิ่งยาวๆ เช่น MICROCHIP ATMEGA328P {6}">
+            <span class="lcd-len-badge" id="lcd-len-l2">${this.marqueeLine2.length} ตัว</span>
+          </div>
+        </div>
+
+        <!-- Marquee Presets -->
+        <div class="lcd-presets-bar">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
+            🎯 พรีเซ็ตข้อความวิ่งยอดนิยม (Marquee Presets):
+          </div>
+          <div class="lcd-preset-chips">
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadMarqueePreset('welcome')">📢 ยินดีต้อนรับสู่ CDTI {0}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadMarqueePreset('temp')">🌡️ แจ้งเตือนอุณหภูมิเซนเซอร์ {6}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadMarqueePreset('news')">📰 ข่าวประชาสัมพันธ์แล็บสมองกล</button>
+          </div>
+        </div>
+      `;
+    } else if (this.simMode === 'buttons') {
+      const p1 = this.buttonPages[1];
+      const p2 = this.buttonPages[2];
+      const p3 = this.buttonPages[3];
+      const activeP = this.buttonPages[this.activePage] || p1;
+
+      return `
+        <!-- FSM Button Page Switcher Toolbar -->
+        <div style="font-size: 12px; color: var(--primary); font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+          <span>🔘 เลือกหน้าที่ต้องการดูและแก้ไข (หรือคลิกปุ่มบนกรอบจอเพื่อทดสอบสลับจริง):</span>
+        </div>
+        <div class="lcd-page-tabs">
+          <button class="lcd-page-btn ${this.activePage === 1 ? 'active' : ''}" onclick="STUDIO_CGRAM.selectButtonPage(1)">
+            🏠 หน้า 1: เริ่มต้น (Home)
+          </button>
+          <button class="lcd-page-btn ${this.activePage === 2 ? 'active' : ''}" onclick="STUDIO_CGRAM.selectButtonPage(2)">
+            🔘 หน้า 2: เมื่อกด SW1 (PD2)
+          </button>
+          <button class="lcd-page-btn ${this.activePage === 3 ? 'active' : ''}" onclick="STUDIO_CGRAM.selectButtonPage(3)">
+            🔘 หน้า 3: เมื่อกด SW2 (PD3)
+          </button>
+        </div>
+
+        <div style="padding: 6px 10px; background: rgba(2, 132, 199, 0.08); border-left: 3px solid var(--primary); border-radius: 4px; margin-bottom: 12px; font-size: 11.5px; color: var(--text-muted);">
+          👉 <strong>กำลังแก้ไข:</strong> <span style="color: var(--primary); font-weight: 700;">${this.escapeHtml(activeP.title)}</span> — สามารถแก้ไขข้อความทั้งสองบรรทัดด้านล่าง และลองกดปุ่ม [🔘 กด SW1] หรือ [🔘 กด SW2] บนกรอบจอ LCD ด้านบน เพื่อดูผลลัพธ์ทันที!
+        </div>
+
+        <!-- Active Page Line 1 Control -->
+        <div class="lcd-input-row">
+          <label>บรรทัดที่ 1 ของ ${this.escapeHtml(activeP.title)} (0x80):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-btn-l1" maxlength="32" value="${this.escapeHtml(activeP.l1)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 1"
+              oninput="STUDIO_CGRAM.onButtonPageChange(1, this.value)"
+              placeholder="ข้อความบรรทัด 1 ของหน้านี้">
+            <span class="lcd-len-badge" id="lcd-len-btn-l1">${this.countDisplayCols(activeP.l1)}/16</span>
+          </div>
+        </div>
+
+        <!-- Active Page Line 2 Control -->
+        <div class="lcd-input-row">
+          <label>บรรทัดที่ 2 ของ ${this.escapeHtml(activeP.title)} (0xC0):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-btn-l2" maxlength="32" value="${this.escapeHtml(activeP.l2)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 2"
+              oninput="STUDIO_CGRAM.onButtonPageChange(2, this.value)"
+              placeholder="ข้อความบรรทัด 2 ของหน้านี้">
+            <span class="lcd-len-badge" id="lcd-len-btn-l2">${this.countDisplayCols(activeP.l2)}/16</span>
+          </div>
+        </div>
+
+        <!-- FSM Menu Presets -->
+        <div class="lcd-presets-bar">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
+            🎯 พรีเซ็ตระบบเมนู 3 หน้า (FSM Menu Presets):
+          </div>
+          <div class="lcd-preset-chips">
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadButtonPreset('sensor')">📊 เมนูเซนเซอร์: หน้าหลัก / โหมดรัน {0} / อุณหภูมิ {6}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadButtonPreset('pump')">💧 เมนูปั๊มน้ำ: AUTO MODE / PUMP RUNNING {7} / ALARM</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadButtonPreset('student')">🎓 ข้อมูลนักศึกษา: ID 6710301009 / APISAK / CE CDTI</button>
+          </div>
+        </div>
+      `;
+    } else if (this.simMode === 'blink') {
+      return `
+        <!-- Blink Controls Toolbar -->
+        <div class="lcd-dynamic-toolbar">
+          <button class="btn-sm btn-primary" id="lcd-blink-play-btn" onclick="STUDIO_CGRAM.toggleBlinkPlay()">
+            ${this.blinkPlaying ? '⏹️ หยุดกะพริบ (Stop)' : '🚨 เริ่มกะพริบ (Start)'}
+          </button>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            <span style="font-size: 11.5px; color: var(--text-muted);">รูปแบบ:</span>
+            <button class="btn-sm ${this.blinkType === 'display' ? 'btn-primary' : 'btn-secondary'}" onclick="STUDIO_CGRAM.setBlinkType('display')">🚨 ทั้งจอ (0x08/0x0C)</button>
+            <button class="btn-sm ${this.blinkType === 'text' ? 'btn-primary' : 'btn-secondary'}" onclick="STUDIO_CGRAM.setBlinkType('text')">⚠️ ข้อความเตือน</button>
+            <button class="btn-sm ${this.blinkType === 'cursor' ? 'btn-primary' : 'btn-secondary'}" onclick="STUDIO_CGRAM.setBlinkType('cursor')">🔲 เคอร์เซอร์ (0x0F)</button>
+          </div>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            <span style="font-size: 11.5px; color: var(--text-muted);">ความเร็ว:</span>
+            <button class="lcd-speed-btn ${this.blinkSpeed === 250 ? 'active' : ''}" onclick="STUDIO_CGRAM.setBlinkSpeed(250)">⚡ 250ms</button>
+            <button class="lcd-speed-btn ${this.blinkSpeed === 500 ? 'active' : ''}" onclick="STUDIO_CGRAM.setBlinkSpeed(500)">⏱️ 500ms</button>
+            <button class="lcd-speed-btn ${this.blinkSpeed === 1000 ? 'active' : ''}" onclick="STUDIO_CGRAM.setBlinkSpeed(1000)">🐢 1000ms</button>
+          </div>
+        </div>
+
+        <div class="lcd-input-row">
+          <label>ข้อความแจ้งเตือนบรรทัดที่ 1 (0x80):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-l1" maxlength="32" value="${this.escapeHtml(this.blinkLine1)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 1"
+              oninput="STUDIO_CGRAM.onBlinkLineChange(1, this.value)"
+              placeholder="ข้อความเตือนภัยบรรทัด 1">
+            <span class="lcd-len-badge" id="lcd-len-l1">${this.countDisplayCols(this.blinkLine1)}/16</span>
+          </div>
+        </div>
+
+        <div class="lcd-input-row">
+          <label>ข้อความแจ้งเตือนบรรทัดที่ 2 (0xC0):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-l2" maxlength="32" value="${this.escapeHtml(this.blinkLine2)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 2"
+              oninput="STUDIO_CGRAM.onBlinkLineChange(2, this.value)"
+              placeholder="ข้อความเตือนภัยบรรทัด 2">
+            <span class="lcd-len-badge" id="lcd-len-l2">${this.countDisplayCols(this.blinkLine2)}/16</span>
+          </div>
+        </div>
+
+        <div class="lcd-presets-bar">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
+            🎯 พรีเซ็ตระบบเตือนภัยฉุกเฉิน (Alert Presets):
+          </div>
+          <div class="lcd-preset-chips">
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadBlinkPreset('overheat')">🔥 OVERHEAT WARNING {6}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadBlinkPreset('stop')">🛑 EMERGENCY STOP</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadBlinkPreset('error')">⚠️ SYSTEM ERROR 0x4F</button>
+          </div>
+        </div>
+      `;
+    } else {
+      // static mode
+      return `
+        <!-- Line 1 Control -->
+        <div class="lcd-input-row">
+          <label>บรรทัดที่ 1 (0x80):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-l1" maxlength="32" value="${this.escapeHtml(this.line1)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 1"
+              oninput="STUDIO_CGRAM.onLineChange(1, this.value)"
+              placeholder="ข้อความบรรทัด 1 เช่น HELLO {0}">
+            <span class="lcd-len-badge" id="lcd-len-l1">${this.countDisplayCols(this.line1)}/16</span>
+          </div>
+        </div>
+
+        <!-- Line 2 Control -->
+        <div class="lcd-input-row">
+          <label>บรรทัดที่ 2 (0xC0):</label>
+          <div class="lcd-input-wrapper">
+            <input type="text" id="lcd-input-l2" maxlength="32" value="${this.escapeHtml(this.line2)}"
+              onfocus="STUDIO_CGRAM.lastFocusedLine = 2"
+              oninput="STUDIO_CGRAM.onLineChange(2, this.value)"
+              placeholder="ข้อความบรรทัด 2 เช่น CDTI EMBEDDED">
+            <span class="lcd-len-badge" id="lcd-len-l2">${this.countDisplayCols(this.line2)}/16</span>
+          </div>
+        </div>
+
+        <!-- Quick Alignment Toolbar -->
+        <div class="lcd-align-toolbar">
+          <span style="font-size: 12px; font-weight: 600; color: var(--text-muted); align-self: center;">การจัดตำแหน่ง:</span>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.setAlignment('left')" title="ชิดซ้ายทั้ง 2 บรรทัด">⬅️ ชิดซ้าย</button>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.setAlignment('center')" title="กึ่งกลางจอ 16 ช่อง">↔️ กึ่งกลาง</button>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.setAlignment('right')" title="ชิดขวา">➡️ ชิดขวา</button>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.shiftText('right')" title="ขยับวรรคไปทางขวา 1 ช่อง">⏩ เลื่อนขวา</button>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.shiftText('left')" title="ขยับวรรคไปทางซ้าย 1 ช่อง">⏪ เลื่อนซ้าย</button>
+          <button class="btn-sm btn-secondary" onclick="STUDIO_CGRAM.clearLcd()" title="ล้างหน้าจอ">🔄 ล้างข้อความ</button>
+        </div>
+
+        <!-- Quick Lab Exam Presets -->
+        <div class="lcd-presets-bar">
+          <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
+            🎯 พรีเซ็ตโจทย์ข้อสอบยอดนิยม (Exam Presets):
+          </div>
+          <div class="lcd-preset-chips">
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t501')">T5.01: Hello World {0}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t502')">T5.02: ID & Name</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t503')">T5.03: Button Status</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t504')">T5.04: Counter 00-99</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t506')">T5.06: Temp {1}C {6}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t507')">T5.07: Water Level {7}</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t509')">T5.09: PIN Lock</button>
+            <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('thai_slots')">🎨 Custom Chars {0}{1}{2}</button>
+          </div>
+        </div>
+      `;
+    }
+  },
+
+  getModeCodeDescription: function() {
+    if (this.simMode === 'marquee') {
+      return 'ซอร์สโค้ดฟังก์ชันเลื่อนข้อความวนซ้ำอัตโนมัติ (Marquee Auto-Scroll)';
+    } else if (this.simMode === 'buttons') {
+      return 'ซอร์สโค้ด Finite State Machine (FSM) สลับหน้าจอด้วยปุ่มกด SW1 (PD2) / SW2 (PD3)';
+    } else if (this.simMode === 'blink') {
+      return 'ซอร์สโค้ดระบบแจ้งเตือนกะพริบจอและไฟกะพริบแจ้งเตือนฮาร์ดแวร์';
+    }
+    return 'มีฟังก์ชันโหลด CGRAM ที่คุณวาดไว้พร้อมคำสั่งพิมพ์ DDRAM ครบชุด';
+  },
+
+  getFsmStatusText: function() {
+    if (this.simMode === 'buttons') {
+      const pageNames = { 1: "หน้า 1: Home (พร้อมทำงาน)", 2: "หน้า 2: SW1 ทำงาน (Mode 1)", 3: "หน้า 3: SW2 ทำงาน (Mode 2)" };
+      const logicStates = { 1: "PD2=1, PD3=1 (Pull-up)", 2: "PD2=0 (กด), PD3=1", 3: "PD2=1, PD3=0 (กด)" };
+      return `${pageNames[this.activePage] || 'Page ' + this.activePage} • ${logicStates[this.activePage] || ''}`;
+    } else if (this.simMode === 'marquee') {
+      return `ข้อความวิ่ง • ทิศทาง: ${this.marqueeDir.toUpperCase()} • ความเร็ว: ${this.marqueeSpeed}ms`;
+    } else if (this.simMode === 'blink') {
+      return `ระบบแจ้งเตือน • ${this.blinkType.toUpperCase()} • อัตรา: ${this.blinkSpeed}ms`;
+    }
+    return "LCD 1602A • โหมดข้อความมาตรฐาน (Static DDRAM)";
+  },
+
+  pressVirtualButton: function(btn) {
+    this.activeButton = btn;
+    if (btn === 'sw1') {
+      this.activePage = 2;
+    } else if (btn === 'sw2') {
+      this.activePage = 3;
+    } else if (btn === 'home') {
+      this.activePage = 1;
+    }
+
+    // Visual button feedback on bezel
+    const btnSw1 = document.getElementById("lcd-btn-sw1");
+    const btnSw2 = document.getElementById("lcd-btn-sw2");
+    const btnHome = document.getElementById("lcd-btn-home");
+    if (btnSw1) btnSw1.classList.toggle("pressed", btn === 'sw1');
+    if (btnSw2) btnSw2.classList.toggle("pressed", btn === 'sw2');
+    if (btnHome) btnHome.classList.toggle("pressed", btn === 'home');
+
+    setTimeout(() => {
+      if (btnSw1) btnSw1.classList.remove("pressed");
+      if (btnSw2) btnSw2.classList.remove("pressed");
+      if (btnHome) btnHome.classList.remove("pressed");
+    }, 250);
+
+    // Update FSM indicator
+    const fsmDot = document.querySelector(".fsm-dot");
+    const fsmText = document.querySelector(".fsm-text");
+    if (fsmDot) {
+      fsmDot.className = (this.activePage === 1) ? "fsm-dot" : "fsm-dot active";
+    }
+    if (fsmText) {
+      fsmText.textContent = this.getFsmStatusText();
+    }
+
+    // Refresh page tabs and inputs
+    const pBtns = document.querySelectorAll(".lcd-page-btn");
+    pBtns.forEach((b, idx) => {
+      b.classList.toggle("active", (idx + 1) === this.activePage);
+    });
+
+    if (this.simMode === 'buttons') {
+      const in1 = document.getElementById("lcd-input-btn-l1");
+      const in2 = document.getElementById("lcd-input-btn-l2");
+      const page = this.buttonPages[this.activePage];
+      if (in1 && page) in1.value = page.l1;
+      if (in2 && page) in2.value = page.l2;
+      const len1 = document.getElementById("lcd-len-btn-l1");
+      const len2 = document.getElementById("lcd-len-btn-l2");
+      if (len1 && page) len1.textContent = `${this.countDisplayCols(page.l1)}/16`;
+      if (len2 && page) len2.textContent = `${this.countDisplayCols(page.l2)}/16`;
+    }
+
+    this.refreshLiveSimulator();
+  },
+
+  selectButtonPage: function(pageNum) {
+    this.activePage = pageNum;
+    this.pressVirtualButton(pageNum === 1 ? 'home' : (pageNum === 2 ? 'sw1' : 'sw2'));
+  },
+
+  onButtonPageChange: function(line, val) {
+    if (!this.buttonPages[this.activePage]) return;
+    if (line === 1) {
+      this.buttonPages[this.activePage].l1 = val;
+    } else {
+      this.buttonPages[this.activePage].l2 = val;
+    }
+    const len1 = document.getElementById("lcd-len-btn-l1");
+    const len2 = document.getElementById("lcd-len-btn-l2");
+    if (len1) len1.textContent = `${this.countDisplayCols(this.buttonPages[this.activePage].l1)}/16`;
+    if (len2) len2.textContent = `${this.countDisplayCols(this.buttonPages[this.activePage].l2)}/16`;
+    this.refreshLiveSimulator();
+  },
+
+  loadButtonPreset: function(id) {
+    if (id === 'sensor') {
+      this.buttonPages[1] = { title: "หน้า 1: เริ่มต้น (Home)", l1: "SYSTEM READY    ", l2: "PRESS SW1 / SW2 " };
+      this.buttonPages[2] = { title: "หน้า 2: กด SW1 (Pin 2)", l1: "RUNNING MODE {0}", l2: "MOTOR SPEED: 80%" };
+      this.buttonPages[3] = { title: "หน้า 3: กด SW2 (Pin 3)", l1: "TEMP: 28.5{1}C {6}", l2: "VOLT: 4.95V [OK]" };
+    } else if (id === 'pump') {
+      this.buttonPages[1] = { title: "หน้า 1: เริ่มต้น (Home)", l1: "WATER PUMP CNTRL", l2: "STATUS: STANDBY " };
+      this.buttonPages[2] = { title: "หน้า 2: กด SW1 (Pin 2)", l1: "PUMP ACTIVATED  ", l2: "WATER LVL: 85% {7}" };
+      this.buttonPages[3] = { title: "หน้า 3: กด SW2 (Pin 3)", l1: "! PUMP STOPPED !", l2: "TANK EMPTY ALERT" };
+    } else if (id === 'student') {
+      this.buttonPages[1] = { title: "หน้า 1: เริ่มต้น (Home)", l1: "STUDENT ID:     ", l2: "6710301009      " };
+      this.buttonPages[2] = { title: "หน้า 2: กด SW1 (Pin 2)", l1: "NAME:           ", l2: "APISAK KONGPAKDI" };
+      this.buttonPages[3] = { title: "หน้า 3: กด SW2 (Pin 3)", l1: "DEPARTMENT:     ", l2: "COMP ENG (CDTI) " };
+    }
+    this.selectButtonPage(1);
+  },
+
+  // Marquee Engine Functions
+  startMarquee: function() {
+    this.stopMarquee();
+    this.marqueePlaying = true;
+    const update = () => {
+      const step = (this.marqueeDir === 'left') ? 1 : -1;
+      this.marqueeOffset1 += step;
+      this.marqueeOffset2 += step;
+      const screen = document.getElementById("lcd-glass-screen");
+      if (screen) screen.innerHTML = this.renderVirtualScreen();
+    };
+    this.marqueeTimer = setInterval(update, this.marqueeSpeed);
+    const playBtn = document.getElementById("lcd-marquee-play-btn");
+    if (playBtn) playBtn.innerHTML = "⏸️ หยุดเลื่อน (Pause)";
+  },
+
+  stopMarquee: function() {
+    this.marqueePlaying = false;
+    if (this.marqueeTimer) {
+      clearInterval(this.marqueeTimer);
+      this.marqueeTimer = null;
+    }
+    const playBtn = document.getElementById("lcd-marquee-play-btn");
+    if (playBtn) playBtn.innerHTML = "▶️ เริ่มเลื่อน (Play)";
+  },
+
+  toggleMarqueePlay: function() {
+    if (this.marqueePlaying) {
+      this.stopMarquee();
+    } else {
+      this.startMarquee();
+    }
+  },
+
+  setMarqueeDir: function(dir) {
+    this.marqueeDir = dir;
+    this.refreshLiveSimulator();
+    const btn = document.getElementById("lcd-mode-c");
+    if (btn) this.refreshAllInputs();
+  },
+
+  setMarqueeSpeed: function(speed) {
+    this.marqueeSpeed = speed;
+    if (this.marqueePlaying) {
+      this.startMarquee();
+    }
+    this.refreshLiveSimulator();
+  },
+
+  setMarqueeTarget: function(target) {
+    this.marqueeTarget = target;
+    this.refreshLiveSimulator();
+  },
+
+  resetMarqueeOffset: function() {
+    this.marqueeOffset1 = 0;
+    this.marqueeOffset2 = 0;
+    const screen = document.getElementById("lcd-glass-screen");
+    if (screen) screen.innerHTML = this.renderVirtualScreen();
+  },
+
+  onMarqueeLineChange: function(line, val) {
+    if (line === 1) {
+      this.marqueeLine1 = val;
+    } else {
+      this.marqueeLine2 = val;
+    }
+    const len1 = document.getElementById("lcd-len-l1");
+    const len2 = document.getElementById("lcd-len-l2");
+    if (len1) len1.textContent = `${this.marqueeLine1.length} ตัว`;
+    if (len2) len2.textContent = `${this.marqueeLine2.length} ตัว`;
+    this.refreshLiveSimulator();
+  },
+
+  loadMarqueePreset: function(id) {
+    if (id === 'welcome') {
+      this.marqueeLine1 = 'WELCOME TO CDTI EMBEDDED SYSTEM 2026! {0}';
+      this.marqueeLine2 = 'CHITRALADA TECHNOLOGY INSTITUTE LAB    ';
+    } else if (id === 'temp') {
+      this.marqueeLine1 = 'TEMPERATURE SENSOR ALERT: HIGH 38.5{1}C {6}';
+      this.marqueeLine2 = 'COOLING SYSTEM ACTIVATED • FAN SPEED 100% ';
+    } else if (id === 'news') {
+      this.marqueeLine1 = 'EXAM PREPARATION: AVR ATMEGA328P REGISTERS';
+      this.marqueeLine2 = 'DDRx PORTx PINx TIMERS ADC LCD1602 PRACTICE';
+    }
+    this.resetMarqueeOffset();
+    const in1 = document.getElementById("lcd-input-l1");
+    const in2 = document.getElementById("lcd-input-l2");
+    if (in1) in1.value = this.marqueeLine1;
+    if (in2) in2.value = this.marqueeLine2;
+    this.refreshLiveSimulator();
+  },
+
+  // Blink Engine Functions
+  startBlink: function() {
+    this.stopBlink();
+    this.blinkPlaying = true;
+    const update = () => {
+      this.blinkState = !this.blinkState;
+      const screen = document.getElementById("lcd-glass-screen");
+      if (screen) screen.innerHTML = this.renderVirtualScreen();
+    };
+    this.blinkTimer = setInterval(update, this.blinkSpeed);
+    const playBtn = document.getElementById("lcd-blink-play-btn");
+    if (playBtn) playBtn.innerHTML = "⏹️ หยุดกะพริบ (Stop)";
+  },
+
+  stopBlink: function() {
+    this.blinkPlaying = false;
+    this.blinkState = true;
+    if (this.blinkTimer) {
+      clearInterval(this.blinkTimer);
+      this.blinkTimer = null;
+    }
+    const screen = document.getElementById("lcd-glass-screen");
+    if (screen) screen.innerHTML = this.renderVirtualScreen();
+    const playBtn = document.getElementById("lcd-blink-play-btn");
+    if (playBtn) playBtn.innerHTML = "🚨 เริ่มกะพริบ (Start)";
+  },
+
+  toggleBlinkPlay: function() {
+    if (this.blinkPlaying) {
+      this.stopBlink();
+    } else {
+      this.startBlink();
+    }
+  },
+
+  setBlinkType: function(type) {
+    this.blinkType = type;
+    this.refreshLiveSimulator();
+  },
+
+  setBlinkSpeed: function(speed) {
+    this.blinkSpeed = speed;
+    if (this.blinkPlaying) {
+      this.startBlink();
+    }
+    this.refreshLiveSimulator();
+  },
+
+  onBlinkLineChange: function(line, val) {
+    if (line === 1) {
+      this.blinkLine1 = val;
+    } else {
+      this.blinkLine2 = val;
+    }
+    const len1 = document.getElementById("lcd-len-l1");
+    const len2 = document.getElementById("lcd-len-l2");
+    if (len1) len1.textContent = `${this.countDisplayCols(this.blinkLine1)}/16`;
+    if (len2) len2.textContent = `${this.countDisplayCols(this.blinkLine2)}/16`;
+    this.refreshLiveSimulator();
+  },
+
+  loadBlinkPreset: function(id) {
+    if (id === 'overheat') {
+      this.blinkLine1 = '!! OVERHEAT !!  ';
+      this.blinkLine2 = 'TEMP > 80{1}C {6} ';
+    } else if (id === 'stop') {
+      this.blinkLine1 = 'EMERGENCY STOP  ';
+      this.blinkLine2 = 'PRESS RESET SW  ';
+    } else if (id === 'error') {
+      this.blinkLine1 = 'SYSTEM FAULT {5}';
+      this.blinkLine2 = 'ERR CODE: 0x4F  ';
+    }
+    const in1 = document.getElementById("lcd-input-l1");
+    const in2 = document.getElementById("lcd-input-l2");
+    if (in1) in1.value = this.blinkLine1;
+    if (in2) in2.value = this.blinkLine2;
+    this.refreshLiveSimulator();
+  },
+
+  // Insert token like {0} into line 1 or line 2 across all modes
+  insertSlotToken: function(slotNum) {
+    const token = `{${slotNum}}`;
+    let input = null;
+
+    if (this.simMode === 'buttons') {
+      input = (this.lastFocusedLine === 2) ? document.getElementById("lcd-input-btn-l2") : document.getElementById("lcd-input-btn-l1");
+      if (input) {
+        const start = input.selectionStart || input.value.length;
+        const end = input.selectionEnd || input.value.length;
+        const val = input.value;
+        const newVal = val.substring(0, start) + token + val.substring(end);
+        input.value = newVal;
+        this.onButtonPageChange(this.lastFocusedLine, newVal);
+        input.focus();
+        input.setSelectionRange(start + token.length, start + token.length);
+        return;
+      }
+    }
+
+    input = (this.lastFocusedLine === 2) ? document.getElementById("lcd-input-l2") : document.getElementById("lcd-input-l1");
     if (input) {
       const start = input.selectionStart || input.value.length;
       const end = input.selectionEnd || input.value.length;
       const val = input.value;
       const newVal = val.substring(0, start) + token + val.substring(end);
       input.value = newVal;
-      this.onLineChange(this.lastFocusedLine, newVal);
+      if (this.simMode === 'marquee') {
+        this.onMarqueeLineChange(this.lastFocusedLine, newVal);
+      } else if (this.simMode === 'blink') {
+        this.onBlinkLineChange(this.lastFocusedLine, newVal);
+      } else {
+        this.onLineChange(this.lastFocusedLine, newVal);
+      }
       input.focus();
       input.setSelectionRange(start + token.length, start + token.length);
     } else {
-      if (this.lastFocusedLine === 2) {
-        this.line2 += token;
+      if (this.simMode === 'marquee') {
+        if (this.lastFocusedLine === 2) this.marqueeLine2 += token; else this.marqueeLine1 += token;
+      } else if (this.simMode === 'buttons') {
+        if (this.lastFocusedLine === 2) this.buttonPages[this.activePage].l2 += token; else this.buttonPages[this.activePage].l1 += token;
+      } else if (this.simMode === 'blink') {
+        if (this.lastFocusedLine === 2) this.blinkLine2 += token; else this.blinkLine1 += token;
       } else {
-        this.line1 += token;
+        if (this.lastFocusedLine === 2) this.line2 += token; else this.line1 += token;
       }
       this.refreshAllInputs();
     }
@@ -10658,6 +11454,47 @@ const STUDIO_CGRAM = {
   countDisplayCols: function(str) {
     const chars = this.prepareLineChars(str);
     return chars.filter(c => c !== ' ').length;
+  },
+
+  tokenizeString: function(str) {
+    if (!str) return [];
+    const res = [];
+    let i = 0;
+    while (i < str.length) {
+      if (str[i] === '{' && (i + 2 < str.length) && str[i + 2] === '}') {
+        const slotIdx = parseInt(str[i + 1], 10);
+        if (!isNaN(slotIdx) && slotIdx >= 0 && slotIdx < 8) {
+          res.push(`{${slotIdx}}`);
+          i += 3;
+          continue;
+        }
+      }
+      const char = str[i];
+      const nextChar = (i + 1 < str.length) ? str[i + 1] : null;
+      if (nextChar && this.isThaiCombining(nextChar)) {
+        res.push({ base: char, upper: nextChar });
+        i += 2;
+      } else {
+        res.push(char);
+        i += 1;
+      }
+    }
+    return res;
+  },
+
+  getMarqueeTokens: function(str, offset) {
+    let tokens = this.tokenizeString(str);
+    if (tokens.length === 0) tokens = [' '];
+    while (tokens.length < 16) tokens.push(' ');
+    // Add 4-space separator between repeats
+    tokens.push(' ', ' ', ' ', ' ');
+    const len = tokens.length;
+    const effOffset = ((offset % len) + len) % len;
+    const windowTokens = [];
+    for (let i = 0; i < 16; i++) {
+      windowTokens.push(tokens[(effOffset + i) % len]);
+    }
+    return windowTokens;
   },
 
   // Tokenize line string, keeping slot tokens {0}..{7} as single characters!
@@ -10700,32 +11537,63 @@ const STUDIO_CGRAM = {
 
   // Render 16x2 character grid on the virtual LCD screen
   renderVirtualScreen: function() {
-    const l1Chars = this.prepareLineChars(this.line1);
-    const l2Chars = this.prepareLineChars(this.line2);
+    let l1Chars, l2Chars;
+
+    if (this.simMode === 'marquee') {
+      l1Chars = (this.marqueeTarget === '2') ? this.prepareLineChars(this.marqueeLine1) : this.getMarqueeTokens(this.marqueeLine1, this.marqueeOffset1);
+      l2Chars = (this.marqueeTarget === '1') ? this.prepareLineChars(this.marqueeLine2) : this.getMarqueeTokens(this.marqueeLine2, this.marqueeOffset2);
+    } else if (this.simMode === 'buttons') {
+      const page = this.buttonPages[this.activePage] || this.buttonPages[1];
+      l1Chars = this.prepareLineChars(page.l1);
+      l2Chars = this.prepareLineChars(page.l2);
+    } else if (this.simMode === 'blink') {
+      if (this.blinkPlaying && !this.blinkState) {
+        if (this.blinkType === 'display') {
+          l1Chars = Array(16).fill(' ');
+          l2Chars = Array(16).fill(' ');
+        } else if (this.blinkType === 'text') {
+          l1Chars = Array(16).fill(' ');
+          l2Chars = this.prepareLineChars(this.blinkLine2);
+        } else {
+          l1Chars = this.prepareLineChars(this.blinkLine1);
+          l2Chars = this.prepareLineChars(this.blinkLine2);
+        }
+      } else {
+        l1Chars = this.prepareLineChars(this.blinkLine1);
+        l2Chars = this.prepareLineChars(this.blinkLine2);
+      }
+    } else {
+      l1Chars = this.prepareLineChars(this.line1);
+      l2Chars = this.prepareLineChars(this.line2);
+    }
 
     let html = '<div class="lcd-grid-row" id="lcd-row-0">';
     for (let c = 0; c < 16; c++) {
       const ch = l1Chars[c] || ' ';
-      html += this.renderCharCell(0, c, ch);
+      const isCursor = (this.simMode === 'blink' && this.blinkType === 'cursor' && this.blinkState && c === Math.min(15, this.countDisplayCols(this.blinkLine1)));
+      html += this.renderCharCell(0, c, ch, isCursor);
     }
     html += '</div>';
 
     html += '<div class="lcd-grid-row" id="lcd-row-1">';
     for (let c = 0; c < 16; c++) {
       const ch = l2Chars[c] || ' ';
-      html += this.renderCharCell(1, c, ch);
+      html += this.renderCharCell(1, c, ch, false);
     }
     html += '</div>';
 
     return html;
   },
 
-  renderCharCell: function(row, col, charData) {
+  renderCharCell: function(row, col, charData, isCursor) {
     const dots = this.getGlyphDots(charData);
     let dotsHtml = '';
 
     for (let r = 0; r < 8; r++) {
-      const rowByte = dots[r] || 0;
+      let rowByte = dots[r] || 0;
+      if (isCursor && r === 7) {
+        rowByte = 0x1F; // Underline cursor
+      }
       for (let c = 0; c < 5; c++) {
         const isLit = (rowByte & (1 << (4 - c))) !== 0;
         dotsHtml += `<div class="lcd-dot ${isLit ? 'lit' : ''}"></div>`;
@@ -10754,74 +11622,79 @@ const STUDIO_CGRAM = {
     if (typeof charData === 'object' && charData.base && charData.upper) {
       const baseDots = this.getSingleCharDots(charData.base);
       const upperDots = this.getSingleCharDots(charData.upper);
-      const res = [];
+      const combined = [0, 0, 0, 0, 0, 0, 0, 0];
       for (let r = 0; r < 8; r++) {
-        res.push((baseDots[r] || 0) | (upperDots[r] || 0));
+        combined[r] = (baseDots[r] || 0) | (upperDots[r] || 0);
       }
-      return res;
+      return combined;
     }
     return this.getSingleCharDots(charData);
   },
 
-  getSingleCharDots: function(ch) {
-    if (!ch) return [0,0,0,0,0,0,0,0];
-
-    // Check CGRAM slots placeholder like '{0}', '{1}' ... '{7}'
-    if (typeof ch === 'string' && ch.length === 3 && ch[0] === '{' && ch[2] === '}') {
-      const slotNum = parseInt(ch[1], 10);
-      if (!isNaN(slotNum) && slotNum >= 0 && slotNum < 8 && this.slots[slotNum]) {
-        return this.slots[slotNum];
+  getSingleCharDots: function(token) {
+    // Check if slot reference {0}..{7}
+    if (typeof token === 'string' && token.length === 3 && token[0] === '{' && token[2] === '}') {
+      const slot = parseInt(token[1], 10);
+      if (!isNaN(slot) && slot >= 0 && slot < 8 && this.slots[slot]) {
+        return this.slots[slot];
       }
     }
 
-    // Check Thai font table if single Thai char
-    const charCode = ch.charCodeAt(0);
-    if (charCode >= 0x0E01 && charCode <= 0x0E5B) {
-      const tisCode = '0x' + (charCode - 0x0E00 + 0xA0).toString(16).toUpperCase();
+    // Check ASCII font table
+    if (LCD_ASCII_FONT[token]) {
+      return LCD_ASCII_FONT[token];
+    }
+
+    // Check Thai font
+    const thaiHex = this.getThaiTis620Hex(token);
+    if (thaiHex) {
       const fontTable = (this.thaiMode === 'improved') ? THAI_FONT_IMPROVED : THAI_FONT_ORIGINAL;
-      if (fontTable[tisCode] && fontTable[tisCode].bytes) {
-        return fontTable[tisCode].bytes;
+      if (fontTable[thaiHex]) {
+        return fontTable[thaiHex].bytes;
       }
     }
 
-    // Check ASCII font
-    if (LCD_ASCII_FONT[ch]) {
-      return LCD_ASCII_FONT[ch];
-    }
-
-    // Fallback: blank
-    return [0,0,0,0,0,0,0,0];
+    return [0, 0, 0, 0, 0, 0, 0, 0];
   },
 
-  // Input handling
-  onLineChange: function(lineNum, val) {
-    if (lineNum === 1) {
-      this.line1 = val;
-      const el = document.getElementById("lcd-len-l1");
-      if (el) el.textContent = `${this.countDisplayCols(val)}/16`;
-    } else {
-      this.line2 = val;
-      const el = document.getElementById("lcd-len-l2");
-      if (el) el.textContent = `${this.countDisplayCols(val)}/16`;
+  getThaiTis620Hex: function(ch) {
+    const code = ch.charCodeAt(0);
+    if (code >= 0x0E01 && code <= 0x0E5B) {
+      const tis = (code - 0x0E00 + 0xA0).toString(16).toUpperCase();
+      return `0x${tis}`;
     }
+    return null;
+  },
+
+  onLineChange: function(line, value) {
+    if (line === 1) {
+      this.line1 = value;
+    } else {
+      this.line2 = value;
+    }
+    const len1 = document.getElementById("lcd-len-l1");
+    const len2 = document.getElementById("lcd-len-l2");
+    if (len1) len1.textContent = `${this.countDisplayCols(this.line1)}/16`;
+    if (len2) len2.textContent = `${this.countDisplayCols(this.line2)}/16`;
     this.refreshLiveSimulator();
   },
 
   setAlignment: function(mode) {
     this.alignMode = mode;
-    this.line1 = this.alignText(this.line1, mode);
-    this.line2 = this.alignText(this.line2, mode);
+    this.line1 = this.padText(this.line1, mode);
+    this.line2 = this.padText(this.line2, mode);
     this.refreshAllInputs();
   },
 
-  alignText: function(text, mode) {
+  padText: function(text, mode) {
     const trimmed = text.trim();
     const cols = this.countDisplayCols(trimmed);
+    if (cols >= 16) return trimmed;
+
     if (mode === 'left') {
       return trimmed;
     } else if (mode === 'center') {
-      const padTotal = Math.max(0, 16 - cols);
-      const padLeft = Math.floor(padTotal / 2);
+      const padLeft = Math.floor((16 - cols) / 2);
       return ' '.repeat(padLeft) + trimmed;
     } else if (mode === 'right') {
       const padLeft = Math.max(0, 16 - cols);
@@ -10874,14 +11747,44 @@ const STUDIO_CGRAM = {
   },
 
   refreshAllInputs: function() {
-    const in1 = document.getElementById("lcd-input-l1");
-    const in2 = document.getElementById("lcd-input-l2");
-    if (in1) in1.value = this.line1;
-    if (in2) in2.value = this.line2;
-    const el1 = document.getElementById("lcd-len-l1");
-    const el2 = document.getElementById("lcd-len-l2");
-    if (el1) el1.textContent = `${this.countDisplayCols(this.line1)}/16`;
-    if (el2) el2.textContent = `${this.countDisplayCols(this.line2)}/16`;
+    if (this.simMode === 'marquee') {
+      const in1 = document.getElementById("lcd-input-l1");
+      const in2 = document.getElementById("lcd-input-l2");
+      if (in1) in1.value = this.marqueeLine1;
+      if (in2) in2.value = this.marqueeLine2;
+      const el1 = document.getElementById("lcd-len-l1");
+      const el2 = document.getElementById("lcd-len-l2");
+      if (el1) el1.textContent = `${this.marqueeLine1.length} ตัว`;
+      if (el2) el2.textContent = `${this.marqueeLine2.length} ตัว`;
+    } else if (this.simMode === 'buttons') {
+      const page = this.buttonPages[this.activePage] || this.buttonPages[1];
+      const in1 = document.getElementById("lcd-input-btn-l1");
+      const in2 = document.getElementById("lcd-input-btn-l2");
+      if (in1) in1.value = page.l1;
+      if (in2) in2.value = page.l2;
+      const el1 = document.getElementById("lcd-len-btn-l1");
+      const el2 = document.getElementById("lcd-len-btn-l2");
+      if (el1) el1.textContent = `${this.countDisplayCols(page.l1)}/16`;
+      if (el2) el2.textContent = `${this.countDisplayCols(page.l2)}/16`;
+    } else if (this.simMode === 'blink') {
+      const in1 = document.getElementById("lcd-input-l1");
+      const in2 = document.getElementById("lcd-input-l2");
+      if (in1) in1.value = this.blinkLine1;
+      if (in2) in2.value = this.blinkLine2;
+      const el1 = document.getElementById("lcd-len-l1");
+      const el2 = document.getElementById("lcd-len-l2");
+      if (el1) el1.textContent = `${this.countDisplayCols(this.blinkLine1)}/16`;
+      if (el2) el2.textContent = `${this.countDisplayCols(this.blinkLine2)}/16`;
+    } else {
+      const in1 = document.getElementById("lcd-input-l1");
+      const in2 = document.getElementById("lcd-input-l2");
+      if (in1) in1.value = this.line1;
+      if (in2) in2.value = this.line2;
+      const el1 = document.getElementById("lcd-len-l1");
+      const el2 = document.getElementById("lcd-len-l2");
+      if (el1) el1.textContent = `${this.countDisplayCols(this.line1)}/16`;
+      if (el2) el2.textContent = `${this.countDisplayCols(this.line2)}/16`;
+    }
     this.refreshLiveSimulator();
   },
 
@@ -10894,10 +11797,13 @@ const STUDIO_CGRAM = {
     const codeAsm = document.getElementById("lcd-code-asm");
     if (codeC) codeC.textContent = this.generateLcdCCode();
     if (codeAsm) codeAsm.textContent = this.generateLcdAsmCode();
+    const fsmText = document.querySelector(".fsm-text");
+    if (fsmText) fsmText.textContent = this.getFsmStatusText();
   },
 
   // Helper to replace {0} with \x08 and {1}-{7} with \x01-\x07 in C string
   formatCStringWithSlots: function(str) {
+    if (!str) return "";
     let out = str.replace(/"/g, '\\"');
     out = out.replace(/\{([0-7])\}/g, (match, slot) => {
       const s = parseInt(slot, 10);
@@ -10906,17 +11812,32 @@ const STUDIO_CGRAM = {
     return out;
   },
 
-  // Generate Embedded C snippet
+  // Generate Embedded C snippet for current mode
   generateLcdCCode: function() {
-    const str1 = this.formatCStringWithSlots(this.line1);
-    const str2 = this.formatCStringWithSlots(this.line2);
-
-    // Identify which CGRAM slots are actually referenced in line1 or line2
     const usedSlots = new Set();
     const regex = /\{([0-7])\}/g;
     let m;
-    while ((m = regex.exec(this.line1)) !== null) usedSlots.add(parseInt(m[1], 10));
-    while ((m = regex.exec(this.line2)) !== null) usedSlots.add(parseInt(m[1], 10));
+
+    const scanString = (str) => {
+      if (!str) return;
+      while ((m = regex.exec(str)) !== null) usedSlots.add(parseInt(m[1], 10));
+    };
+
+    if (this.simMode === 'buttons') {
+      for (let p = 1; p <= 3; p++) {
+        scanString(this.buttonPages[p].l1);
+        scanString(this.buttonPages[p].l2);
+      }
+    } else if (this.simMode === 'marquee') {
+      scanString(this.marqueeLine1);
+      scanString(this.marqueeLine2);
+    } else if (this.simMode === 'blink') {
+      scanString(this.blinkLine1);
+      scanString(this.blinkLine2);
+    } else {
+      scanString(this.line1);
+      scanString(this.line2);
+    }
 
     let cgramDefinitions = '';
     let cgramLoads = '';
@@ -10930,6 +11851,192 @@ const STUDIO_CGRAM = {
       });
     }
 
+    const cgramFunc = usedSlots.size > 0 ? `// ฟังก์ชันโหลดข้อมูลเข้า CGRAM (Address: 0x40 + slot * 8)
+void lcd_load_cgram(uint8_t slot, const uint8_t *glyph) {
+    lcd_command(0x40 | (slot << 3));
+    for (uint8_t i = 0; i < 8; i++) {
+        lcd_data(pgm_read_byte(&glyph[i]));
+    }
+}
+` : '';
+
+    if (this.simMode === 'marquee') {
+      const str1 = this.formatCStringWithSlots(this.marqueeLine1);
+      const str2 = this.formatCStringWithSlots(this.marqueeLine2);
+      const shiftCmd = (this.marqueeDir === 'left') ? '0x18' : '0x1C';
+      const shiftDesc = (this.marqueeDir === 'left') ? '0x18: เลื่อนซ้าย (Shift Display Left)' : '0x1C: เลื่อนขวา (Shift Display Right)';
+
+      return `// ==========================================
+// Embedded C (AVR-GCC): LCD 1602 Marquee Auto-Scroll
+// โหมดข้อความเลื่อนอัตโนมัติบนจอ HD44780
+// ==========================================
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <util/delay.h>
+#include <string.h>
+
+${cgramDefinitions}
+${cgramFunc}
+// วิธีที่ 1: เลื่อนทั้งหน้าจอด้วยคำสั่งฮาร์ดแวร์ HD44780 (${shiftDesc})
+void lcd_marquee_hardware(void) {
+    lcd_command(0x01); // Clear Display
+    _delay_ms(2);
+    lcd_command(0x0C); // Display ON, Cursor OFF
+
+${cgramLoads ? `    // โหลดอักขระ CGRAM\n${cgramLoads}\n` : ''}    lcd_command(0x80);
+    lcd_puts("${str1}");
+    lcd_command(0xC0);
+    lcd_puts("${str2}");
+
+    while (1) {
+        _delay_ms(${this.marqueeSpeed});
+        lcd_command(${shiftCmd}); // เลื่อนหน้าจอตามทิศทางที่เลือก
+    }
+}
+
+// วิธีที่ 2: เลื่อนเฉพาะบรรทัดที่ 1 ด้วยเทคนิค Circular Sliding Window Buffer
+const char msg_line1[] PROGMEM = "${str1}    ";
+void lcd_marquee_sliding_window(void) {
+    uint8_t len = strlen_P(msg_line1);
+    for (uint8_t offset = 0; offset < len; offset++) {
+        lcd_command(0x80); // เลื่อนตำแหน่งไปยังบรรทัดที่ 1
+        for (uint8_t col = 0; col < 16; col++) {
+            char c = pgm_read_byte(&msg_line1[(offset + col) % len]);
+            lcd_data(c);
+        }
+        _delay_ms(${this.marqueeSpeed});
+    }
+}`;
+    }
+
+    if (this.simMode === 'buttons') {
+      const p1_1 = this.formatCStringWithSlots(this.buttonPages[1].l1);
+      const p1_2 = this.formatCStringWithSlots(this.buttonPages[1].l2);
+      const p2_1 = this.formatCStringWithSlots(this.buttonPages[2].l1);
+      const p2_2 = this.formatCStringWithSlots(this.buttonPages[2].l2);
+      const p3_1 = this.formatCStringWithSlots(this.buttonPages[3].l1);
+      const p3_2 = this.formatCStringWithSlots(this.buttonPages[3].l2);
+
+      return `// ==========================================
+// Embedded C (AVR-GCC): LCD Finite State Machine (FSM)
+// สลับหน้าจอด้วยปุ่มกด SW1 (PD2) และ SW2 (PD3)
+// ==========================================
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <util/delay.h>
+
+#define SW1_PIN  PD2  // สวิตช์ SW1 ต่อขา Digital Pin 2
+#define SW2_PIN  PD3  // สวิตช์ SW2 ต่อขา Digital Pin 3
+
+typedef enum {
+    PAGE_HOME = 1,   // หน้าหลัก
+    PAGE_SW1  = 2,   // หน้าเมื่อกด SW1
+    PAGE_SW2  = 3    // หน้าเมื่อกด SW2
+} LcdPage_t;
+
+LcdPage_t current_page = PAGE_HOME;
+
+${cgramDefinitions}
+${cgramFunc}
+void init_buttons(void) {
+    // 1. กำหนดขา PD2 และ PD3 เป็นอินพุต
+    DDRD &= ~((1 << SW1_PIN) | (1 << SW2_PIN));
+    // 2. เปิดใช้งาน Internal Pull-Up Resistor (ระบบ Active-Low)
+    PORTD |= (1 << SW1_PIN) | (1 << SW2_PIN);
+}
+
+void render_lcd_page(LcdPage_t page) {
+    lcd_command(0x01); // Clear Display
+    _delay_ms(2);
+    switch (page) {
+        case PAGE_HOME:
+            lcd_command(0x80); lcd_puts("${p1_1}");
+            lcd_command(0xC0); lcd_puts("${p1_2}");
+            break;
+        case PAGE_SW1:
+            lcd_command(0x80); lcd_puts("${p2_1}");
+            lcd_command(0xC0); lcd_puts("${p2_2}");
+            break;
+        case PAGE_SW2:
+            lcd_command(0x80); lcd_puts("${p3_1}");
+            lcd_command(0xC0); lcd_puts("${p3_2}");
+            break;
+    }
+}
+
+int main(void) {
+    lcd_init();
+    init_buttons();
+${cgramLoads ? `    // โหลดอักขระพิเศษ CGRAM\n${cgramLoads}\n` : ''}    render_lcd_page(current_page);
+
+    while (1) {
+        // ตรวจจับปุ่ม SW1 (Active-Low: ลอจิก 0 เมื่อถูกกด)
+        if (!(PIND & (1 << SW1_PIN))) {
+            _delay_ms(20); // Software Debounce 20ms
+            if (!(PIND & (1 << SW1_PIN))) {
+                current_page = PAGE_SW1;
+                render_lcd_page(current_page);
+                while (!(PIND & (1 << SW1_PIN))); // รอจนกระทั่งปล่อยปุ่ม
+            }
+        }
+
+        // ตรวจจับปุ่ม SW2
+        if (!(PIND & (1 << SW2_PIN))) {
+            _delay_ms(20); // Software Debounce 20ms
+            if (!(PIND & (1 << SW2_PIN))) {
+                current_page = PAGE_SW2;
+                render_lcd_page(current_page);
+                while (!(PIND & (1 << SW2_PIN))); // รอจนกระทั่งปล่อยปุ่ม
+            }
+        }
+    }
+}`;
+    }
+
+    if (this.simMode === 'blink') {
+      const str1 = this.formatCStringWithSlots(this.blinkLine1);
+      const str2 = this.formatCStringWithSlots(this.blinkLine2);
+
+      return `// ==========================================
+// Embedded C (AVR-GCC): LCD 1602 Alert & Flash Mode
+// ควบคุมการกะพริบแจ้งเตือนความผิดปกติ
+// ==========================================
+#include <avr/io.h>
+#include <avr/pgmspace.h>
+#include <util/delay.h>
+
+${cgramDefinitions}
+${cgramFunc}
+void lcd_alert_loop(void) {
+    lcd_command(0x01); // Clear Display
+    _delay_ms(2);
+${cgramLoads ? `    // โหลดอักขระ CGRAM\n${cgramLoads}\n` : ''}    lcd_command(0x80);
+    lcd_puts("${str1}");
+    lcd_command(0xC0);
+    lcd_puts("${str2}");
+
+    while (1) {
+${this.blinkType === 'display' ? `        // 1. ปิดการแสดงผลทั้งหน้าจอ (0x08)
+        lcd_command(0x08);
+        _delay_ms(${this.blinkSpeed});
+        // 2. เปิดการแสดงผลกลับมา (0x0C)
+        lcd_command(0x0C);
+        _delay_ms(${this.blinkSpeed});` : (this.blinkType === 'cursor' ? `        // เปิดเคอร์เซอร์กะพริบด้วยฮาร์ดแวร์ HD44780 (0x0F)
+        lcd_command(0x0F);
+        _delay_ms(1000);` : `        // สลับข้อความบรรทัดที่ 1 กับช่องว่างเพื่อกะพริบเตือน
+        lcd_command(0x80);
+        lcd_puts("                ");
+        _delay_ms(${this.blinkSpeed});
+        lcd_command(0x80);
+        lcd_puts("${str1}");
+        _delay_ms(${this.blinkSpeed});`)}
+    }
+}`;
+    }
+
+    const str1 = this.formatCStringWithSlots(this.line1);
+    const str2 = this.formatCStringWithSlots(this.line2);
+
     return `// ==========================================
 // Embedded C (AVR-GCC): LCD 1602 Custom Text Display
 // ==========================================
@@ -10938,14 +12045,7 @@ const STUDIO_CGRAM = {
 #include <util/delay.h>
 
 ${cgramDefinitions}
-${usedSlots.size > 0 ? `// ฟังก์ชันโหลดข้อมูลเข้า CGRAM (Address: 0x40 + slot * 8)
-void lcd_load_cgram(uint8_t slot, const uint8_t *glyph) {
-    lcd_command(0x40 | (slot << 3));
-    for (uint8_t i = 0; i < 8; i++) {
-        lcd_data(pgm_read_byte(&glyph[i]));
-    }
-}
-` : ''}
+${cgramFunc}
 void lcd_display_custom_text(void) {
     // 1. เริ่มต้นระบบ LCD
     lcd_command(0x01); // Clear Display
@@ -10963,8 +12063,108 @@ ${cgramLoads ? `    // 2. โหลดอักขระพิเศษ CGRAM �
 }`;
   },
 
-  // Generate AVR GNU Assembly snippet
+  // Generate AVR GNU Assembly snippet for current mode
   generateLcdAsmCode: function() {
+    if (this.simMode === 'buttons') {
+      return `; ==========================================
+; AVR GNU Assembly: LCD Finite State Machine (FSM)
+; ตรวจจับสวิตช์ SW1 (PD2) และ SW2 (PD3) ด้วยคำสั่ง sbis
+; ==========================================
+.global main_fsm
+main_fsm:
+    ; 1. กำหนดขา PD2, PD3 เป็น INPUT และเปิด Pull-up
+    cbi   _SFR_IO_ADDR(DDRD), 2   ; PD2 = Input
+    cbi   _SFR_IO_ADDR(DDRD), 3   ; PD3 = Input
+    sbi   _SFR_IO_ADDR(PORTD), 2  ; Pull-up on PD2
+    sbi   _SFR_IO_ADDR(PORTD), 3  ; Pull-up on PD3
+    rcall lcd_init
+    rcall show_page_home
+
+main_loop:
+    ; ตรวจสอบสวิตช์ SW1 (PD2) - ข้ามถ้าบิตเป็น 1 (ยังไม่กด)
+    sbic  _SFR_IO_ADDR(PIND), 2
+    rjmp  check_sw2
+    rcall delay_20ms
+    sbic  _SFR_IO_ADDR(PIND), 2
+    rjmp  check_sw2
+    rcall show_page_sw1
+wait_release_sw1:
+    sbis  _SFR_IO_ADDR(PIND), 2
+    rjmp  wait_release_sw1
+
+check_sw2:
+    ; ตรวจสอบสวิตช์ SW2 (PD3)
+    sbic  _SFR_IO_ADDR(PIND), 3
+    rjmp  main_loop
+    rcall delay_20ms
+    sbic  _SFR_IO_ADDR(PIND), 3
+    rjmp  main_loop
+    rcall show_page_sw2
+wait_release_sw2:
+    sbis  _SFR_IO_ADDR(PIND), 3
+    rjmp  wait_release_sw2
+    rjmp  main_loop
+
+show_page_home:
+    ldi   r24, 0x80
+    rcall lcd_command
+    ldi   r30, lo8(str_p1_l1)
+    ldi   r31, hi8(str_p1_l1)
+    rcall lcd_print_string
+    ldi   r24, 0xC0
+    rcall lcd_command
+    ldi   r30, lo8(str_p1_l2)
+    ldi   r31, hi8(str_p1_l2)
+    rcall lcd_print_string
+    ret
+
+show_page_sw1:
+    ldi   r24, 0x80
+    rcall lcd_command
+    ldi   r30, lo8(str_p2_l1)
+    ldi   r31, hi8(str_p2_l1)
+    rcall lcd_print_string
+    ret
+
+show_page_sw2:
+    ldi   r24, 0x80
+    rcall lcd_command
+    ldi   r30, lo8(str_p3_l1)
+    ldi   r31, hi8(str_p3_l1)
+    rcall lcd_print_string
+    ret
+
+str_p1_l1: .asciz "${this.buttonPages[1].l1}"
+str_p1_l2: .asciz "${this.buttonPages[1].l2}"
+str_p2_l1: .asciz "${this.buttonPages[2].l1}"
+str_p3_l1: .asciz "${this.buttonPages[3].l1}"`;
+    }
+
+    if (this.simMode === 'marquee') {
+      const shiftCmd = (this.marqueeDir === 'left') ? '0x18' : '0x1C';
+      return `; ==========================================
+; AVR GNU Assembly: LCD Marquee Auto-Scroll
+; เลื่อนหน้าจอต่อเนื่องด้วยคำสั่ง ${shiftCmd}
+; ==========================================
+.global marquee_loop
+marquee_loop:
+    rcall lcd_init
+    ; พิมพ์ข้อความเริ่มต้น
+    ldi   r24, 0x80
+    rcall lcd_command
+    ldi   r30, lo8(str_marq1)
+    ldi   r31, hi8(str_marq1)
+    rcall lcd_print_string
+
+scroll_loop:
+    rcall delay_300ms
+    ldi   r24, ${shiftCmd}  ; คำสั่งเลื่อนจอ HD44780
+    rcall lcd_command
+    rjmp  scroll_loop
+
+str_marq1: .asciz "${this.marqueeLine1}"`;
+    }
+
     return `; ==========================================
 ; AVR GNU Assembly: LCD 1602 Custom Text Display
 ; ==========================================
@@ -11002,21 +12202,34 @@ str_line2: .asciz "${this.line2}"`;
     const lab = LABS_DATA.find(l => l.id === state.activeLabId);
     if (!lab) return;
 
-    const str1 = this.formatCStringWithSlots(this.line1);
-    const str2 = this.formatCStringWithSlots(this.line2);
-
-    if (lab.avrCode) {
-      if (lab.avrCode.includes("lcd_puts") || lab.avrCode.includes("lcd_command(0x80)")) {
-        lab.avrCode = lab.avrCode.replace(/lcd_puts\s*\(\s*"[^"]*"\s*\)/g, (match, idx) => {
-          return (idx === 0) ? `lcd_puts("${str1}")` : `lcd_puts("${str2}")`;
-        });
+    if (this.simMode === 'buttons') {
+      lab.avrCode = this.generateLcdCCode();
+      lab.asmCode = this.generateLcdAsmCode();
+      alert(`อัปเดตโค้ดสลับหน้าจอ Finite State Machine (FSM) เข้าสู่แล็บ ${lab.id} เรียบร้อยแล้ว!`);
+    } else if (this.simMode === 'marquee') {
+      lab.avrCode = this.generateLcdCCode();
+      lab.asmCode = this.generateLcdAsmCode();
+      alert(`อัปเดตโค้ดข้อความวิ่ง Marquee Auto-Scroll เข้าสู่แล็บ ${lab.id} เรียบร้อยแล้ว!`);
+    } else if (this.simMode === 'blink') {
+      lab.avrCode = this.generateLcdCCode();
+      lab.asmCode = this.generateLcdAsmCode();
+      alert(`อัปเดตโค้ดไฟแจ้งเตือนกะพริบ Alert เข้าสู่แล็บ ${lab.id} เรียบร้อยแล้ว!`);
+    } else {
+      const str1 = this.formatCStringWithSlots(this.line1);
+      const str2 = this.formatCStringWithSlots(this.line2);
+      if (lab.avrCode) {
+        if (lab.avrCode.includes("lcd_puts") || lab.avrCode.includes("lcd_command(0x80)")) {
+          lab.avrCode = lab.avrCode.replace(/lcd_puts\s*\(\s*"[^"]*"\s*\)/g, (match, idx) => {
+            return (idx === 0) ? `lcd_puts("${str1}")` : `lcd_puts("${str2}")`;
+          });
+        }
       }
+      alert(`อัปเดตข้อความ "${this.line1}" / "${this.line2}" เข้าสู่โค้ดแล็บ ${lab.id} เรียบร้อยแล้ว!`);
     }
 
     if (typeof updateCodeDisplays === 'function') {
       updateCodeDisplays(lab);
     }
-    alert(`อัปเดตข้อความ "${this.line1}" / "${this.line2}" เข้าสู่โค้ดแล็บ ${lab.id} เรียบร้อยแล้ว!`);
   },
 
   copyAsmCode: function() {
@@ -16192,6 +17405,7 @@ const STUDIO_REPORT = {
             </div>
             <div class="report-action-buttons">
               <button class="btn btn-primary" onclick="STUDIO_REPORT.printReport('${lab.id}')">🖨️ พิมพ์รายงาน A4 / PDF</button>
+              <button class="btn btn-secondary" onclick="STUDIO_REPORT.exportWord('${lab.id}')" title="บันทึกเป็นเอกสาร Word (.doc) เปิดแก้ไขได้ใน MS Word และ Google Docs">📄 บันทึกเป็น Word (.doc)</button>
               <button class="btn btn-secondary" onclick="STUDIO_REPORT.downloadHtml('${lab.id}')">💾 บันทึก Report.html</button>
               <button class="btn btn-secondary" onclick="STUDIO_REPORT.copyMarkdown('${lab.id}')">📋 คัดลอก Markdown</button>
               <button class="btn btn-secondary" onclick="STUDIO_REPORT.downloadText('${lab.id}')">📄 ดาวน์โหลด .txt</button>
@@ -16622,6 +17836,265 @@ pre {
     setTimeout(() => {
       win.print();
     }, 600);
+  },
+
+  buildWordDocument: function(labId) {
+    const lab = LABS_DATA.find(l => l.id === labId) || LABS_DATA[0];
+    const acronyms = this.getAcronymsForLab(lab);
+    const svgContent = typeof STUDIO_FLOWCHARTS !== 'undefined' ? STUDIO_FLOWCHARTS.generateSvg(lab.id) : '';
+    const obsText = document.getElementById("rep-observation-text") ? document.getElementById("rep-observation-text").value : "ระบบทำงานถูกต้องตามข้อกำหนดวิศวกรรม";
+
+    return `<html xmlns:o='urn:schemas-microsoft-com:office:office'
+      xmlns:w='urn:schemas-microsoft-com:office:word'
+      xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>รายงานผลการปฏิบัติการ ${lab.id} - ${this.escapeHtml(this.student.name)}</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page WordSection1 {
+  size: 21.0cm 29.7cm; /* A4 */
+  margin: 2.0cm 2.0cm 2.0cm 2.0cm;
+  mso-header-margin: 36.0pt;
+  mso-footer-margin: 36.0pt;
+  mso-paper-source: 0;
+}
+div.WordSection1 {
+  page: WordSection1;
+}
+body {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', 'Cordia New', sans-serif;
+  font-size: 13pt;
+  line-height: 1.4;
+  color: #0f172a;
+}
+h1 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 20pt;
+  font-weight: bold;
+  color: #0284c7;
+  margin: 10pt 0 4pt 0;
+}
+h2 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #334155;
+  margin: 8pt 0 4pt 0;
+}
+h3 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 14.5pt;
+  font-weight: bold;
+  color: #0369a1;
+  margin: 12pt 0 4pt 0;
+  border-bottom: 1pt solid #cbd5e1;
+  padding-bottom: 2pt;
+}
+h4 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  color: #0f766e;
+  margin: 8pt 0 2pt 0;
+}
+p, li {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 13pt;
+  line-height: 1.35;
+  margin: 3pt 0 6pt 0;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8pt 0 12pt 0;
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+}
+table, tr, td, th {
+  border: 1pt solid #94a3b8;
+  mso-border-alt: solid #94a3b8 .5pt;
+}
+th {
+  background-color: #f1f5f9;
+  font-weight: bold;
+  font-size: 12.5pt;
+  padding: 5pt 7pt;
+  text-align: left;
+}
+td {
+  padding: 5pt 7pt;
+  font-size: 12pt;
+  vertical-align: top;
+}
+pre {
+  background-color: #f8fafc;
+  border: 1pt solid #cbd5e1;
+  padding: 8pt 10pt;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #0f172a;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 4pt 0 10pt 0;
+}
+code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 10pt;
+  background-color: #f1f5f9;
+  padding: 1pt 3pt;
+}
+.report-header-banner {
+  border-bottom: 2pt solid #0284c7;
+  padding-bottom: 6pt;
+  margin-bottom: 12pt;
+}
+.inst-badge {
+  display: inline-block;
+  background-color: #0284c7;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 4pt 10pt;
+  margin-right: 8pt;
+}
+.flowchart-box {
+  background: #0f172a;
+  border: 1pt solid #334155;
+  padding: 12pt;
+  margin: 10pt 0;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="WordSection1">
+  <div class="report-header-banner">
+    <table style="border: none; margin: 0; width: 100%;">
+      <tr style="border: none;">
+        <td style="border: none; width: 12%; vertical-align: middle;">
+          <div class="inst-badge">CDTI</div>
+        </td>
+        <td style="border: none; width: 88%; vertical-align: middle;">
+          <div style="font-size: 16pt; font-weight: bold; color: #0284c7;">สถาบันเทคโนโลยีจิตรลดา (Chitralada Technology Institute)</div>
+          <div style="font-size: 12.5pt; color: #475569;">คณะเทคโนโลยีดิจิทัล • สาขาวิชาวิศวกรรมคอมพิวเตอร์และนวัตกรรม</div>
+          <div style="font-size: 12pt; font-weight: bold; color: #0f172a;">รายงานผลการสอบปฏิบัติการ วิชา 311-3303 การออกแบบระบบสมองกลฝังตัว</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <table>
+    <tr>
+      <td style="width: 25%; font-weight: bold; background: #f8fafc;">หัวข้อการทดลอง:</td>
+      <td style="width: 75%; font-weight: bold; color: #0369a1;">${lab.title}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; background: #f8fafc;">ผู้ทำการทดลอง:</td>
+      <td>${this.escapeHtml(this.student.name)} (รหัสนักศึกษา: ${this.escapeHtml(this.student.id)})</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; background: #f8fafc;">สาขาวิชา / วันที่:</td>
+      <td>${this.escapeHtml(this.student.dept)} • วันที่ทำการทดลอง: ${this.escapeHtml(this.student.date)}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; background: #f8fafc;">ฮาร์ดแวร์เป้าหมาย:</td>
+      <td>บอร์ด Arduino Uno R3 (ไมโครคอนโทรลเลอร์ Microchip ATmega328P @ 16 MHz)</td>
+    </tr>
+  </table>
+
+  <h3>1. วัตถุประสงค์การเรียนรู้เชิงลึก (Objectives)</h3>
+  <ol>
+    <li>เข้าใจการกำหนดทิศทางของพอร์ต (I/O Direction) ด้วยรีจิสเตอร์ DDRx (DDRB, DDRD)</li>
+    <li>ศึกษาการใช้งานตัวต้านทานพูลอัปภายใน (Internal Pull-Up Resistor) ผ่านรีจิสเตอร์ PORTx แบบ Active-Low</li>
+    <li>วิเคราะห์เปรียบเทียบการพัฒนาโปรแกรมระหว่างภาษา Embedded C และ AVR Assembly</li>
+    <li>พิสูจน์การทำงานของวงจรฮาร์ดแวร์จริงบนเบรดบอร์ดร่วมกับโปรแกรม SimulIDE ให้ถูกต้องตามข้อกำหนด</li>
+  </ol>
+
+  <h3>2. ตารางกำหนดขาฮาร์ดแวร์และการเชื่อมต่อจริง (Hardware Pinout & Wiring Table)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">อุปกรณ์ต่อพ่วง</th>
+        <th style="width: 20%;">ขาอุปกรณ์</th>
+        <th style="width: 25%;">ต่อเข้ากับขา Arduino Uno</th>
+        <th style="width: 30%;">หน้าที่และข้อควรระวังในวงจร</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${lab.wiring.map(w => `
+        <tr>
+          <td><strong>${this.escapeHtml(w.comp)}</strong></td>
+          <td><code>${this.escapeHtml(w.pin)}</code></td>
+          <td><strong style="color: #0284c7;">${this.escapeHtml(w.target)}</strong></td>
+          <td>${this.escapeHtml(w.note)}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <h3>3. พจนานุกรมคำศัพท์ ตัวย่อ และชุดคำสั่งทางวิศวกรรม (Engineering Dictionary)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">ตัวย่อ (Term)</th>
+        <th style="width: 32%;">ชื่อเต็มภาษาอังกฤษ (Full Name)</th>
+        <th style="width: 48%;">ความหมายและบทบาทหน้าที่ทางวิศวกรรม</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${acronyms.map(a => `
+        <tr>
+          <td><strong>${this.escapeHtml(a.term)}</strong></td>
+          <td><em>${this.escapeHtml(a.full)}</em></td>
+          <td>${this.escapeHtml(a.def)}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <h3>4. ผังงานกระบวนการทำงานของระบบ (System Algorithm Flowchart)</h3>
+  <div class="flowchart-box">
+    ${svgContent}
+  </div>
+
+  <h3>5. ซอร์สโค้ดภาษาซีและภาษาแอสเซมบลีฉบับสมบูรณ์ (Source Code)</h3>
+  <h4>5.1 ซอร์สโค้ดภาษาซีระดับรีจิสเตอร์ (Embedded C / AVR-GCC):</h4>
+  <pre>${this.escapeHtml(lab.avrCode || lab.arduinoCode || '// ไม่มีข้อมูลโค้ด C')}</pre>
+
+  <h4>5.2 ซอร์สโค้ดภาษาแอสเซมบลี (AVR Assembly GNU Syntax):</h4>
+  <pre>${this.escapeHtml(lab.asmCode || '; ไม่มีข้อมูลโค้ด Assembly')}</pre>
+
+  <h3>6. สรุปและอภิปรายผลการทดลอง (Conclusion & Discussion)</h3>
+  <div style="padding: 8pt 10pt; background-color: #f8fafc; border: 1pt solid #e2e8f0;">
+    ${this.escapeHtml(obsText).replace(/\n/g, '<br>')}
+  </div>
+</div>
+</body>
+</html>`;
+  },
+
+  exportWord: function(labId) {
+    const lab = LABS_DATA.find(l => l.id === labId) || LABS_DATA[0];
+    const wordContent = this.buildWordDocument(labId);
+    const blob = new Blob(['\ufeff' + wordContent], { type: 'application/msword;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `รายงานผลการทดลอง_${lab.id}_${this.student.id}.doc`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   },
 
   downloadHtml: function(labId) {
