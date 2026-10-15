@@ -207,8 +207,8 @@ html_content = f"""<!DOCTYPE html>
           <button class="studio-tab-btn" data-tab="calc" onclick="setStudioTab('calc')" title="สูตรการคำนวณวิศวกรรมฝังตัว">
             <span>🧮</span> สูตรคำนวณ
           </button>
-          <button class="studio-tab-btn" data-tab="cgram" onclick="setStudioTab('cgram')" title="ออกแบบตัวอักษรพิเศษ LCD CGRAM">
-            <span>📟</span> วาด CGRAM
+          <button class="studio-tab-btn" data-tab="cgram" onclick="setStudioTab('cgram')" title="ปรับแต่งข้อความ LCD 16x2, จำลองหน้าจอ และออกแบบ CGRAM/ฟอนต์ไทย">
+            <span>📟</span> จอ LCD & CGRAM
           </button>
           <button class="studio-tab-btn" data-tab="datasheet" onclick="setStudioTab('datasheet')" title="คู่มือสเปกและ Pinout อุปกรณ์">
             <span>📖</span> Datasheet
@@ -245,6 +245,9 @@ html_content = f"""<!DOCTYPE html>
               </button>
               <button class="btn-copy" style="background: linear-gradient(135deg, #0284c7, #10b981); color: white; border: none; font-weight: 600;" onclick="quickAskAI()" title="ส่งโค้ดนี้ให้ AI ช่วยวิเคราะห์หรือดัดแปลง">
                 <span>🤖</span> ถาม AI ให้ช่วยโค้ดนี้
+              </button>
+              <button id="btn-quick-lcd-customizer" class="btn-copy" style="display: none; background: #0f766e; color: white; border: none; font-weight: 600;" onclick="openLcdCustomizerForActiveLab()" title="เปิดเครื่องมือปรับแต่งข้อความ LCD 16x2 ของแล็บนี้">
+                <span>📟</span> ปรับแต่งข้อความ LCD
               </button>
             </div>
           </div>

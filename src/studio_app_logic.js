@@ -452,6 +452,33 @@ function selectLab(labId) {
       el.innerHTML = STUDIO_REPORT.renderReportPanel(state.activeLabId);
     }
   }
+
+  // Toggle Quick LCD Customizer button for LCD-related labs
+  const isLcdLab = lab.id.toLowerCase().includes("lcd") || lab.title.toLowerCase().includes("lcd") || (lab.wiring && lab.wiring.some(w => w.comp.toLowerCase().includes("lcd")));
+  const quickLcdBtn = document.getElementById("btn-quick-lcd-customizer");
+  if (quickLcdBtn) {
+    quickLcdBtn.style.display = isLcdLab ? "inline-flex" : "none";
+  }
+}
+
+function openLcdCustomizerForActiveLab() {
+  const lab = LABS_DATA.find(l => l.id === state.activeLabId);
+  if (!lab) return;
+
+  if (lab.avrCode && typeof STUDIO_CGRAM !== 'undefined') {
+    const matches = [...lab.avrCode.matchAll(/lcd_puts\s*\(\s*"([^"]+)"\s*\)/g)];
+    if (matches.length >= 2) {
+      STUDIO_CGRAM.line1 = matches[0][1];
+      STUDIO_CGRAM.line2 = matches[1][1];
+    } else if (matches.length === 1) {
+      STUDIO_CGRAM.line1 = matches[0][1];
+    }
+  }
+
+  setStudioTab('cgram');
+  if (typeof STUDIO_CGRAM !== 'undefined') {
+    STUDIO_CGRAM.switchSubTab('customizer');
+  }
 }
 
 // Switch Right Studio Workspace Sub-Tabs
