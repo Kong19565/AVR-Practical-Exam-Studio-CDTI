@@ -1594,7 +1594,207 @@ pre.code-display {
   margin: 0;
 }
 
-/* CGRAM Preview inside Designer */
+/* CGRAM Matrix Designer & Interactive Drawing Studio */
+.cgram-workspace-row {
+  display: grid;
+  grid-template-columns: 390px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .cgram-workspace-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cgram-grid-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 8 CGRAM Memory Slots Bar */
+.cgram-slots-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.cgram-slot-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 8px 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+.cgram-slot-btn:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+  background: rgba(2, 132, 199, 0.08);
+}
+.cgram-slot-btn.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+}
+.cgram-slot-mini-preview {
+  display: grid;
+  grid-template-columns: repeat(5, 3px);
+  grid-template-rows: repeat(8, 3px);
+  gap: 1px;
+  background: #020617;
+  padding: 3px;
+  border-radius: 2px;
+}
+.cgram-slot-mini-dot {
+  width: 3px;
+  height: 3px;
+  background: #1e293b;
+  border-radius: 0.5px;
+}
+.cgram-slot-mini-dot.active {
+  background: #34d399;
+}
+
+/* 5x8 Pixel Drawing Board */
+.cgram-pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 38px);
+  grid-template-rows: repeat(8, 38px);
+  gap: 5px;
+  background: #060b13;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
+  margin: 0 auto;
+  user-select: none;
+  touch-action: none;
+  cursor: crosshair;
+}
+.cgram-cell {
+  width: 38px;
+  height: 38px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.08s ease, transform 0.08s ease;
+}
+.cgram-cell:hover {
+  background: #1e293b;
+  border-color: #38bdf8;
+  transform: scale(1.05);
+}
+.cgram-cell.active {
+  background: #10b981;
+  border-color: #34d399;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8), inset 0 0 3px #ffffff;
+}
+
+/* Quick Grid Tools */
+.cgram-grid-tools {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.cgram-tool-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.cgram-tool-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Presets & Templates */
+.cgram-template-section {
+  margin-top: 14px;
+  width: 100%;
+}
+.cgram-presets-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.cgram-preset-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 11.5px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cgram-preset-btn:hover {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.cgram-template-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 110px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.cgram-template-chip {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cgram-template-chip:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+/* Right Side: Code & Emulation View */
+.cgram-code-view {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
 .cgram-lcd-preview-card {
   background: #0b1120;
   border: 1px solid var(--border);
@@ -1606,34 +1806,198 @@ pre.code-display {
 }
 .cgram-lcd-dot-preview {
   display: grid;
-  grid-template-columns: repeat(5, 5px);
-  grid-template-rows: repeat(8, 5px);
+  grid-template-columns: repeat(5, 7px);
+  grid-template-rows: repeat(8, 7px);
   gap: 2px;
   background: #064e3b;
-  padding: 6px;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 6px;
   border: 1px solid #10b981;
 }
 .cgram-preview-dot {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   background: rgba(16, 185, 129, 0.2);
   border-radius: 1px;
 }
 .cgram-preview-dot.active {
   background: #34d399;
-  box-shadow: 0 0 4px #10b981;
+  box-shadow: 0 0 6px #10b981;
 }
 .cgram-hex-output {
   background: #020617;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 10px;
+  padding: 12px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
+  line-height: 1.45;
   color: #38bdf8;
   margin: 0;
   white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* User Saved Custom Character Library (localStorage Persistence) */
+.cgram-memory-card {
+  margin-top: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.cgram-memory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.cgram-saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.cgram-saved-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11.5px;
+  color: var(--text-main);
+  transition: all 0.12s ease;
+}
+.cgram-saved-item:hover {
+  border-color: var(--primary);
+  background: rgba(2, 132, 199, 0.05);
+}
+.cgram-saved-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cgram-saved-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cgram-code-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+.cgram-code-actions .btn-full {
+  grid-column: 1 / -1;
+}
+.cgram-saved-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+.cgram-saved-btn:hover {
+  color: #ef4444;
+}
+
+/* Universal Action Buttons */
+.btn-action {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn-action:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-action.btn-flash, .btn-action.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+.btn-action.btn-flash:hover, .btn-action.btn-primary:hover {
+  background: #0284c7;
+}
+.btn-action.btn-download {
+  background: #047857;
+  color: #ffffff;
+  border-color: #059669;
+}
+.btn-action.btn-download:hover {
+  background: #059669;
+}
+
+/* 16x2 Slot Insertion Toolbar */
+.lcd-slot-insert-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.lcd-slot-insert-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.12s;
+}
+.lcd-slot-insert-chip:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+
+.thai-inspector-box .btn {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+}
+.thai-inspector-box .btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+}
+.thai-inspector-box .btn-primary:hover {
+  background: #0284c7;
 }
 
 /* Thai Font Audit & Explorer */

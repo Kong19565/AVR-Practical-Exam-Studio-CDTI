@@ -1603,7 +1603,207 @@ pre.code-display {
   margin: 0;
 }
 
-/* CGRAM Preview inside Designer */
+/* CGRAM Matrix Designer & Interactive Drawing Studio */
+.cgram-workspace-row {
+  display: grid;
+  grid-template-columns: 390px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .cgram-workspace-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cgram-grid-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 8 CGRAM Memory Slots Bar */
+.cgram-slots-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.cgram-slot-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 8px 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+.cgram-slot-btn:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+  background: rgba(2, 132, 199, 0.08);
+}
+.cgram-slot-btn.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+}
+.cgram-slot-mini-preview {
+  display: grid;
+  grid-template-columns: repeat(5, 3px);
+  grid-template-rows: repeat(8, 3px);
+  gap: 1px;
+  background: #020617;
+  padding: 3px;
+  border-radius: 2px;
+}
+.cgram-slot-mini-dot {
+  width: 3px;
+  height: 3px;
+  background: #1e293b;
+  border-radius: 0.5px;
+}
+.cgram-slot-mini-dot.active {
+  background: #34d399;
+}
+
+/* 5x8 Pixel Drawing Board */
+.cgram-pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 38px);
+  grid-template-rows: repeat(8, 38px);
+  gap: 5px;
+  background: #060b13;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
+  margin: 0 auto;
+  user-select: none;
+  touch-action: none;
+  cursor: crosshair;
+}
+.cgram-cell {
+  width: 38px;
+  height: 38px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.08s ease, transform 0.08s ease;
+}
+.cgram-cell:hover {
+  background: #1e293b;
+  border-color: #38bdf8;
+  transform: scale(1.05);
+}
+.cgram-cell.active {
+  background: #10b981;
+  border-color: #34d399;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8), inset 0 0 3px #ffffff;
+}
+
+/* Quick Grid Tools */
+.cgram-grid-tools {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.cgram-tool-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.cgram-tool-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Presets & Templates */
+.cgram-template-section {
+  margin-top: 14px;
+  width: 100%;
+}
+.cgram-presets-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.cgram-preset-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 11.5px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cgram-preset-btn:hover {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.cgram-template-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 110px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.cgram-template-chip {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.cgram-template-chip:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+/* Right Side: Code & Emulation View */
+.cgram-code-view {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
 .cgram-lcd-preview-card {
   background: #0b1120;
   border: 1px solid var(--border);
@@ -1615,34 +1815,198 @@ pre.code-display {
 }
 .cgram-lcd-dot-preview {
   display: grid;
-  grid-template-columns: repeat(5, 5px);
-  grid-template-rows: repeat(8, 5px);
+  grid-template-columns: repeat(5, 7px);
+  grid-template-rows: repeat(8, 7px);
   gap: 2px;
   background: #064e3b;
-  padding: 6px;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 6px;
   border: 1px solid #10b981;
 }
 .cgram-preview-dot {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   background: rgba(16, 185, 129, 0.2);
   border-radius: 1px;
 }
 .cgram-preview-dot.active {
   background: #34d399;
-  box-shadow: 0 0 4px #10b981;
+  box-shadow: 0 0 6px #10b981;
 }
 .cgram-hex-output {
   background: #020617;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 10px;
+  padding: 12px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
+  line-height: 1.45;
   color: #38bdf8;
   margin: 0;
   white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* User Saved Custom Character Library (localStorage Persistence) */
+.cgram-memory-card {
+  margin-top: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.cgram-memory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.cgram-saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.cgram-saved-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11.5px;
+  color: var(--text-main);
+  transition: all 0.12s ease;
+}
+.cgram-saved-item:hover {
+  border-color: var(--primary);
+  background: rgba(2, 132, 199, 0.05);
+}
+.cgram-saved-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cgram-saved-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cgram-code-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+.cgram-code-actions .btn-full {
+  grid-column: 1 / -1;
+}
+.cgram-saved-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-dim);
+  font-size: 11px;
+}
+.cgram-saved-btn:hover {
+  color: #ef4444;
+}
+
+/* Universal Action Buttons */
+.btn-action {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn-action:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.btn-action.btn-flash, .btn-action.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+.btn-action.btn-flash:hover, .btn-action.btn-primary:hover {
+  background: #0284c7;
+}
+.btn-action.btn-download {
+  background: #047857;
+  color: #ffffff;
+  border-color: #059669;
+}
+.btn-action.btn-download:hover {
+  background: #059669;
+}
+
+/* 16x2 Slot Insertion Toolbar */
+.lcd-slot-insert-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.lcd-slot-insert-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.12s;
+}
+.lcd-slot-insert-chip:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+
+.thai-inspector-box .btn {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+}
+.thai-inspector-box .btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+}
+.thai-inspector-box .btn-primary:hover {
+  background: #0284c7;
 }
 
 /* Thai Font Audit & Explorer */
@@ -9873,26 +10237,46 @@ const LCD_ASCII_FONT = {" ": [0, 0, 0, 0, 0, 0, 0, 0], "!": [4, 4, 4, 4, 4, 0, 4
 const THAI_FONT_ORIGINAL = {"0xA1": {"label": "ก (Ko Kai)", "bytes": [14, 17, 25, 21, 19, 17, 17, 0]}, "0xA2": {"label": "ข (Kho Khai)", "bytes": [14, 17, 16, 14, 17, 17, 14, 0]}, "0xA3": {"label": "ฃ (Kho Khuat)", "bytes": [22, 9, 16, 14, 17, 17, 14, 0]}, "0xA4": {"label": "ค (Kho Khwai)", "bytes": [14, 17, 17, 31, 17, 17, 17, 0]}, "0xA5": {"label": "ฅ (Kho Khon)", "bytes": [21, 10, 17, 31, 17, 17, 17, 0]}, "0xA6": {"label": "ฆ (Kho Rakhang)", "bytes": [22, 9, 17, 29, 19, 17, 14, 0]}, "0xA7": {"label": "ง (Ngo Ngu)", "bytes": [14, 17, 16, 16, 16, 24, 7, 0]}, "0xA8": {"label": "จ (Cho Chan)", "bytes": [14, 17, 16, 30, 17, 17, 14, 0]}, "0xA9": {"label": "ฉ (Cho Ching)", "bytes": [14, 17, 17, 29, 19, 17, 14, 0]}, "0xAA": {"label": "ช (Cho Chang)", "bytes": [14, 17, 16, 30, 17, 17, 30, 1]}, "0xAB": {"label": "ซ (So So)", "bytes": [22, 9, 16, 30, 17, 17, 30, 1]}, "0xAC": {"label": "ฌ (Cho Choe)", "bytes": [14, 17, 31, 21, 21, 21, 18, 0]}, "0xAD": {"label": "ญ (Yo Ying)", "bytes": [14, 17, 31, 17, 17, 17, 17, 14]}, "0xAE": {"label": "ฎ (Do Chada)", "bytes": [14, 17, 17, 31, 17, 17, 18, 12]}, "0xAF": {"label": "ฏ (To Patak)", "bytes": [14, 17, 17, 31, 17, 17, 21, 10]}, "0xB0": {"label": "ฐ (Tho Than)", "bytes": [14, 17, 16, 14, 17, 17, 0, 14]}, "0xB1": {"label": "ฑ (Tho Montho)", "bytes": [21, 10, 17, 31, 17, 17, 17, 0]}, "0xB2": {"label": "ฒ (Tho Phuthao)", "bytes": [14, 17, 17, 29, 21, 21, 18, 0]}, "0xB3": {"label": "ณ (No Nen)", "bytes": [14, 17, 17, 29, 19, 17, 17, 0]}, "0xB4": {"label": "ด (Do Dek)", "bytes": [14, 17, 17, 31, 17, 17, 17, 0]}, "0xB5": {"label": "ต (To Tao)", "bytes": [21, 10, 17, 31, 17, 17, 17, 0]}, "0xB6": {"label": "ถ (Tho Thung)", "bytes": [14, 17, 17, 17, 17, 17, 14, 0]}, "0xB7": {"label": "ท (Tho Thahan)", "bytes": [14, 17, 16, 23, 25, 17, 17, 0]}, "0xB8": {"label": "ธ (Tho Thong)", "bytes": [31, 16, 16, 30, 17, 17, 14, 0]}, "0xB9": {"label": "น (No Nu)", "bytes": [14, 17, 17, 17, 25, 21, 18, 0]}, "0xBA": {"label": "บ (Bo Baimai)", "bytes": [17, 17, 17, 17, 17, 17, 14, 0]}, "0xBB": {"label": "ป (Po Pla)", "bytes": [17, 17, 17, 17, 17, 17, 14, 16]}, "0xBC": {"label": "ผ (Pho Phueng)", "bytes": [17, 17, 17, 21, 21, 21, 10, 0]}, "0xBD": {"label": "ฝ (Fo Fa)", "bytes": [17, 17, 17, 21, 21, 21, 10, 16]}, "0xBE": {"label": "พ (Pho Phan)", "bytes": [17, 17, 21, 21, 21, 17, 17, 0]}, "0xBF": {"label": "ฟ (Fo Fan)", "bytes": [17, 17, 21, 21, 21, 17, 17, 16]}, "0xC0": {"label": "ภ (Pho Samphao)", "bytes": [14, 17, 16, 16, 17, 17, 14, 0]}, "0xC1": {"label": "ม (Mo Ma)", "bytes": [14, 17, 17, 25, 21, 19, 17, 0]}, "0xC2": {"label": "ย (Yo Yak)", "bytes": [26, 21, 1, 14, 17, 17, 14, 0]}, "0xC3": {"label": "ร (Ro Ruea)", "bytes": [14, 17, 1, 6, 8, 16, 16, 0]}, "0xC4": {"label": "ฤ (Ru)", "bytes": [14, 17, 17, 17, 17, 18, 12, 0]}, "0xC5": {"label": "ล (Lo Ling)", "bytes": [14, 17, 1, 14, 17, 17, 14, 0]}, "0xC6": {"label": "ฦ (Lu)", "bytes": [14, 17, 1, 14, 17, 18, 12, 0]}, "0xC7": {"label": "ว (Wo Waen)", "bytes": [14, 17, 1, 1, 1, 2, 4, 0]}, "0xC8": {"label": "ศ (So Sala)", "bytes": [6, 9, 17, 31, 17, 17, 17, 0]}, "0xC9": {"label": "ษ (So Rusi)", "bytes": [17, 17, 21, 19, 17, 17, 14, 0]}, "0xCA": {"label": "ส (So Suea)", "bytes": [6, 9, 1, 14, 17, 17, 14, 0]}, "0xCB": {"label": "ห (Ho Hip)", "bytes": [17, 17, 21, 27, 17, 17, 17, 0]}, "0xCC": {"label": "ฬ (Lo Chula)", "bytes": [6, 9, 17, 21, 21, 17, 17, 0]}, "0xCD": {"label": "อ (O Ang)", "bytes": [14, 17, 16, 14, 17, 17, 14, 0]}, "0xCE": {"label": "ฮ (Ho Nok-huk)", "bytes": [14, 21, 18, 14, 17, 17, 14, 0]}, "0xCF": {"label": "ฯ (Paiyannoi)", "bytes": [8, 20, 8, 4, 4, 4, 0, 0]}, "0xD0": {"label": "ะ (Sara A)", "bytes": [12, 12, 0, 12, 12, 0, 0, 0]}, "0xD1": {"label": "ั (Mai Han-Akat) - สระบน", "bytes": [12, 18, 0, 0, 0, 0, 0, 0]}, "0xD2": {"label": "า (Sara Aa)", "bytes": [15, 1, 1, 1, 1, 1, 1, 0]}, "0xD3": {"label": "ำ (Sara Am)", "bytes": [6, 6, 15, 1, 1, 1, 1, 0]}, "0xD4": {"label": "ิ (Sara I) - สระบน", "bytes": [14, 31, 0, 0, 0, 0, 0, 0]}, "0xD5": {"label": "ี (Sara Ii) - สระบน", "bytes": [10, 31, 0, 0, 0, 0, 0, 0]}, "0xD6": {"label": "ึ (Sara Ue) - สระบน", "bytes": [14, 27, 0, 0, 0, 0, 0, 0]}, "0xD7": {"label": "ื (Sara Uee) - สระบน", "bytes": [21, 31, 0, 0, 0, 0, 0, 0]}, "0xD8": {"label": "ุ (Sara U) - สระล่าง", "bytes": [0, 0, 0, 0, 0, 0, 12, 8]}, "0xD9": {"label": "ู (Sara Uu) - สระล่าง", "bytes": [0, 0, 0, 0, 0, 0, 14, 10]}, "0xDA": {"label": "ฺ (Phinthu) - สระล่าง", "bytes": [0, 0, 0, 0, 0, 0, 4, 4]}, "0xE0": {"label": "เ (Sara E)", "bytes": [14, 17, 16, 16, 16, 16, 16, 0]}, "0xE1": {"label": "แ (Sara Ae)", "bytes": [27, 18, 18, 18, 18, 18, 18, 0]}, "0xE2": {"label": "โ (Sara O)", "bytes": [7, 9, 1, 14, 16, 16, 16, 0]}, "0xE3": {"label": "ใ (Sara Ai Maimuan)", "bytes": [7, 9, 5, 2, 2, 2, 2, 0]}, "0xE4": {"label": "ไ (Sara Ai Maimaloi)", "bytes": [13, 18, 1, 2, 2, 2, 2, 0]}, "0xE5": {"label": "ๅ (Lakkhangyao)", "bytes": [15, 1, 1, 1, 1, 1, 2, 4]}, "0xE6": {"label": "ๆ (Maiyamok)", "bytes": [12, 18, 4, 8, 16, 14, 1, 0]}, "0xE7": {"label": "็ (Maitaikhu) - สระบน", "bytes": [10, 21, 0, 0, 0, 0, 0, 0]}, "0xE8": {"label": "่ (Mai Ek)", "bytes": [4, 4, 0, 0, 0, 0, 0, 0]}, "0xE9": {"label": "้ (Mai Tho)", "bytes": [12, 6, 0, 0, 0, 0, 0, 0]}, "0xEA": {"label": "๊ (Mai Tri)", "bytes": [21, 10, 0, 0, 0, 0, 0, 0]}, "0xEB": {"label": "๋ (Mai Chattawa)", "bytes": [4, 14, 4, 0, 0, 0, 0, 0]}, "0xEC": {"label": "์ (Thanthakhat / Karan)", "bytes": [6, 9, 2, 0, 0, 0, 0, 0]}, "0xF0": {"label": "๐", "bytes": [14, 17, 17, 17, 17, 17, 14, 0]}, "0xF1": {"label": "๑", "bytes": [4, 10, 17, 10, 4, 2, 1, 0]}, "0xF2": {"label": "๒", "bytes": [14, 17, 2, 4, 8, 16, 31, 0]}, "0xF3": {"label": "๓", "bytes": [21, 21, 10, 4, 2, 1, 1, 0]}, "0xF4": {"label": "๔", "bytes": [17, 17, 31, 1, 1, 2, 4, 0]}, "0xF5": {"label": "๕", "bytes": [10, 21, 31, 1, 1, 2, 4, 0]}, "0xF6": {"label": "๖", "bytes": [2, 4, 8, 23, 21, 21, 14, 0]}, "0xF7": {"label": "๗", "bytes": [21, 21, 10, 4, 4, 4, 4, 0]}, "0xF8": {"label": "๘", "bytes": [21, 21, 21, 10, 4, 2, 1, 0]}, "0xF9": {"label": "๙", "bytes": [14, 17, 17, 14, 4, 2, 1]}};
 const THAI_FONT_IMPROVED = {"0xA1": {"label": "ก (Ko Kai)", "bytes": [14, 17, 25, 21, 19, 17, 17, 0]}, "0xA2": {"label": "ข (Kho Khai)", "bytes": [12, 18, 12, 4, 4, 20, 14, 0]}, "0xA3": {"label": "ฃ (Kho Khuat)", "bytes": [22, 9, 16, 14, 17, 17, 14, 0]}, "0xA4": {"label": "ค (Kho Khwai)", "bytes": [12, 18, 4, 14, 17, 17, 17, 0]}, "0xA5": {"label": "ฅ (Kho Khon)", "bytes": [21, 10, 17, 31, 17, 17, 17, 0]}, "0xA6": {"label": "ฆ (Kho Rakhang)", "bytes": [22, 9, 17, 29, 19, 17, 14, 0]}, "0xA7": {"label": "ง (Ngo Ngu)", "bytes": [14, 17, 16, 16, 16, 24, 7, 0]}, "0xA8": {"label": "จ (Cho Chan)", "bytes": [14, 17, 16, 30, 17, 17, 14, 0]}, "0xA9": {"label": "ฉ (Cho Ching)", "bytes": [14, 17, 17, 29, 19, 17, 14, 0]}, "0xAA": {"label": "ช (Cho Chang)", "bytes": [14, 17, 16, 30, 17, 17, 30, 1]}, "0xAB": {"label": "ซ (So So)", "bytes": [22, 9, 16, 30, 17, 17, 30, 1]}, "0xAC": {"label": "ฌ (Cho Choe)", "bytes": [14, 17, 31, 21, 21, 21, 18, 0]}, "0xAD": {"label": "ญ (Yo Ying)", "bytes": [14, 17, 31, 17, 17, 17, 17, 14]}, "0xAE": {"label": "ฎ (Do Chada)", "bytes": [14, 17, 17, 31, 17, 17, 18, 12]}, "0xAF": {"label": "ฏ (To Patak)", "bytes": [14, 17, 17, 31, 17, 17, 21, 10]}, "0xB0": {"label": "ฐ (Tho Than)", "bytes": [14, 17, 16, 14, 17, 17, 0, 14]}, "0xB1": {"label": "ฑ (Tho Montho)", "bytes": [21, 10, 17, 31, 17, 17, 17, 0]}, "0xB2": {"label": "ฒ (Tho Phuthao)", "bytes": [14, 17, 17, 29, 21, 21, 18, 0]}, "0xB3": {"label": "ณ (No Nen)", "bytes": [14, 17, 17, 29, 19, 17, 17, 0]}, "0xB4": {"label": "ด (Do Dek)", "bytes": [14, 17, 20, 22, 17, 17, 17, 0]}, "0xB5": {"label": "ต (To Tao)", "bytes": [20, 10, 20, 22, 17, 17, 17, 0]}, "0xB6": {"label": "ถ (Tho Thung)", "bytes": [14, 25, 21, 17, 17, 17, 14, 0]}, "0xB7": {"label": "ท (Tho Thahan)", "bytes": [14, 17, 16, 23, 25, 17, 17, 0]}, "0xB8": {"label": "ธ (Tho Thong)", "bytes": [31, 16, 16, 30, 17, 17, 14, 0]}, "0xB9": {"label": "น (No Nu)", "bytes": [14, 17, 17, 17, 25, 21, 18, 0]}, "0xBA": {"label": "บ (Bo Baimai)", "bytes": [17, 17, 17, 17, 17, 17, 14, 0]}, "0xBB": {"label": "ป (Po Pla)", "bytes": [17, 17, 17, 17, 17, 17, 14, 16]}, "0xBC": {"label": "ผ (Pho Phueng)", "bytes": [17, 17, 17, 21, 21, 21, 10, 0]}, "0xBD": {"label": "ฝ (Fo Fa)", "bytes": [17, 17, 17, 21, 21, 21, 10, 16]}, "0xBE": {"label": "พ (Pho Phan)", "bytes": [17, 17, 21, 21, 21, 17, 17, 0]}, "0xBF": {"label": "ฟ (Fo Fan)", "bytes": [17, 17, 21, 21, 21, 17, 17, 16]}, "0xC0": {"label": "ภ (Pho Samphao)", "bytes": [14, 17, 16, 16, 17, 17, 14, 0]}, "0xC1": {"label": "ม (Mo Ma)", "bytes": [14, 17, 17, 25, 21, 19, 17, 0]}, "0xC2": {"label": "ย (Yo Yak)", "bytes": [26, 21, 1, 14, 17, 17, 14, 0]}, "0xC3": {"label": "ร (Ro Ruea)", "bytes": [14, 17, 1, 6, 8, 16, 16, 0]}, "0xC4": {"label": "ฤ (Ru)", "bytes": [14, 17, 17, 17, 17, 18, 12, 0]}, "0xC5": {"label": "ล (Lo Ling)", "bytes": [14, 17, 1, 14, 17, 17, 14, 0]}, "0xC6": {"label": "ฦ (Lu)", "bytes": [14, 17, 1, 14, 17, 18, 12, 0]}, "0xC7": {"label": "ว (Wo Waen)", "bytes": [14, 17, 1, 1, 1, 2, 4, 0]}, "0xC8": {"label": "ศ (So Sala)", "bytes": [6, 9, 17, 31, 17, 17, 17, 0]}, "0xC9": {"label": "ษ (So Rusi)", "bytes": [17, 17, 21, 19, 17, 17, 14, 0]}, "0xCA": {"label": "ส (So Suea)", "bytes": [6, 9, 1, 14, 17, 17, 14, 0]}, "0xCB": {"label": "ห (Ho Hip)", "bytes": [17, 17, 21, 27, 17, 17, 17, 0]}, "0xCC": {"label": "ฬ (Lo Chula)", "bytes": [6, 9, 17, 21, 21, 17, 17, 0]}, "0xCD": {"label": "อ (O Ang)", "bytes": [14, 17, 16, 22, 25, 17, 14, 0]}, "0xCE": {"label": "ฮ (Ho Nok-huk)", "bytes": [14, 21, 18, 14, 17, 17, 14, 0]}, "0xCF": {"label": "ฯ (Paiyannoi)", "bytes": [8, 20, 8, 4, 4, 4, 0, 0]}, "0xD0": {"label": "ะ (Sara A)", "bytes": [12, 12, 0, 12, 12, 0, 0, 0]}, "0xD1": {"label": "ั (Mai Han-Akat) - สระบน", "bytes": [12, 18, 0, 0, 0, 0, 0, 0]}, "0xD2": {"label": "า (Sara Aa)", "bytes": [15, 1, 1, 1, 1, 1, 1, 0]}, "0xD3": {"label": "ำ (Sara Am)", "bytes": [6, 6, 15, 1, 1, 1, 1, 0]}, "0xD4": {"label": "ิ (Sara I) - สระบน", "bytes": [14, 31, 0, 0, 0, 0, 0, 0]}, "0xD5": {"label": "ี (Sara Ii) - สระบน", "bytes": [10, 31, 0, 0, 0, 0, 0, 0]}, "0xD6": {"label": "ึ (Sara Ue) - สระบน", "bytes": [14, 27, 0, 0, 0, 0, 0, 0]}, "0xD7": {"label": "ื (Sara Uee) - สระบน", "bytes": [21, 31, 0, 0, 0, 0, 0, 0]}, "0xD8": {"label": "ุ (Sara U) - สระล่าง", "bytes": [0, 0, 0, 0, 0, 0, 12, 8]}, "0xD9": {"label": "ู (Sara Uu) - สระล่าง", "bytes": [0, 0, 0, 0, 0, 0, 14, 10]}, "0xDA": {"label": "ฺ (Phinthu) - สระล่าง", "bytes": [0, 0, 0, 0, 0, 0, 4, 4]}, "0xE0": {"label": "เ (Sara E)", "bytes": [14, 17, 16, 16, 16, 16, 16, 0]}, "0xE1": {"label": "แ (Sara Ae)", "bytes": [27, 18, 18, 18, 18, 18, 18, 0]}, "0xE2": {"label": "โ (Sara O)", "bytes": [7, 9, 1, 14, 16, 16, 16, 0]}, "0xE3": {"label": "ใ (Sara Ai Maimuan)", "bytes": [7, 9, 5, 2, 2, 2, 2, 0]}, "0xE4": {"label": "ไ (Sara Ai Maimaloi)", "bytes": [13, 18, 1, 2, 2, 2, 2, 0]}, "0xE5": {"label": "ๅ (Lakkhangyao)", "bytes": [15, 1, 1, 1, 1, 1, 2, 4]}, "0xE6": {"label": "ๆ (Maiyamok)", "bytes": [12, 18, 4, 8, 16, 14, 1, 0]}, "0xE7": {"label": "็ (Maitaikhu) - สระบน", "bytes": [10, 21, 0, 0, 0, 0, 0, 0]}, "0xE8": {"label": "่ (Mai Ek)", "bytes": [4, 4, 0, 0, 0, 0, 0, 0]}, "0xE9": {"label": "้ (Mai Tho)", "bytes": [12, 6, 0, 0, 0, 0, 0, 0]}, "0xEA": {"label": "๊ (Mai Tri)", "bytes": [21, 10, 0, 0, 0, 0, 0, 0]}, "0xEB": {"label": "๋ (Mai Chattawa)", "bytes": [4, 14, 4, 0, 0, 0, 0, 0]}, "0xEC": {"label": "์ (Thanthakhat / Karan)", "bytes": [6, 9, 2, 0, 0, 0, 0, 0]}, "0xF0": {"label": "๐", "bytes": [0, 14, 17, 17, 17, 14, 0, 0]}, "0xF1": {"label": "๑", "bytes": [4, 10, 17, 10, 4, 2, 1, 0]}, "0xF2": {"label": "๒", "bytes": [14, 17, 2, 4, 8, 16, 31, 0]}, "0xF3": {"label": "๓", "bytes": [21, 21, 10, 4, 2, 1, 1, 0]}, "0xF4": {"label": "๔", "bytes": [17, 17, 31, 1, 1, 2, 4, 0]}, "0xF5": {"label": "๕", "bytes": [10, 21, 31, 1, 1, 2, 4, 0]}, "0xF6": {"label": "๖", "bytes": [2, 4, 8, 23, 21, 21, 14, 0]}, "0xF7": {"label": "๗", "bytes": [21, 21, 10, 4, 4, 4, 4, 0]}, "0xF8": {"label": "๘", "bytes": [21, 21, 21, 10, 4, 2, 1, 0]}, "0xF9": {"label": "๙", "bytes": [14, 17, 17, 14, 4, 2, 1]}};
 
+
 const STUDIO_CGRAM = {
   activeTab: 'customizer', // 'customizer' | 'cgram' | 'thai_audit'
-  line1: 'HELLO WORLD!    ',
+  line1: 'HELLO WORLD! {0}',
   line2: 'CDTI EMBEDDED   ',
   lcdTheme: 'green',       // 'green' | 'blue'
   alignMode: 'left',
   activeSlot: 0,
   thaiMode: 'improved',    // 'improved' | 'original'
   selectedThaiCode: '0xA1',
-  slots: [
-    [0x00, 0x0A, 0x1F, 0x1F, 0x0E, 0x04, 0x00, 0x00], // slot 0: Heart
-    [0x1C, 0x14, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00], // slot 1: Degree
-    [0x00, 0x0A, 0x00, 0x04, 0x00, 0x11, 0x0E, 0x00], // slot 2: Smiley
-    [0x04, 0x0E, 0x15, 0x04, 0x04, 0x04, 0x04, 0x00], // slot 3: Up Arrow
-    [0x04, 0x04, 0x04, 0x04, 0x15, 0x0E, 0x04, 0x00], // slot 4: Down Arrow
-    [0x04, 0x0E, 0x0E, 0x0E, 0x1F, 0x00, 0x04, 0x00], // slot 5: Bell
-    [0x04, 0x0A, 0x0A, 0x0E, 0x0E, 0x1F, 0x1F, 0x0E], // slot 6: Thermo
-    [0x04, 0x04, 0x0A, 0x0A, 0x11, 0x11, 0x0E, 0x00]  // slot 7: Drop
+  isDrawing: false,
+  drawMode: 1,             // 1 = paint, 0 = erase
+  lastFocusedLine: 1,
+
+  STORAGE_KEY_SLOTS: 'AVR_STUDIO_CGRAM_SLOTS_V3',
+  STORAGE_KEY_NAMES: 'AVR_STUDIO_CGRAM_NAMES_V3',
+  STORAGE_KEY_LIB:   'AVR_STUDIO_CGRAM_LIB_V3',
+
+  // Default 8 CGRAM Slots (Classic Lab & Sensor Icons)
+  defaultSlots: [
+    [0x00, 0x0A, 0x1F, 0x1F, 0x0E, 0x04, 0x00, 0x00], // 0: Heart
+    [0x1C, 0x14, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00], // 1: Degree
+    [0x00, 0x0A, 0x00, 0x04, 0x00, 0x11, 0x0E, 0x00], // 2: Smiley
+    [0x04, 0x0E, 0x15, 0x04, 0x04, 0x04, 0x04, 0x00], // 3: Up Arrow
+    [0x04, 0x04, 0x04, 0x04, 0x15, 0x0E, 0x04, 0x00], // 4: Down Arrow
+    [0x04, 0x0E, 0x0E, 0x0E, 0x1F, 0x00, 0x04, 0x00], // 5: Bell
+    [0x04, 0x0A, 0x0A, 0x0E, 0x0E, 0x1F, 0x1F, 0x0E], // 6: Thermo
+    [0x04, 0x04, 0x0A, 0x0A, 0x11, 0x11, 0x0E, 0x00]  // 7: Drop
   ],
 
+  defaultNames: [
+    '❤️ หัวใจ', '🌡️ องศา', '😊 หน้ายิ้ม', '⬆️ ขึ้น',
+    '⬇️ ลง', '🔔 กระดิ่ง', '🌡️ ปรอท', '💧 หยดน้ำ'
+  ],
+
+  slots: [],
+  slotNames: [],
+  savedLibrary: [],
+
+  // Built-in templates for instant drawing start
   presets: {
     heart: { name: "❤️ หัวใจ", data: [0x00, 0x0A, 0x1F, 0x1F, 0x0E, 0x04, 0x00, 0x00] },
     degree: { name: "🌡️ องศา (°)", data: [0x1C, 0x14, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00] },
@@ -9902,11 +10286,116 @@ const STUDIO_CGRAM = {
     bell: { name: "🔔 กระดิ่ง", data: [0x04, 0x0E, 0x0E, 0x0E, 0x1F, 0x00, 0x04, 0x00] },
     thermo: { name: "🌡️ ปรอท", data: [0x04, 0x0A, 0x0A, 0x0E, 0x0E, 0x1F, 0x1F, 0x0E] },
     drop: { name: "💧 หยดน้ำ", data: [0x04, 0x04, 0x0A, 0x0A, 0x11, 0x11, 0x0E, 0x00] },
+    bulb: { name: "💡 หลอดไฟ", data: [0x0E, 0x11, 0x11, 0x11, 0x0A, 0x0E, 0x0E, 0x04] },
+    battery: { name: "🔋 แบตเตอรี่", data: [0x0E, 0x1B, 0x11, 0x1F, 0x1F, 0x1F, 0x1F, 0x00] },
+    motor: { name: "⚙️ มอเตอร์", data: [0x00, 0x0E, 0x15, 0x17, 0x15, 0x0E, 0x00, 0x00] },
     block: { name: "⬛ สี่เหลี่ยมเต็ม", data: [0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F] }
+  },
+
+  thaiTemplates: [
+    { label: 'ก', tis: '0xA1' }, { label: 'ข', tis: '0xA2' }, { label: 'ค', tis: '0xA4' },
+    { label: 'ง', tis: '0xA7' }, { label: 'จ', tis: '0xA8' }, { label: 'ช', tis: '0xAA' },
+    { label: 'ด', tis: '0xB4' }, { label: 'ต', tis: '0xB5' }, { label: 'ถ', tis: '0xB6' },
+    { label: 'ท', tis: '0xB7' }, { label: 'น', tis: '0xB9' }, { label: 'บ', tis: '0xBA' },
+    { label: 'ป', tis: '0xBB' }, { label: 'ผ', tis: '0xBC' }, { label: 'พ', tis: '0xBE' },
+    { label: 'ม', tis: '0xC1' }, { label: 'ย', tis: '0xC2' }, { label: 'ร', tis: '0xC3' },
+    { label: 'ล', tis: '0xC5' }, { label: 'ว', tis: '0xC7' }, { label: 'ส', tis: '0xCA' },
+    { label: 'ห', tis: '0xCB' }, { label: 'อ', tis: '0xCD' }, { label: 'ฮ', tis: '0xCE' },
+    { label: 'ะ', tis: '0xD0' }, { label: 'า', tis: '0xD2' }, { label: 'ิ', tis: '0xD4' },
+    { label: 'ี', tis: '0xD5' }, { label: 'ุ', tis: '0xD8' }, { label: 'ู', tis: '0xD9' },
+    { label: 'เ', tis: '0xE0' }, { label: 'แ', tis: '0xE1' }, { label: 'โ', tis: '0xE2' },
+    { label: 'ไ', tis: '0xE4' }
+  ],
+
+  // Initialize and load from Persistent Memory (localStorage)
+  init: function() {
+    try {
+      const storedSlots = localStorage.getItem(this.STORAGE_KEY_SLOTS);
+      if (storedSlots) {
+        const parsed = JSON.parse(storedSlots);
+        if (Array.isArray(parsed) && parsed.length === 8) {
+          this.slots = parsed;
+        }
+      }
+    } catch (e) {
+      console.warn("Could not load CGRAM slots from localStorage", e);
+    }
+    if (!this.slots || this.slots.length !== 8) {
+      this.slots = JSON.parse(JSON.stringify(this.defaultSlots));
+    }
+
+    try {
+      const storedNames = localStorage.getItem(this.STORAGE_KEY_NAMES);
+      if (storedNames) {
+        const parsed = JSON.parse(storedNames);
+        if (Array.isArray(parsed) && parsed.length === 8) {
+          this.slotNames = parsed;
+        }
+      }
+    } catch (e) {}
+    if (!this.slotNames || this.slotNames.length !== 8) {
+      this.slotNames = [...this.defaultNames];
+    }
+
+    try {
+      const storedLib = localStorage.getItem(this.STORAGE_KEY_LIB);
+      if (storedLib) {
+        const parsed = JSON.parse(storedLib);
+        if (Array.isArray(parsed)) {
+          this.savedLibrary = parsed;
+        }
+      }
+    } catch (e) {}
+    if (!this.savedLibrary || this.savedLibrary.length === 0) {
+      this.savedLibrary = [
+        { name: "ก (Ko Kai)", data: [14, 17, 25, 21, 19, 17, 17, 0] },
+        { name: "อ (O Ang)", data: [14, 17, 16, 22, 25, 17, 14, 0] },
+        { name: "⚙️ มอเตอร์หมุน", data: [0x00, 0x0E, 0x15, 0x17, 0x15, 0x0E, 0x00, 0x00] },
+        { name: "🔋 แบตเตอรี่", data: [0x0E, 0x1B, 0x11, 0x1F, 0x1F, 0x1F, 0x1F, 0x00] }
+      ];
+    }
+
+    // Attach global mouseup listener to terminate drag-painting
+    window.addEventListener('mouseup', () => {
+      if (this.isDrawing) {
+        this.stopDrawing();
+      }
+    });
+  },
+
+  // Save changes to persistent memory
+  saveToStorage: function() {
+    try {
+      localStorage.setItem(this.STORAGE_KEY_SLOTS, JSON.stringify(this.slots));
+      localStorage.setItem(this.STORAGE_KEY_NAMES, JSON.stringify(this.slotNames));
+      localStorage.setItem(this.STORAGE_KEY_LIB, JSON.stringify(this.savedLibrary));
+      this.flashAutoSaveBadge();
+    } catch (e) {
+      console.warn("Error saving CGRAM to localStorage", e);
+    }
+  },
+
+  flashAutoSaveBadge: function() {
+    const badge = document.getElementById("cgram-autosave-badge");
+    if (badge) {
+      badge.textContent = "💾 บันทึกความจำแล้ว (Auto-saved)";
+      badge.style.color = "#10b981";
+      badge.style.borderColor = "#10b981";
+      setTimeout(() => {
+        if (badge) {
+          badge.textContent = "💾 บันทึกความจำถาวร (Persistent)";
+          badge.style.color = "";
+          badge.style.borderColor = "";
+        }
+      }, 1500);
+    }
   },
 
   // Render top-level Studio Container
   renderEditor: function() {
+    if (!this.slots || this.slots.length !== 8) {
+      this.init();
+    }
     const currentTab = this.activeTab;
 
     return `
@@ -9915,17 +10404,17 @@ const STUDIO_CGRAM = {
         <div class="lcd-studio-header">
           <div class="lcd-studio-titles">
             <h3>📟 LCD 16&times;2 Studio & CGRAM Font Designer</h3>
-            <p>จำลองหน้าจอ LCD 1602A เสมือนจริง • ปรับแต่งข้อความ 2 บรรทัดพร้อมจัดตำแหน่ง • ออกแบบ CGRAM • วิเคราะห์ฟอนต์ไทย TIS-620</p>
+            <p>จำลองหน้าจอ LCD 1602A เสมือนจริง • วาดพิกเซล CGRAM 8 ช่องบันทึกถาวร • รองรับการแทรก {0}-{7} • วิเคราะห์ฟอนต์ไทย TIS-620</p>
           </div>
           <div class="lcd-nav-tabs">
             <button class="lcd-nav-btn ${currentTab === 'customizer' ? 'active' : ''}" onclick="STUDIO_CGRAM.switchSubTab('customizer')">
               <span>📟</span> ปรับแต่งข้อความ LCD 16&times;2
             </button>
             <button class="lcd-nav-btn ${currentTab === 'cgram' ? 'active' : ''}" onclick="STUDIO_CGRAM.switchSubTab('cgram')">
-              <span>🎨</span> ตัววาดพิกเซล CGRAM (8 Slots)
+              <span>🎨</span> ตัววาดพิกเซล CGRAM (8 Slots & คลังความจำ)
             </button>
             <button class="lcd-nav-btn ${currentTab === 'thai_audit' ? 'active' : ''}" onclick="STUDIO_CGRAM.switchSubTab('thai_audit')">
-              <span>🇹🇭</span> คลังฟอนต์ไทย & บทวิเคราะห์ฟอนต์
+              <span>🇹🇭</span> คลังฟอนต์ไทย 91 ตัว & การวิเคราะห์
             </button>
           </div>
         </div>
@@ -9953,6 +10442,17 @@ const STUDIO_CGRAM = {
     const screenHtml = this.renderVirtualScreen();
     const cCode = this.generateLcdCCode();
     const asmCode = this.generateLcdAsmCode();
+
+    // Render Quick Slot Chips
+    let slotChipsHtml = '';
+    for (let s = 0; s < 8; s++) {
+      const name = this.slotNames[s] || `Slot ${s}`;
+      slotChipsHtml += `
+        <button class="lcd-slot-insert-chip" onclick="STUDIO_CGRAM.insertSlotToken(${s})" title="แทรกอักขระพิเศษ CGRAM Slot {${s}} ลงในข้อความ">
+          <span>+ {${s}}</span> <span>${this.escapeHtml(name)}</span>
+        </button>
+      `;
+    }
 
     return `
       <div class="lcd-customizer-grid">
@@ -9985,17 +10485,29 @@ const STUDIO_CGRAM = {
 
           <!-- Text Input Controls -->
           <div class="lcd-input-card">
-            <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-              <span>✏️ กำหนดข้อความและการเว้นวรรค (Text & Spacing Controls)</span>
+            <div style="font-weight: 700; font-size: 13.5px; color: var(--text-main); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span>✏️ กำหนดข้อความและการจัดวาง (Text & Spacing Controls)</span>
               <span style="font-size: 11px; color: var(--primary);">16 ตัวอักษรต่อบรรทัด</span>
+            </div>
+
+            <!-- Slot Insert Bar -->
+            <div style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 4px;">
+              💡 จอ LCD 1602 (HD44780) แสดงตัวอักษรภาษาอังกฤษ ASCII และอักขระพิเศษ CGRAM 8 ตัวที่วาดเอง {0}-{7}:
+            </div>
+            <div class="lcd-slot-insert-bar">
+              <span style="font-size: 11px; font-weight: 600; color: var(--primary);">แทรก CGRAM:</span>
+              ${slotChipsHtml}
             </div>
 
             <!-- Line 1 Control -->
             <div class="lcd-input-row">
               <label>บรรทัดที่ 1 (0x80):</label>
               <div class="lcd-input-wrapper">
-                <input type="text" id="lcd-input-l1" maxlength="16" value="${this.escapeHtml(this.line1)}" oninput="STUDIO_CGRAM.onLineChange(1, this.value)" placeholder="ข้อความบรรทัด 1 (สูงสุด 16 ตัว)">
-                <span class="lcd-len-badge" id="lcd-len-l1">${this.line1.length}/16</span>
+                <input type="text" id="lcd-input-l1" maxlength="32" value="${this.escapeHtml(this.line1)}"
+                  onfocus="STUDIO_CGRAM.lastFocusedLine = 1"
+                  oninput="STUDIO_CGRAM.onLineChange(1, this.value)"
+                  placeholder="ข้อความบรรทัด 1 เช่น HELLO {0}">
+                <span class="lcd-len-badge" id="lcd-len-l1">${this.countDisplayCols(this.line1)}/16</span>
               </div>
             </div>
 
@@ -10003,8 +10515,11 @@ const STUDIO_CGRAM = {
             <div class="lcd-input-row">
               <label>บรรทัดที่ 2 (0xC0):</label>
               <div class="lcd-input-wrapper">
-                <input type="text" id="lcd-input-l2" maxlength="16" value="${this.escapeHtml(this.line2)}" oninput="STUDIO_CGRAM.onLineChange(2, this.value)" placeholder="ข้อความบรรทัด 2 (สูงสุด 16 ตัว)">
-                <span class="lcd-len-badge" id="lcd-len-l2">${this.line2.length}/16</span>
+                <input type="text" id="lcd-input-l2" maxlength="32" value="${this.escapeHtml(this.line2)}"
+                  onfocus="STUDIO_CGRAM.lastFocusedLine = 2"
+                  oninput="STUDIO_CGRAM.onLineChange(2, this.value)"
+                  placeholder="ข้อความบรรทัด 2 เช่น CDTI EMBEDDED">
+                <span class="lcd-len-badge" id="lcd-len-l2">${this.countDisplayCols(this.line2)}/16</span>
               </div>
             </div>
 
@@ -10022,16 +10537,17 @@ const STUDIO_CGRAM = {
             <!-- Quick Lab Exam Presets -->
             <div class="lcd-presets-bar">
               <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
-                🎯 พรีเซ็ตโจทย์สอบปฏิบัติการยอดนิยม (Exam Presets):
+                🎯 พรีเซ็ตโจทย์ข้อสอบยอดนิยม (Exam Presets):
               </div>
               <div class="lcd-preset-chips">
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t501')">T5.01: Hello World</button>
+                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t501')">T5.01: Hello World {0}</button>
                 <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t502')">T5.02: ID & Name</button>
                 <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t503')">T5.03: Button Status</button>
                 <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t504')">T5.04: Counter 00-99</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t506')">T5.06: Voltmeter</button>
+                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t506')">T5.06: Temp {1}C {6}</button>
+                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t507')">T5.07: Water Level {7}</button>
                 <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('t509')">T5.09: PIN Lock</button>
-                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('thai')">🇹🇭 Thai Demo (ยินดีต้อนรับ)</button>
+                <button class="lcd-preset-chip" onclick="STUDIO_CGRAM.loadPreset('thai_slots')">🎨 Custom Chars {0}{1}{2}</button>
               </div>
             </div>
           </div>
@@ -10043,7 +10559,7 @@ const STUDIO_CGRAM = {
             <div class="lcd-code-header">
               <div>
                 <h4 style="margin: 0; font-size: 14px; color: var(--text-main);">⚡ ซอร์สโค้ดภาษาซี (Embedded C / AVR-GCC)</h4>
-                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">คำสั่งควบคุม DDRAM Address และส่งสตริงออกหน้าจอ</p>
+                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">มีฟังก์ชันโหลด CGRAM ที่คุณวาดไว้พร้อมคำสั่งพิมพ์ DDRAM ครบชุด</p>
               </div>
               <button class="btn btn-primary btn-sm" onclick="STUDIO_CGRAM.applyToActiveLab()">
                 🚀 นำข้อความนี้ไปใส่ในแล็บปัจจุบัน
@@ -10054,7 +10570,7 @@ const STUDIO_CGRAM = {
             <div class="lcd-code-header" style="margin-top: 14px;">
               <div>
                 <h4 style="margin: 0; font-size: 14px; color: var(--text-main);">🏛️ ซอร์สโค้ดภาษาแอสเซมบลี (AVR Assembly GNU Syntax)</h4>
-                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">โหลดตำแหน่งและส่งข้อมูลเข้าหน้าจอ 4-bit</p>
+                <p style="margin: 2px 0 0 0; font-size: 11.5px; color: var(--text-muted);">ส่งตำแหน่งและข้อมูลอักขระพิเศษผ่านพอร์ต 4-bit</p>
               </div>
               <button class="btn btn-secondary btn-sm" onclick="STUDIO_CGRAM.copyAsmCode()">📋 คัดลอก ASM</button>
             </div>
@@ -10063,6 +10579,75 @@ const STUDIO_CGRAM = {
         </div>
       </div>
     `;
+  },
+
+  // Insert token like {0} into line 1 or line 2
+  insertSlotToken: function(slotNum) {
+    const inputId = (this.lastFocusedLine === 2) ? 'lcd-input-l2' : 'lcd-input-l1';
+    const input = document.getElementById(inputId);
+    const token = `{${slotNum}}`;
+
+    if (input) {
+      const start = input.selectionStart || input.value.length;
+      const end = input.selectionEnd || input.value.length;
+      const val = input.value;
+      const newVal = val.substring(0, start) + token + val.substring(end);
+      input.value = newVal;
+      this.onLineChange(this.lastFocusedLine, newVal);
+      input.focus();
+      input.setSelectionRange(start + token.length, start + token.length);
+    } else {
+      if (this.lastFocusedLine === 2) {
+        this.line2 += token;
+      } else {
+        this.line1 += token;
+      }
+      this.refreshAllInputs();
+    }
+  },
+
+  // Calculate actual columns occupied on the 16x2 LCD screen
+  countDisplayCols: function(str) {
+    const chars = this.prepareLineChars(str);
+    return chars.filter(c => c !== ' ').length;
+  },
+
+  // Tokenize line string, keeping slot tokens {0}..{7} as single characters!
+  prepareLineChars: function(str) {
+    const res = [];
+    let i = 0;
+    while (i < str.length && res.length < 16) {
+      // Check for CGRAM token {0} - {7}
+      if (str[i] === '{' && (i + 2 < str.length) && str[i + 2] === '}') {
+        const slotIdx = parseInt(str[i + 1], 10);
+        if (!isNaN(slotIdx) && slotIdx >= 0 && slotIdx < 8) {
+          res.push(`{${slotIdx}}`);
+          i += 3;
+          continue;
+        }
+      }
+
+      const char = str[i];
+      const nextChar = (i + 1 < str.length) ? str[i + 1] : null;
+
+      // Check Thai combining vowel or tone mark
+      if (nextChar && this.isThaiCombining(nextChar)) {
+        res.push({ base: char, upper: nextChar });
+        i += 2;
+      } else {
+        res.push(char);
+        i += 1;
+      }
+    }
+    while (res.length < 16) {
+      res.push(' ');
+    }
+    return res;
+  },
+
+  isThaiCombining: function(ch) {
+    const code = ch.charCodeAt(0);
+    return (code === 0x0E31 || (code >= 0x0E34 && code <= 0x0E3A) || (code >= 0x0E47 && code <= 0x0E4E));
   },
 
   // Render 16x2 character grid on the virtual LCD screen
@@ -10087,34 +10672,6 @@ const STUDIO_CGRAM = {
     return html;
   },
 
-  prepareLineChars: function(str) {
-    const res = [];
-    let i = 0;
-    while (i < str.length && res.length < 16) {
-      const char = str[i];
-      const nextChar = (i + 1 < str.length) ? str[i + 1] : null;
-
-      // Check if next char is Thai combining vowel or tone mark
-      if (nextChar && this.isThaiCombining(nextChar)) {
-        res.push({ base: char, upper: nextChar });
-        i += 2;
-      } else {
-        res.push(char);
-        i += 1;
-      }
-    }
-    while (res.length < 16) {
-      res.push(' ');
-    }
-    return res;
-  },
-
-  isThaiCombining: function(ch) {
-    const code = ch.charCodeAt(0);
-    // Thai combining: 0x0E31 (ั), 0x0E34 - 0x0E3A (ิ-ฺ), 0x0E47 - 0x0E4E (็-๎)
-    return (code === 0x0E31 || (code >= 0x0E34 && code <= 0x0E3A) || (code >= 0x0E47 && code <= 0x0E4E));
-  },
-
   renderCharCell: function(row, col, charData) {
     const dots = this.getGlyphDots(charData);
     let dotsHtml = '';
@@ -10128,7 +10685,14 @@ const STUDIO_CGRAM = {
     }
 
     const addressHex = (row === 0) ? `0x${(0x80 + col).toString(16).toUpperCase()}` : `0x${(0xC0 + col).toString(16).toUpperCase()}`;
-    const labelChar = (typeof charData === 'object') ? (charData.base + charData.upper) : (charData === ' ' ? '&nbsp;' : this.escapeHtml(charData));
+    let labelChar = '';
+    if (typeof charData === 'string' && charData.length === 3 && charData[0] === '{' && charData[2] === '}') {
+      labelChar = `<span style="color:#10b981;font-weight:700;">${charData}</span>`;
+    } else if (typeof charData === 'object') {
+      labelChar = this.escapeHtml(charData.base + charData.upper);
+    } else {
+      labelChar = (charData === ' ') ? '&nbsp;' : this.escapeHtml(charData);
+    }
 
     return `
       <div class="lcd-char-block" title="Row ${row}, Col ${col} (DDRAM: ${addressHex})">
@@ -10139,13 +10703,12 @@ const STUDIO_CGRAM = {
   },
 
   getGlyphDots: function(charData) {
-    // Handle combined Thai base + upper
     if (typeof charData === 'object' && charData.base && charData.upper) {
       const baseDots = this.getSingleCharDots(charData.base);
       const upperDots = this.getSingleCharDots(charData.upper);
       const res = [];
       for (let r = 0; r < 8; r++) {
-        res.push(baseDots[r] | upperDots[r]);
+        res.push((baseDots[r] || 0) | (upperDots[r] || 0));
       }
       return res;
     }
@@ -10155,15 +10718,15 @@ const STUDIO_CGRAM = {
   getSingleCharDots: function(ch) {
     if (!ch) return [0,0,0,0,0,0,0,0];
 
-    // Check CGRAM slots placeholder like '\x00', '\x01' or '{0}', '{1}'
-    if (ch.startsWith && ch.startsWith('{') && ch.endsWith('}')) {
-      const slotNum = parseInt(ch.substring(1, ch.length - 1));
-      if (!isNaN(slotNum) && slotNum >= 0 && slotNum < 8) {
+    // Check CGRAM slots placeholder like '{0}', '{1}' ... '{7}'
+    if (typeof ch === 'string' && ch.length === 3 && ch[0] === '{' && ch[2] === '}') {
+      const slotNum = parseInt(ch[1], 10);
+      if (!isNaN(slotNum) && slotNum >= 0 && slotNum < 8 && this.slots[slotNum]) {
         return this.slots[slotNum];
       }
     }
 
-    // Check Thai font table
+    // Check Thai font table if single Thai char
     const charCode = ch.charCodeAt(0);
     if (charCode >= 0x0E01 && charCode <= 0x0E5B) {
       const tisCode = '0x' + (charCode - 0x0E00 + 0xA0).toString(16).toUpperCase();
@@ -10182,16 +10745,16 @@ const STUDIO_CGRAM = {
     return [0,0,0,0,0,0,0,0];
   },
 
-  // User input handling
+  // Input handling
   onLineChange: function(lineNum, val) {
     if (lineNum === 1) {
       this.line1 = val;
       const el = document.getElementById("lcd-len-l1");
-      if (el) el.textContent = `${val.length}/16`;
+      if (el) el.textContent = `${this.countDisplayCols(val)}/16`;
     } else {
       this.line2 = val;
       const el = document.getElementById("lcd-len-l2");
-      if (el) el.textContent = `${val.length}/16`;
+      if (el) el.textContent = `${this.countDisplayCols(val)}/16`;
     }
     this.refreshLiveSimulator();
   },
@@ -10205,14 +10768,15 @@ const STUDIO_CGRAM = {
 
   alignText: function(text, mode) {
     const trimmed = text.trim();
+    const cols = this.countDisplayCols(trimmed);
     if (mode === 'left') {
       return trimmed;
     } else if (mode === 'center') {
-      const padTotal = Math.max(0, 16 - trimmed.length);
+      const padTotal = Math.max(0, 16 - cols);
       const padLeft = Math.floor(padTotal / 2);
       return ' '.repeat(padLeft) + trimmed;
     } else if (mode === 'right') {
-      const padLeft = Math.max(0, 16 - trimmed.length);
+      const padLeft = Math.max(0, 16 - cols);
       return ' '.repeat(padLeft) + trimmed;
     }
     return text;
@@ -10220,8 +10784,8 @@ const STUDIO_CGRAM = {
 
   shiftText: function(dir) {
     if (dir === 'right') {
-      if (this.line1.length < 16) this.line1 = ' ' + this.line1;
-      if (this.line2.length < 16) this.line2 = ' ' + this.line2;
+      if (this.countDisplayCols(this.line1) < 16) this.line1 = ' ' + this.line1;
+      if (this.countDisplayCols(this.line2) < 16) this.line2 = ' ' + this.line2;
     } else if (dir === 'left') {
       if (this.line1.startsWith(' ')) this.line1 = this.line1.substring(1);
       if (this.line2.startsWith(' ')) this.line2 = this.line2.substring(1);
@@ -10245,13 +10809,14 @@ const STUDIO_CGRAM = {
 
   loadPreset: function(id) {
     const presets = {
-      't501': { l1: 'HELLO WORLD!', l2: 'CDTI EMBEDDED' },
+      't501': { l1: 'HELLO WORLD! {0}', l2: 'CDTI EMBEDDED' },
       't502': { l1: 'ID: 6710301009', l2: 'APISAK KONGPAKDI' },
-      't503': { l1: 'SW1: SYSTEM ON', l2: 'SW2: PROCESS RUN' },
+      't503': { l1: 'SW1: SYSTEM ON', l2: 'SW2: RUNNING {3}' },
       't504': { l1: 'COUNT: 00', l2: 'UP/DOWN TIMER' },
-      't506': { l1: 'VOLT: 4.85 V', l2: 'ADC RAW: 993' },
+      't506': { l1: 'TEMP: 28.5{1}C {6}', l2: 'VOLT: 4.85V' },
+      't507': { l1: 'WATER: 85% {7}', l2: 'PUMP: RUNNING' },
       't509': { l1: 'ENTER PIN: 4-DIG', l2: '**** [LOCKED]' },
-      'thai': { l1: 'ยินดีต้อนรับ', l2: 'ระบบสมองกล' }
+      'thai_slots': { l1: '{0}{1}{2} AVR 2026', l2: 'MY CUSTOM CHARS' }
     };
     if (presets[id]) {
       this.line1 = presets[id].l1;
@@ -10267,8 +10832,8 @@ const STUDIO_CGRAM = {
     if (in2) in2.value = this.line2;
     const el1 = document.getElementById("lcd-len-l1");
     const el2 = document.getElementById("lcd-len-l2");
-    if (el1) el1.textContent = `${this.line1.length}/16`;
-    if (el2) el2.textContent = `${this.line2.length}/16`;
+    if (el1) el1.textContent = `${this.countDisplayCols(this.line1)}/16`;
+    if (el2) el2.textContent = `${this.countDisplayCols(this.line2)}/16`;
     this.refreshLiveSimulator();
   },
 
@@ -10283,24 +10848,65 @@ const STUDIO_CGRAM = {
     if (codeAsm) codeAsm.textContent = this.generateLcdAsmCode();
   },
 
+  // Helper to replace {0} with \x08 and {1}-{7} with \x01-\x07 in C string
+  formatCStringWithSlots: function(str) {
+    let out = str.replace(/"/g, '\\"');
+    out = out.replace(/\{([0-7])\}/g, (match, slot) => {
+      const s = parseInt(slot, 10);
+      return (s === 0) ? '\\x08' : `\\x0${s}`;
+    });
+    return out;
+  },
+
   // Generate Embedded C snippet
   generateLcdCCode: function() {
-    const str1 = this.line1.replace(/"/g, '\\"');
-    const str2 = this.line2.replace(/"/g, '\\"');
+    const str1 = this.formatCStringWithSlots(this.line1);
+    const str2 = this.formatCStringWithSlots(this.line2);
+
+    // Identify which CGRAM slots are actually referenced in line1 or line2
+    const usedSlots = new Set();
+    const regex = /\{([0-7])\}/g;
+    let m;
+    while ((m = regex.exec(this.line1)) !== null) usedSlots.add(parseInt(m[1], 10));
+    while ((m = regex.exec(this.line2)) !== null) usedSlots.add(parseInt(m[1], 10));
+
+    let cgramDefinitions = '';
+    let cgramLoads = '';
+
+    if (usedSlots.size > 0) {
+      cgramDefinitions += `// ==========================================\n// ข้อมูลบิตแมปอักขระพิเศษ CGRAM (PROGMEM)\n// ==========================================\n`;
+      usedSlots.forEach(s => {
+        const hexArr = this.slots[s].map(b => '0x' + b.toString(16).toUpperCase().padStart(2, '0')).join(', ');
+        cgramDefinitions += `const uint8_t custom_char_${s}[8] PROGMEM = { ${hexArr} }; // ${this.slotNames[s] || 'Slot ' + s}\n`;
+        cgramLoads += `    lcd_load_cgram(${s}, custom_char_${s});\n`;
+      });
+    }
+
     return `// ==========================================
 // Embedded C (AVR-GCC): LCD 1602 Custom Text Display
 // ==========================================
 #include <avr/io.h>
+#include <avr/pgmspace.h>
 #include <util/delay.h>
 
+${cgramDefinitions}
+${usedSlots.size > 0 ? `// ฟังก์ชันโหลดข้อมูลเข้า CGRAM (Address: 0x40 + slot * 8)
+void lcd_load_cgram(uint8_t slot, const uint8_t *glyph) {
+    lcd_command(0x40 | (slot << 3));
+    for (uint8_t i = 0; i < 8; i++) {
+        lcd_data(pgm_read_byte(&glyph[i]));
+    }
+}
+` : ''}
 void lcd_display_custom_text(void) {
-    // ล้างหน้าจอ LCD และตั้งค่าตำแหน่งเริ่มต้น
+    // 1. เริ่มต้นระบบ LCD
     lcd_command(0x01); // Clear Display
     _delay_ms(2);
     lcd_command(0x0C); // Display ON, Cursor OFF
 
-    // บรรทัดที่ 1: กำหนด DDRAM Address = 0x80 (Row 0, Col 0)
+${cgramLoads ? `    // 2. โหลดอักขระพิเศษ CGRAM ที่คุณวาดไว้เข้าหน้าจอ\n${cgramLoads}\n` : ''}    // บรรทัดที่ 1: กำหนด DDRAM Address = 0x80 (Row 0, Col 0)
     lcd_command(0x80);
+    // หมายเหตุ: อักขระ Slot 0 สามารถส่งด้วยรหัส \\x08 เพื่อเลี่ยง null-terminator \\0 ในสตริงภาษา C
     lcd_puts("${str1}");
 
     // บรรทัดที่ 2: กำหนด DDRAM Address = 0xC0 (Row 1, Col 0)
@@ -10340,7 +10946,6 @@ str_line1: .asciz "${this.line1}"
 str_line2: .asciz "${this.line2}"`;
   },
 
-  // Apply to active lab source code
   applyToActiveLab: function() {
     if (typeof state === 'undefined' || !state.activeLabId) {
       alert("กรุณาเลือกแล็บที่ต้องการแก้ไขก่อน");
@@ -10349,13 +10954,11 @@ str_line2: .asciz "${this.line2}"`;
     const lab = LABS_DATA.find(l => l.id === state.activeLabId);
     if (!lab) return;
 
-    // Check if lab code has lcd_puts or lcd.print
-    const str1 = this.line1.replace(/"/g, '\\"');
-    const str2 = this.line2.replace(/"/g, '\\"');
+    const str1 = this.formatCStringWithSlots(this.line1);
+    const str2 = this.formatCStringWithSlots(this.line2);
 
     if (lab.avrCode) {
       if (lab.avrCode.includes("lcd_puts") || lab.avrCode.includes("lcd_command(0x80)")) {
-        lab.avrCode = lab.avrCode.replace(/lcd_puts\s*\(\s*"[^"]*"\s*\)/, `lcd_puts("${str1}")`);
         lab.avrCode = lab.avrCode.replace(/lcd_puts\s*\(\s*"[^"]*"\s*\)/g, (match, idx) => {
           return (idx === 0) ? `lcd_puts("${str1}")` : `lcd_puts("${str2}")`;
         });
@@ -10376,21 +10979,36 @@ str_line2: .asciz "${this.line2}"`;
   },
 
   // ============================================================================
-  // TAB 2: CGRAM 5x8 Pixel Matrix Designer (Original Features Enhanced)
+  // TAB 2: CGRAM 5x8 Pixel Matrix Designer (Drag-to-Paint & Persistent Storage)
   // ============================================================================
   renderCgramDesigner: function() {
-    let presetButtons = '';
-    Object.keys(this.presets).forEach(k => {
-      const p = this.presets[k];
-      presetButtons += `<button class="cgram-preset-btn" onclick="STUDIO_CGRAM.applyPreset('${k}')">${p.name}</button>`;
-    });
+    if (!this.slots || this.slots.length !== 8) {
+      this.init();
+    }
 
+    // Render 8 Slot buttons with mini dot previews
     let slotButtons = '';
     for (let s = 0; s < 8; s++) {
       const activeClass = (this.activeSlot === s) ? 'active' : '';
-      slotButtons += `<button class="cgram-slot-btn ${activeClass}" id="cgram-slot-${s}" onclick="STUDIO_CGRAM.selectSlot(${s})">Slot {${s}}</button>`;
+      const name = this.slotNames[s] || `Slot ${s}`;
+      const miniDotsHtml = this.renderMiniSlotDots(s);
+
+      slotButtons += `
+        <button class="cgram-slot-btn ${activeClass}" id="cgram-slot-${s}" onclick="STUDIO_CGRAM.selectSlot(${s})">
+          <div style="display:flex; justify-content:space-between; width:100%; font-size:11px;">
+            <span>Slot {${s}}</span>
+          </div>
+          <div class="cgram-slot-mini-preview" id="cgram-mini-slot-${s}">
+            ${miniDotsHtml}
+          </div>
+          <div style="font-size:10.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:85px;">
+            ${this.escapeHtml(name)}
+          </div>
+        </button>
+      `;
     }
 
+    // Render 5x8 drawing cells
     let cellsHtml = '';
     const currentData = this.slots[this.activeSlot];
     for (let r = 0; r < 8; r++) {
@@ -10398,8 +11016,53 @@ str_line2: .asciz "${this.line2}"`;
         const bitMask = 1 << (4 - c);
         const isSet = (currentData[r] & bitMask) !== 0;
         const activeClass = isSet ? 'active' : '';
-        cellsHtml += `<div class="cgram-cell ${activeClass}" id="cgram-cell-${r}-${c}" onclick="STUDIO_CGRAM.togglePixel(${r}, ${c})" title="แถว ${r}, คอลัมน์ ${c}"></div>`;
+        cellsHtml += `
+          <div class="cgram-cell ${activeClass}" id="cgram-cell-${r}-${c}"
+            onmousedown="STUDIO_CGRAM.startDrawing(${r}, ${c}, event)"
+            onmouseenter="STUDIO_CGRAM.paintCell(${r}, ${c})"
+            title="แถว ${r}, คอลัมน์ ${c}">
+          </div>
+        `;
       }
+    }
+
+    // Render Thai Templates Chips
+    let thaiChips = '';
+    this.thaiTemplates.forEach(t => {
+      thaiChips += `
+        <button class="cgram-template-chip" onclick="STUDIO_CGRAM.loadThaiTemplate('${t.tis}', '${t.label}')" title="โหลด '${t.label}' มาแก้ไขต่อ">
+          ${t.label}
+        </button>
+      `;
+    });
+
+    // Render Hardware Icon Presets
+    let presetButtons = '';
+    Object.keys(this.presets).forEach(k => {
+      const p = this.presets[k];
+      presetButtons += `<button class="cgram-preset-btn" onclick="STUDIO_CGRAM.applyPreset('${k}')">${p.name}</button>`;
+    });
+
+    // Render Saved Custom Character Library
+    let savedLibHtml = '';
+    if (this.savedLibrary.length === 0) {
+      savedLibHtml = `<div style="font-size:11.5px; color:var(--text-muted); font-style:italic;">ยังไม่มีอักขระที่บันทึกไว้ — คุณสามารถวาดแล้วกด 'บันทึกเข้าคลัง' ได้ทันที</div>`;
+    } else {
+      this.savedLibrary.forEach((item, idx) => {
+        savedLibHtml += `
+          <div class="cgram-saved-item">
+            <div class="cgram-saved-item-left">
+              <span style="font-weight:700; color:var(--text-main); font-size:12px;">${this.escapeHtml(item.name)}</span>
+            </div>
+            <div class="cgram-saved-actions">
+              <button class="btn-sm btn-primary" style="padding:4px 8px; font-size:11px;" onclick="STUDIO_CGRAM.loadFromLibrary(${idx})" title="โหลดเข้า Slot {${this.activeSlot}}">
+                📥 โหลดลง Slot {${this.activeSlot}}
+              </button>
+              <button class="cgram-saved-btn" onclick="STUDIO_CGRAM.deleteFromLibrary(${idx})" title="ลบออกจากคลัง">❌</button>
+            </div>
+          </div>
+        `;
+      });
     }
 
     setTimeout(() => {
@@ -10410,28 +11073,43 @@ str_line2: .asciz "${this.line2}"`;
       <div class="cgram-workspace-row">
         <!-- Left: 5x8 Grid & Tool Buttons -->
         <div class="cgram-grid-box">
-          <div style="font-weight: 600; font-size: 13px; margin-bottom: 8px; color: var(--text-main); display: flex; justify-content: space-between; width: 100%;">
+          <div style="font-weight: 700; font-size: 13.5px; margin-bottom: 8px; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <span>กระดานวาดพิกเซล CGRAM (5&times;8 Dots)</span>
-            <span style="font-size: 11px; color: var(--text-muted);">คลิกเพื่อสลับ เปิด/ปิด</span>
+            <span class="badge-status" id="cgram-autosave-badge">💾 บันทึกความจำถาวร (Persistent)</span>
           </div>
 
           <!-- Slots Bar -->
-          <div class="cgram-slots-bar" style="margin-bottom: 12px;">
+          <div class="cgram-slots-bar">
             ${slotButtons}
           </div>
 
-          <div class="cgram-pixel-grid" id="cgram-pixel-grid">
+          <!-- 5x8 Interactive Drawing Board -->
+          <div class="cgram-pixel-grid" id="cgram-pixel-grid" onmouseleave="STUDIO_CGRAM.stopDrawing()">
             ${cellsHtml}
           </div>
 
-          <div style="display: flex; gap: 8px; margin-top: 10px; width: 100%;">
-            <button class="btn-action btn-sm" onclick="STUDIO_CGRAM.invertGrid()" style="flex: 1;">🌓 กลับสี (Invert)</button>
-            <button class="btn-action btn-sm" onclick="STUDIO_CGRAM.clearGrid()" style="flex: 1;">🔄 ล้าง (Clear)</button>
+          <!-- Tool Buttons -->
+          <div class="cgram-grid-tools">
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.invertGrid()" title="สลับพิกเซลมืด/สว่าง">🌓 กลับสี (Invert)</button>
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.clearGrid()" title="ล้างพิกเซลทั้งหมดใน Slot นี้">🔄 ล้างกระดาน</button>
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.shiftGrid('up')" title="เลื่อนพิกเซลขึ้น 1 แถว">⬆️ เลื่อนขึ้น</button>
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.shiftGrid('down')" title="เลื่อนพิกเซลลง 1 แถว">⬇️ เลื่อนลง</button>
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.shiftGrid('left')" title="เลื่อนพิกเซลไปทางซ้าย 1 คอลัมน์">⬅️ ซ้าย</button>
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.shiftGrid('right')" title="เลื่อนพิกเซลไปทางขวา 1 คอลัมน์">➡️ ขวา</button>
+            <button class="cgram-tool-btn" onclick="STUDIO_CGRAM.renameActiveSlot()" title="ตั้งชื่อให้กับ Slot นี้">✏️ เปลี่ยนชื่อ</button>
           </div>
 
-          <div style="margin-top: 12px; width: 100%;">
-            <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
-              🎨 พรีเซ็ตไอคอนสำเร็จรูปยอดนิยม:
+          <!-- Quick Templates Section -->
+          <div class="cgram-template-section">
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">
+              🇹🇭 แม่แบบภาษาไทย (คลิกเพื่อโหลดมาวาดต่อใน Slot {${this.activeSlot}}):
+            </div>
+            <div class="cgram-template-chips">
+              ${thaiChips}
+            </div>
+
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); margin: 10px 0 6px 0;">
+              🎨 แม่แบบไอคอนสำเร็จรูป:
             </div>
             <div class="cgram-presets-grid">
               ${presetButtons}
@@ -10441,36 +11119,72 @@ str_line2: .asciz "${this.line2}"`;
 
         <!-- Right: Preview, Hex array, and C Function Generator -->
         <div class="cgram-code-view">
-          <div style="font-weight: 600; font-size: 13px; margin-bottom: 10px; color: var(--text-main);">
+          <div style="font-weight: 700; font-size: 13.5px; margin-bottom: 10px; color: var(--text-main);">
             📟 ตัวอย่างการแสดงผลบน LCD เสมือน (Live HD44780 Emulation)
           </div>
 
           <div class="cgram-lcd-preview-card" style="margin-bottom: 16px;">
             <div class="cgram-lcd-dot-preview" id="cgram-live-dots"></div>
             <div>
-              <div style="font-weight: 600; font-size: 14px; color: #10b981;">HD44780 CGRAM Slot {${this.activeSlot}}</div>
+              <div style="font-weight: 700; font-size: 14.5px; color: #10b981;" id="cgram-live-title">
+                HD44780 CGRAM Slot {${this.activeSlot}}: ${this.escapeHtml(this.slotNames[this.activeSlot] || '')}
+              </div>
               <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 3px;">
-                Address: <code style="color: var(--primary);">0x${(0x40 + (this.activeSlot * 8)).toString(16).toUpperCase()}</code> (คำสั่งเซ็ตพอยเตอร์ CGRAM)
+                CGRAM Address: <code style="color: var(--primary);">0x${(0x40 + (this.activeSlot * 8)).toString(16).toUpperCase()}</code> | DDRAM Code: <code>0x0${this.activeSlot}</code> (หรือ <code>0x08</code>)
               </div>
             </div>
           </div>
 
-          <div style="font-weight: 600; font-size: 13px; margin-bottom: 6px; color: var(--text-main);">
+          <div style="font-weight: 700; font-size: 13px; margin-bottom: 6px; color: var(--text-main);">
             📦 ตารางข้อมูลไบนารีและเลขฐานสิบหก (C Array / PROGMEM)
           </div>
           <pre class="cgram-hex-output" id="cgram-hex-box"></pre>
 
-          <div style="display: flex; gap: 8px; margin-top: 14px;">
-            <button class="btn-action btn-flash" onclick="STUDIO_CGRAM.insertIntoEditor()" style="flex: 1;">
-              <span>💾</span> แทรกโค้ดลงในแบบจำลอง
+          <div class="cgram-code-actions">
+            <button class="btn-action btn-flash" onclick="STUDIO_CGRAM.saveActiveSlotToLibrary()" title="บันทึกอักขระนี้เก็บไว้ในคลังความจำถาวร">
+              <span>💾</span> บันทึกลงคลัง
             </button>
-            <button class="btn-action btn-download" onclick="STUDIO_CGRAM.copyCode()" style="flex: 1;">
+            <button class="btn-action btn-download" onclick="STUDIO_CGRAM.copyCode()" title="คัดลอกโค้ด C ไปใช้งาน">
               <span>📋</span> คัดลอกโค้ด C
             </button>
+            <button class="btn-action btn-full" onclick="STUDIO_CGRAM.sendActiveSlotToLcd()" title="นำอักขระนี้ไปเปิดดูในแท็บหน้าจอ LCD 16x2">
+              <span>📟</span> นำอักขระนี้ไปแสดงบนหน้าจอ LCD 16&times;2
+            </button>
+          </div>
+
+          <!-- Saved Library Section -->
+          <div class="cgram-memory-card">
+            <div class="cgram-memory-header">
+              <span>🗄️ คลังอักขระที่คุณบันทึกไว้ (My Saved Glyphs)</span>
+              <span style="font-size: 11px; color: var(--primary);">${this.savedLibrary.length} รายการ</span>
+            </div>
+            <div class="cgram-saved-list" id="cgram-saved-list">
+              ${savedLibHtml}
+            </div>
           </div>
         </div>
       </div>
     `;
+  },
+
+  // Render 5x8 mini preview for a slot button
+  renderMiniSlotDots: function(slot) {
+    const data = this.slots[slot] || [0,0,0,0,0,0,0,0];
+    let html = '';
+    for (let r = 0; r < 8; r++) {
+      for (let c = 0; c < 5; c++) {
+        const isSet = (data[r] & (1 << (4 - c))) !== 0;
+        html += `<div class="cgram-slot-mini-dot ${isSet ? 'active' : ''}"></div>`;
+      }
+    }
+    return html;
+  },
+
+  updateMiniPreview: function(slot) {
+    const el = document.getElementById(`cgram-mini-slot-${slot}`);
+    if (el) {
+      el.innerHTML = this.renderMiniSlotDots(slot);
+    }
   },
 
   selectSlot: function(slot) {
@@ -10479,6 +11193,10 @@ str_line2: .asciz "${this.line2}"`;
     document.querySelectorAll(".cgram-slot-btn").forEach((b, idx) => {
       b.classList.toggle("active", idx === slot);
     });
+    const titleEl = document.getElementById("cgram-live-title");
+    if (titleEl) {
+      titleEl.textContent = `HD44780 CGRAM Slot {${slot}}: ${this.slotNames[slot] || ''}`;
+    }
     this.updatePreviewAndCode();
   },
 
@@ -10495,14 +11213,53 @@ str_line2: .asciz "${this.line2}"`;
     }
   },
 
-  togglePixel: function(r, c) {
+  updateCellDom: function(r, c) {
     const bitMask = 1 << (4 - c);
-    this.slots[this.activeSlot][r] ^= bitMask;
     const isSet = (this.slots[this.activeSlot][r] & bitMask) !== 0;
     const cell = document.getElementById(`cgram-cell-${r}-${c}`);
-    if (cell) cell.className = "cgram-cell" + (isSet ? " active" : "");
+    if (cell) {
+      cell.className = "cgram-cell" + (isSet ? " active" : "");
+    }
+  },
+
+  // Mouse Drag-to-Paint handlers
+  startDrawing: function(r, c, event) {
+    if (event) event.preventDefault();
+    this.isDrawing = true;
+    const bitMask = 1 << (4 - c);
+    const wasSet = (this.slots[this.activeSlot][r] & bitMask) !== 0;
+    this.drawMode = wasSet ? 0 : 1; // if cell was already active, switch to erasing
+
+    if (this.drawMode === 1) {
+      this.slots[this.activeSlot][r] |= bitMask;
+    } else {
+      this.slots[this.activeSlot][r] &= ~bitMask;
+    }
+
+    this.updateCellDom(r, c);
+    this.updateMiniPreview(this.activeSlot);
     this.updatePreviewAndCode();
-    this.refreshLiveSimulator();
+  },
+
+  paintCell: function(r, c) {
+    if (!this.isDrawing) return;
+    const bitMask = 1 << (4 - c);
+    if (this.drawMode === 1) {
+      this.slots[this.activeSlot][r] |= bitMask;
+    } else {
+      this.slots[this.activeSlot][r] &= ~bitMask;
+    }
+    this.updateCellDom(r, c);
+    this.updateMiniPreview(this.activeSlot);
+    this.updatePreviewAndCode();
+  },
+
+  stopDrawing: function() {
+    if (this.isDrawing) {
+      this.isDrawing = false;
+      this.saveToStorage();
+      this.refreshLiveSimulator();
+    }
   },
 
   invertGrid: function() {
@@ -10510,25 +11267,124 @@ str_line2: .asciz "${this.line2}"`;
       this.slots[this.activeSlot][r] = (~this.slots[this.activeSlot][r]) & 0x1F;
     }
     this.renderCgramSlotGrid();
+    this.updateMiniPreview(this.activeSlot);
     this.updatePreviewAndCode();
+    this.saveToStorage();
     this.refreshLiveSimulator();
   },
 
   clearGrid: function() {
     this.slots[this.activeSlot] = [0, 0, 0, 0, 0, 0, 0, 0];
     this.renderCgramSlotGrid();
+    this.updateMiniPreview(this.activeSlot);
     this.updatePreviewAndCode();
+    this.saveToStorage();
     this.refreshLiveSimulator();
+  },
+
+  shiftGrid: function(dir) {
+    const data = this.slots[this.activeSlot];
+    if (dir === 'up') {
+      const top = data.shift();
+      data.push(0);
+    } else if (dir === 'down') {
+      data.pop();
+      data.unshift(0);
+    } else if (dir === 'left') {
+      for (let r = 0; r < 8; r++) {
+        data[r] = (data[r] << 1) & 0x1F;
+      }
+    } else if (dir === 'right') {
+      for (let r = 0; r < 8; r++) {
+        data[r] = (data[r] >> 1) & 0x1F;
+      }
+    }
+    this.renderCgramSlotGrid();
+    this.updateMiniPreview(this.activeSlot);
+    this.updatePreviewAndCode();
+    this.saveToStorage();
+    this.refreshLiveSimulator();
+  },
+
+  renameActiveSlot: function() {
+    const oldName = this.slotNames[this.activeSlot] || '';
+    const newName = prompt(`ตั้งชื่อให้กับ Slot {${this.activeSlot}}:`, oldName);
+    if (newName !== null && newName.trim() !== '') {
+      this.slotNames[this.activeSlot] = newName.trim();
+      this.saveToStorage();
+      const el = document.getElementById("studio-tab-cgram");
+      if (el) el.innerHTML = this.renderEditor();
+    }
   },
 
   applyPreset: function(key) {
     const p = this.presets[key];
     if (p) {
       this.slots[this.activeSlot] = [...p.data];
+      this.slotNames[this.activeSlot] = p.name;
       this.renderCgramSlotGrid();
+      this.updateMiniPreview(this.activeSlot);
       this.updatePreviewAndCode();
+      this.saveToStorage();
       this.refreshLiveSimulator();
     }
+  },
+
+  loadThaiTemplate: function(tisCode, label) {
+    const fontTable = (this.thaiMode === 'improved') ? THAI_FONT_IMPROVED : THAI_FONT_ORIGINAL;
+    if (fontTable[tisCode] && fontTable[tisCode].bytes) {
+      this.slots[this.activeSlot] = [...fontTable[tisCode].bytes];
+      this.slotNames[this.activeSlot] = label;
+      this.renderCgramSlotGrid();
+      this.updateMiniPreview(this.activeSlot);
+      this.updatePreviewAndCode();
+      this.saveToStorage();
+      this.refreshLiveSimulator();
+    }
+  },
+
+  saveActiveSlotToLibrary: function() {
+    const defaultName = this.slotNames[this.activeSlot] || `Custom ${this.savedLibrary.length + 1}`;
+    const name = prompt("ตั้งชื่ออักขระเพื่อบันทึกลงคลังความจำ (Persistent Library):", defaultName);
+    if (!name || name.trim() === '') return;
+
+    this.savedLibrary.push({
+      name: name.trim(),
+      data: [...this.slots[this.activeSlot]]
+    });
+    this.saveToStorage();
+    alert(`บันทึกอักขระ "${name}" ลงในคลังเรียบร้อยแล้ว!`);
+    const el = document.getElementById("studio-tab-cgram");
+    if (el) el.innerHTML = this.renderEditor();
+  },
+
+  loadFromLibrary: function(idx) {
+    if (this.savedLibrary[idx]) {
+      const item = this.savedLibrary[idx];
+      this.slots[this.activeSlot] = [...item.data];
+      this.slotNames[this.activeSlot] = item.name;
+      this.renderCgramSlotGrid();
+      this.updateMiniPreview(this.activeSlot);
+      this.updatePreviewAndCode();
+      this.saveToStorage();
+      this.refreshLiveSimulator();
+      alert(`โหลด "${item.name}" เข้าสู่ Slot {${this.activeSlot}} แล้ว!`);
+    }
+  },
+
+  deleteFromLibrary: function(idx) {
+    if (confirm(`คุณต้องการลบ "${this.savedLibrary[idx].name}" ออกจากคลังใช่หรือไม่?`)) {
+      this.savedLibrary.splice(idx, 1);
+      this.saveToStorage();
+      const el = document.getElementById("studio-tab-cgram");
+      if (el) el.innerHTML = this.renderEditor();
+    }
+  },
+
+  sendActiveSlotToLcd: function() {
+    // Append slot token to Line 1
+    this.line1 += `{${this.activeSlot}}`;
+    this.switchSubTab('customizer');
   },
 
   updatePreviewAndCode: function() {
@@ -10549,7 +11405,7 @@ str_line2: .asciz "${this.line2}"`;
     const hexList = current.map(b => '0x' + b.toString(16).toUpperCase().padStart(2, '0')).join(', ');
     const slotAddr = '0x' + (0x40 + (this.activeSlot * 8)).toString(16).toUpperCase();
 
-    hexBox.textContent = `// CGRAM Slot {${this.activeSlot}} Custom Character (5x8 Dots)
+    hexBox.textContent = `// CGRAM Slot {${this.activeSlot}} Custom Character (5x8 Dots): ${this.slotNames[this.activeSlot] || ''}
 const uint8_t custom_char_${this.activeSlot}[8] PROGMEM = {
   ${hexList}
 };
@@ -10570,13 +11426,6 @@ void load_custom_char_${this.activeSlot}(void) {
       navigator.clipboard.writeText(hexBox.textContent).then(() => {
         alert("คัดลอกโค้ด C เรียบร้อยแล้ว!");
       });
-    }
-  },
-
-  insertIntoEditor: function() {
-    const hexBox = document.getElementById("cgram-hex-box");
-    if (hexBox) {
-      alert("ข้อมูลอักขระพิเศษ Slot {" + this.activeSlot + "} ถูกบันทึกแล้ว คุณสามารถคัดลอกไปใช้ในโปรแกรมได้ทันที!");
     }
   },
 
@@ -10634,7 +11483,7 @@ void load_custom_char_${this.activeSlot}(void) {
             <div class="audit-point-box positive">
               <div class="point-title">✅ ข้อดีและจุดเด่นของไฟล์เพื่อน:</div>
               <ul>
-                <li><strong>หน่วยความจำ Flash เบามาก:</strong> ขนาดเพียง 728 ไบต์ (91 Glyphs &times; 8 Bytes) ถูกจัดเก็บลง Flash Memory (PROGMEM) โดยใช้ SRAM 0 ไบต์</li>
+                <li><strong>หน่วยความจำ Flash เบามาก:</strong> ขนาดเพียง 728 ไบต์ (91 Glyphs &times; 8 Bytes) จัดเก็บลง Flash Memory (PROGMEM) โดยใช้ SRAM 0 ไบต์</li>
                 <li><strong>ฟังก์ชัน Assembly คมชัด:</strong> ฟังก์ชัน <code>thai_get_glyph_asm</code> ใช้คำสั่ง <code>lpm</code> พร้อมคำนวณ Z Pointer แบบ Offset &times; 8 ด้วย <code>lsl/rol</code> ได้รวดเร็ว</li>
               </ul>
             </div>
@@ -10642,9 +11491,9 @@ void load_custom_char_${this.activeSlot}(void) {
             <div class="audit-point-box warning">
               <div class="point-title">⚠️ จุดบกพร่องวิกฤตที่ต้องระวัง:</div>
               <ul>
-                <li><strong>ตัวอักษรซ้ำซ้อน 100%:</strong> ในไฟล์เดิมของเพื่อน <code>ข</code> กับ <code>อ</code> มีบิตแมปเหมือนกันทุกประการ! เช่นเดียวกับ <code>ค</code> กับ <code>ด</code>, <code>ฅ</code> กับ <code>ต</code> กับ <code>ฑ</code>, และ <code>ถ</code> กับ <code>๐</code> (ทำให้ผู้อ่านแยกคำไม่ออก)</li>
-                <li><strong>ข้อจำกัดฮาร์ดแวร์ LCD1602 (HD44780):</strong> ตัวคอนโทรลเลอร์ไม่มีตารางภาษาไทยใน ROM มาตรฐาน การจะแสดงผลต้องโหลดผ่าน CGRAM ซึ่งมีเพียง <strong>8 ช่อง (Slots 0-7)</strong> เท่านั้น! จึงไม่สามารถแสดงผลคำไทยขนาดยาวพร้อมกันได้หากไม่ใช้ระบบผสมสระ (Composite Stacking)</li>
-                <li><strong>ปัญหาการเรียงสระ/วรรณยุกต์:</strong> สระบน (ิ, ี) และสระล่าง (ุ, ู) ถูกออกแบบแยกเป็นอักขระ 5&times;8 หากส่งพิมพ์ตามลำดับปกติจะกินช่องอักษรแยกต่างหาก แทนที่จะซ้อนอยู่บนหัวพยัญชนะ</li>
+                <li><strong>ตัวอักษรซ้ำซ้อน 100%:</strong> ในไฟล์เดิมของเพื่อน <code>ข</code> กับ <code>อ</code> มีบิตแมปเหมือนกันทุกประการ! เช่นเดียวกับ <code>ค</code> กับ <code>ด</code>, <code>ฅ</code> กับ <code>ต</code> กับ <code>ฑ</code>, และ <code>ถ</code> กับ <code>๐</code></li>
+                <li><strong>ข้อจำกัดฮาร์ดแวร์ LCD1602 (HD44780):</strong> ตัวคอนโทรลเลอร์ไม่มีตารางภาษาไทยใน ROM มาตรฐาน การจะแสดงผลต้องโหลดผ่าน CGRAM ซึ่งมีเพียง <strong>8 ช่อง (Slots 0-7)</strong> เท่านั้น! จึงแนะนำให้ผู้ใช้วาดหรือเลือกเฉพาะตัวที่จำเป็น 8 ตัวลงใน CGRAM Slots เพื่อแสดงผลได้สะอาดและคมชัด</li>
+                <li><strong>ปัญหาการเรียงสระ/วรรณยุกต์:</strong> สระบนและสระล่างถูกออกแบบแยกเป็นอักขระ 5&times;8 หากส่งพิมพ์ตามลำดับปกติจะกินช่องอักษรแยกต่างหาก</li>
               </ul>
             </div>
           </div>
@@ -10686,9 +11535,9 @@ void load_custom_char_${this.activeSlot}(void) {
               <pre class="cgram-hex-output" style="font-size: 11px;">{ ${hexStr} };</pre>
             </div>
 
-            <div style="display: flex; gap: 8px; margin-top: 12px;">
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
               <button class="btn btn-primary btn-sm" onclick="STUDIO_CGRAM.sendSelectedThaiToCgram()" style="flex: 1;">
-                📥 ส่งตัวนี้เข้า CGRAM Slot {${this.activeSlot}}
+                📥 ส่งตัวนี้เข้า CGRAM Slot {${this.activeSlot}} เพื่อวาดหรือปรับแต่ง
               </button>
             </div>
           </div>
@@ -10715,6 +11564,8 @@ void load_custom_char_${this.activeSlot}(void) {
     const selected = fontData[this.selectedThaiCode];
     if (selected && selected.bytes) {
       this.slots[this.activeSlot] = [...selected.bytes];
+      this.slotNames[this.activeSlot] = selected.label.split(' ')[0];
+      this.saveToStorage();
       alert(`นำอักขระ "${selected.label}" บันทึกลง CGRAM Slot {${this.activeSlot}} เรียบร้อยแล้ว!`);
       this.switchSubTab('cgram');
     }
@@ -10725,6 +11576,13 @@ void load_custom_char_${this.activeSlot}(void) {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 };
+
+// Auto-initialize when loaded
+try {
+  STUDIO_CGRAM.init();
+} catch (e) {
+  console.warn("STUDIO_CGRAM init error", e);
+}
 
   </script>
   <script>
