@@ -219,6 +219,9 @@ html_content = f"""<!DOCTYPE html>
           <button class="studio-tab-btn" data-tab="report" onclick="setStudioTab('report')" title="สร้างรายงานผลการสอบปฏิบัติการมาตรฐาน CDTI A4">
             <span>📝</span> ทำรายงาน (Report)
           </button>
+          <button class="studio-expand-btn" id="studio-expand-btn" onclick="toggleStudioFullscreen()" title="ขยายพื้นที่ทำงานเต็มหน้าจอ / ย่อกลับ">
+            <span>⛶</span> ขยายเต็มจอ
+          </button>
         </div>
 
         <!-- Panel 1: Code Viewer, Editor & Flasher (Active by Default) -->

@@ -488,6 +488,15 @@ header.app-header {
   gap: 16px;
   width: 100%;
   align-items: start;
+  transition: all 0.25s ease;
+}
+
+.studio-layout.fullscreen {
+  grid-template-columns: 1fr !important;
+}
+
+.studio-layout.fullscreen .viewer-card {
+  display: none !important;
 }
 
 @media (max-width: 1024px) {
@@ -502,6 +511,33 @@ header.app-header {
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
+}
+
+.studio-expand-btn {
+  margin-left: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.studio-expand-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+.studio-expand-btn.active {
+  background: rgba(2, 132, 199, 0.2);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 /* 3D Component Viewer Column */
@@ -1325,16 +1361,18 @@ pre.code-display {
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
 }
 
-/* Customizer Grid Layout */
+/* Customizer Grid Layout - Responsive Vertical Stack to prevent horizontal clipping */
 .lcd-customizer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
+  width: 100%;
 }
-@media (max-width: 1024px) {
-  .lcd-customizer-grid {
-    grid-template-columns: 1fr;
-  }
+.lcd-left-panel,
+.lcd-right-panel {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Realistic Virtual LCD 1602 Hardware Bezel */
@@ -1345,6 +1383,9 @@ pre.code-display {
   padding: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
   position: relative;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 .lcd-hardware-bezel.theme-blue {
   background: #0a1733;
@@ -1594,24 +1635,26 @@ pre.code-display {
   margin: 0;
 }
 
-/* CGRAM Matrix Designer & Interactive Drawing Studio */
+/* CGRAM Matrix Designer & Interactive Drawing Studio - Stacked to guarantee zero clipping */
 .cgram-workspace-row {
-  display: grid;
-  grid-template-columns: 390px 1fr;
-  gap: 16px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
 }
-@media (max-width: 980px) {
-  .cgram-workspace-row {
-    grid-template-columns: 1fr;
-  }
+
+.cgram-grid-box,
+.cgram-code-view {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .cgram-grid-box {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 16px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1620,7 +1663,7 @@ pre.code-display {
 /* 8 CGRAM Memory Slots Bar */
 .cgram-slots-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
   gap: 6px;
   width: 100%;
   margin-bottom: 14px;
@@ -2069,16 +2112,18 @@ pre.code-display {
   margin-bottom: 4px;
 }
 
-/* 91 Glyphs Explorer */
+/* 91 Glyphs Explorer - Stacked to guarantee zero horizontal clipping */
 .thai-explorer-row {
-  display: grid;
-  grid-template-columns: 1fr 340px;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
-@media (max-width: 900px) {
-  .thai-explorer-row {
-    grid-template-columns: 1fr;
-  }
+.thai-glyphs-box,
+.thai-inspector-box {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 .thai-glyphs-box {
   background: var(--bg-surface);

@@ -481,6 +481,19 @@ function openLcdCustomizerForActiveLab() {
   }
 }
 
+// Toggle Studio Fullscreen / Split View
+function toggleStudioFullscreen() {
+  const layout = document.querySelector(".studio-layout");
+  const btn = document.getElementById("studio-expand-btn");
+  if (!layout) return;
+  const isFull = layout.classList.toggle("fullscreen");
+  if (btn) {
+    btn.innerHTML = isFull ? "<span>🗗</span> ย่อกลับ" : "<span>⛶</span> ขยายเต็มจอ";
+    btn.classList.toggle("active", isFull);
+    btn.title = isFull ? "ย่อกลับเป็น 2 คอลัมน์ (แสดงข้อมูล Pinout ด้านซ้าย)" : "ขยายพื้นที่ทำงานเต็มหน้าจอ";
+  }
+}
+
 // Switch Right Studio Workspace Sub-Tabs
 function setStudioTab(tabId) {
   state.activeStudioTab = tabId;
