@@ -198,7 +198,7 @@ const STUDIO_REPORT = {
             <!-- Section 4: Algorithm Flowchart -->
             <div class="report-section">
               <h3 class="report-section-title">4. ผังงานกระบวนการทำงานของระบบ (System Algorithm Flowchart)</h3>
-              <div class="report-flowchart-box" style="text-align: center; margin: 15px 0; background: var(--bg-main, #0b1120); border: 1px solid var(--border); border-radius: 8px; padding: 18px 10px; overflow-x: auto; display: flex; justify-content: center; align-items: center;">
+              <div class="report-flowchart-box" style="text-align: center; margin: 15px 0; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px 10px; overflow-x: auto; display: flex; justify-content: center; align-items: center;">
                 ${typeof STUDIO_FLOWCHARTS !== 'undefined' ? STUDIO_FLOWCHARTS.generateSvg(lab.id) : ''}
               </div>
             </div>
@@ -508,7 +508,9 @@ pre {
   buildWordDocument: function(labId) {
     const lab = LABS_DATA.find(l => l.id === labId) || LABS_DATA[0];
     const acronyms = this.getAcronymsForLab(lab);
-    const svgContent = typeof STUDIO_FLOWCHARTS !== 'undefined' ? STUDIO_FLOWCHARTS.generateSvg(lab.id) : '';
+    const flowchartWordHtml = (typeof STUDIO_FLOWCHARTS !== 'undefined' && typeof STUDIO_FLOWCHARTS.renderWordFlowchart === 'function')
+      ? STUDIO_FLOWCHARTS.renderWordFlowchart(lab.id)
+      : '<p style="text-align: center; color: #64748b;">ไม่พบข้อมูลผังงานสำหรับแล็บนี้</p>';
     const obsText = document.getElementById("rep-observation-text") ? document.getElementById("rep-observation-text").value : "ระบบทำงานถูกต้องตามข้อกำหนดวิศวกรรม";
 
     return `<html xmlns:o='urn:schemas-microsoft-com:office:office'
@@ -635,10 +637,10 @@ code {
   margin-right: 8pt;
 }
 .flowchart-box {
-  background: #0f172a;
-  border: 1pt solid #334155;
-  padding: 12pt;
-  margin: 10pt 0;
+  background: #ffffff;
+  border: 1pt solid #cbd5e1;
+  padding: 10pt;
+  margin: 8pt 0;
   text-align: center;
 }
 </style>
@@ -730,9 +732,7 @@ code {
   </table>
 
   <h3>4. ผังงานกระบวนการทำงานของระบบ (System Algorithm Flowchart)</h3>
-  <div class="flowchart-box">
-    ${svgContent}
-  </div>
+  ${flowchartWordHtml}
 
   <h3>5. ซอร์สโค้ดภาษาซีและภาษาแอสเซมบลีฉบับสมบูรณ์ (Source Code)</h3>
   <h4>5.1 ซอร์สโค้ดภาษาซีระดับรีจิสเตอร์ (Embedded C / AVR-GCC):</h4>

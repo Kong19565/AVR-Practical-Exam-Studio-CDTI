@@ -3138,6 +3138,86 @@ const STUDIO_FLOWCHARTS = {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  },
+
+  renderWordFlowchart: function(labId) {
+    const chart = this.flowcharts[labId] || this.flowcharts["tier1_button_hold_1sw_1led"] || Object.values(this.flowcharts)[0];
+    if (!chart || !chart.steps || chart.steps.length === 0) {
+      return '<p style="text-align: center; color: #64748b; font-style: italic;">ไม่พบข้อมูลผังงานสำหรับแล็บนี้</p>';
+    }
+
+    const stepsHtml = chart.steps.map((step, idx) => {
+      const isLast = idx === chart.steps.length - 1;
+      const isTerm = step.type === "term";
+      const isDecision = step.type === "decision";
+      const isLoop = step.type === "loop_back";
+
+      let cardHtml = '';
+      if (isTerm) {
+        cardHtml = `
+          <table align="center" style="margin: 0 auto; width: 65%; border-collapse: collapse; background-color: #065f46; border: 2pt solid #047857; mso-border-alt: solid #047857 2pt;">
+            <tr>
+              <td style="padding: 7pt 14pt; text-align: center; color: #ffffff; font-weight: bold; font-size: 11pt; font-family: 'TH Sarabun New', Sarabun, sans-serif;">
+                🏁 ${this.escapeXml(step.text)}
+              </td>
+            </tr>
+          </table>
+        `;
+      } else if (isDecision) {
+        cardHtml = `
+          <table align="center" style="margin: 0 auto; width: 75%; border-collapse: collapse; background-color: #f5f3ff; border: 2pt solid #7c3aed; mso-border-alt: solid #7c3aed 2pt;">
+            <tr>
+              <td style="padding: 7pt 12pt; text-align: center; color: #4c1d95; font-size: 11pt; font-family: 'TH Sarabun New', Sarabun, sans-serif;">
+                <span style="color: #6d28d9; font-weight: bold; font-size: 10pt;">[ เงื่อนไขตรวจสอบ / Decision ]</span><br>
+                <strong>${this.escapeXml(step.text)}</strong>
+              </td>
+            </tr>
+          </table>
+        `;
+      } else if (isLoop) {
+        cardHtml = `
+          <table align="center" style="margin: 0 auto; width: 70%; border-collapse: collapse; background-color: #f0fdf4; border: 1.5pt dashed #16a34a; mso-border-alt: dashed #16a34a 1.5pt;">
+            <tr>
+              <td style="padding: 6pt 12pt; text-align: center; color: #15803d; font-size: 10.5pt; font-weight: bold; font-family: 'TH Sarabun New', Sarabun, sans-serif;">
+                🔄 ${this.escapeXml(step.text)} (วนซ้ำลูปหลัก Super Loop)
+              </td>
+            </tr>
+          </table>
+        `;
+      } else {
+        cardHtml = `
+          <table align="center" style="margin: 0 auto; width: 80%; border-collapse: collapse; background-color: #f8fafc; border: 1.5pt solid #0284c7; mso-border-alt: solid #0284c7 1.5pt;">
+            <tr>
+              <td style="padding: 6pt 12pt; text-align: center; color: #0f172a; font-size: 11pt; font-family: 'TH Sarabun New', Sarabun, sans-serif;">
+                ⚙️ ${this.escapeXml(step.text)}
+              </td>
+            </tr>
+          </table>
+        `;
+      }
+
+      const arrowHtml = !isLast ? `
+        <table align="center" style="margin: 0 auto; width: 100%; border-collapse: collapse; border: none;">
+          <tr>
+            <td style="text-align: center; color: #0284c7; font-size: 14pt; line-height: 20pt; font-weight: bold; padding: 2pt 0; border: none;">
+              ↓
+            </td>
+          </tr>
+        </table>
+      ` : '';
+
+      return cardHtml + arrowHtml;
+    }).join('\n');
+
+    return `
+      <div style="background-color: #ffffff; border: 1pt solid #cbd5e1; padding: 14pt 10pt; margin: 8pt 0; text-align: center;">
+        <div style="font-size: 11pt; font-weight: bold; color: #0369a1; margin-bottom: 10pt; font-family: 'TH Sarabun New', Sarabun, sans-serif;">
+          ผังงานแสดงลำดับขั้นตอนการทำงาน (Algorithm Flowchart)
+        </div>
+        ${stepsHtml}
+      </div>
+    `;
   }
 };
+
 
