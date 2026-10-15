@@ -72,6 +72,7 @@ const STUDIO_REPORT = {
             </div>
             <div class="report-action-buttons">
               <button class="btn btn-primary" onclick="STUDIO_REPORT.printReport('${lab.id}')">🖨️ พิมพ์รายงาน A4 / PDF</button>
+              <button class="btn btn-secondary" onclick="STUDIO_REPORT.exportWord('${lab.id}')" title="บันทึกเป็นเอกสาร Word (.doc) เปิดแก้ไขได้ใน MS Word และ Google Docs">📄 บันทึกเป็น Word (.doc)</button>
               <button class="btn btn-secondary" onclick="STUDIO_REPORT.downloadHtml('${lab.id}')">💾 บันทึก Report.html</button>
               <button class="btn btn-secondary" onclick="STUDIO_REPORT.copyMarkdown('${lab.id}')">📋 คัดลอก Markdown</button>
               <button class="btn btn-secondary" onclick="STUDIO_REPORT.downloadText('${lab.id}')">📄 ดาวน์โหลด .txt</button>
@@ -502,6 +503,265 @@ pre {
     setTimeout(() => {
       win.print();
     }, 600);
+  },
+
+  buildWordDocument: function(labId) {
+    const lab = LABS_DATA.find(l => l.id === labId) || LABS_DATA[0];
+    const acronyms = this.getAcronymsForLab(lab);
+    const svgContent = typeof STUDIO_FLOWCHARTS !== 'undefined' ? STUDIO_FLOWCHARTS.generateSvg(lab.id) : '';
+    const obsText = document.getElementById("rep-observation-text") ? document.getElementById("rep-observation-text").value : "ระบบทำงานถูกต้องตามข้อกำหนดวิศวกรรม";
+
+    return `<html xmlns:o='urn:schemas-microsoft-com:office:office'
+      xmlns:w='urn:schemas-microsoft-com:office:word'
+      xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>รายงานผลการปฏิบัติการ ${lab.id} - ${this.escapeHtml(this.student.name)}</title>
+<!--[if gte mso 9]>
+<xml>
+  <w:WordDocument>
+    <w:View>Print</w:View>
+    <w:Zoom>100</w:Zoom>
+    <w:DoNotOptimizeForBrowser/>
+  </w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page WordSection1 {
+  size: 21.0cm 29.7cm; /* A4 */
+  margin: 2.0cm 2.0cm 2.0cm 2.0cm;
+  mso-header-margin: 36.0pt;
+  mso-footer-margin: 36.0pt;
+  mso-paper-source: 0;
+}
+div.WordSection1 {
+  page: WordSection1;
+}
+body {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', 'Cordia New', sans-serif;
+  font-size: 13pt;
+  line-height: 1.4;
+  color: #0f172a;
+}
+h1 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 20pt;
+  font-weight: bold;
+  color: #0284c7;
+  margin: 10pt 0 4pt 0;
+}
+h2 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #334155;
+  margin: 8pt 0 4pt 0;
+}
+h3 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 14.5pt;
+  font-weight: bold;
+  color: #0369a1;
+  margin: 12pt 0 4pt 0;
+  border-bottom: 1pt solid #cbd5e1;
+  padding-bottom: 2pt;
+}
+h4 {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 13pt;
+  font-weight: bold;
+  color: #0f766e;
+  margin: 8pt 0 2pt 0;
+}
+p, li {
+  font-family: 'TH Sarabun New', 'Sarabun', 'TH Sarabun PSK', sans-serif;
+  font-size: 13pt;
+  line-height: 1.35;
+  margin: 3pt 0 6pt 0;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8pt 0 12pt 0;
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+}
+table, tr, td, th {
+  border: 1pt solid #94a3b8;
+  mso-border-alt: solid #94a3b8 .5pt;
+}
+th {
+  background-color: #f1f5f9;
+  font-weight: bold;
+  font-size: 12.5pt;
+  padding: 5pt 7pt;
+  text-align: left;
+}
+td {
+  padding: 5pt 7pt;
+  font-size: 12pt;
+  vertical-align: top;
+}
+pre {
+  background-color: #f8fafc;
+  border: 1pt solid #cbd5e1;
+  padding: 8pt 10pt;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #0f172a;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 4pt 0 10pt 0;
+}
+code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 10pt;
+  background-color: #f1f5f9;
+  padding: 1pt 3pt;
+}
+.report-header-banner {
+  border-bottom: 2pt solid #0284c7;
+  padding-bottom: 6pt;
+  margin-bottom: 12pt;
+}
+.inst-badge {
+  display: inline-block;
+  background-color: #0284c7;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 4pt 10pt;
+  margin-right: 8pt;
+}
+.flowchart-box {
+  background: #0f172a;
+  border: 1pt solid #334155;
+  padding: 12pt;
+  margin: 10pt 0;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="WordSection1">
+  <div class="report-header-banner">
+    <table style="border: none; margin: 0; width: 100%;">
+      <tr style="border: none;">
+        <td style="border: none; width: 12%; vertical-align: middle;">
+          <div class="inst-badge">CDTI</div>
+        </td>
+        <td style="border: none; width: 88%; vertical-align: middle;">
+          <div style="font-size: 16pt; font-weight: bold; color: #0284c7;">สถาบันเทคโนโลยีจิตรลดา (Chitralada Technology Institute)</div>
+          <div style="font-size: 12.5pt; color: #475569;">คณะเทคโนโลยีดิจิทัล • สาขาวิชาวิศวกรรมคอมพิวเตอร์และนวัตกรรม</div>
+          <div style="font-size: 12pt; font-weight: bold; color: #0f172a;">รายงานผลการสอบปฏิบัติการ วิชา 311-3303 การออกแบบระบบสมองกลฝังตัว</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <table>
+    <tr>
+      <td style="width: 25%; font-weight: bold; background: #f8fafc;">หัวข้อการทดลอง:</td>
+      <td style="width: 75%; font-weight: bold; color: #0369a1;">${lab.title}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; background: #f8fafc;">ผู้ทำการทดลอง:</td>
+      <td>${this.escapeHtml(this.student.name)} (รหัสนักศึกษา: ${this.escapeHtml(this.student.id)})</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; background: #f8fafc;">สาขาวิชา / วันที่:</td>
+      <td>${this.escapeHtml(this.student.dept)} • วันที่ทำการทดลอง: ${this.escapeHtml(this.student.date)}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; background: #f8fafc;">ฮาร์ดแวร์เป้าหมาย:</td>
+      <td>บอร์ด Arduino Uno R3 (ไมโครคอนโทรลเลอร์ Microchip ATmega328P @ 16 MHz)</td>
+    </tr>
+  </table>
+
+  <h3>1. วัตถุประสงค์การเรียนรู้เชิงลึก (Objectives)</h3>
+  <ol>
+    <li>เข้าใจการกำหนดทิศทางของพอร์ต (I/O Direction) ด้วยรีจิสเตอร์ DDRx (DDRB, DDRD)</li>
+    <li>ศึกษาการใช้งานตัวต้านทานพูลอัปภายใน (Internal Pull-Up Resistor) ผ่านรีจิสเตอร์ PORTx แบบ Active-Low</li>
+    <li>วิเคราะห์เปรียบเทียบการพัฒนาโปรแกรมระหว่างภาษา Embedded C และ AVR Assembly</li>
+    <li>พิสูจน์การทำงานของวงจรฮาร์ดแวร์จริงบนเบรดบอร์ดร่วมกับโปรแกรม SimulIDE ให้ถูกต้องตามข้อกำหนด</li>
+  </ol>
+
+  <h3>2. ตารางกำหนดขาฮาร์ดแวร์และการเชื่อมต่อจริง (Hardware Pinout & Wiring Table)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">อุปกรณ์ต่อพ่วง</th>
+        <th style="width: 20%;">ขาอุปกรณ์</th>
+        <th style="width: 25%;">ต่อเข้ากับขา Arduino Uno</th>
+        <th style="width: 30%;">หน้าที่และข้อควรระวังในวงจร</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${lab.wiring.map(w => `
+        <tr>
+          <td><strong>${this.escapeHtml(w.comp)}</strong></td>
+          <td><code>${this.escapeHtml(w.pin)}</code></td>
+          <td><strong style="color: #0284c7;">${this.escapeHtml(w.target)}</strong></td>
+          <td>${this.escapeHtml(w.note)}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <h3>3. พจนานุกรมคำศัพท์ ตัวย่อ และชุดคำสั่งทางวิศวกรรม (Engineering Dictionary)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">ตัวย่อ (Term)</th>
+        <th style="width: 32%;">ชื่อเต็มภาษาอังกฤษ (Full Name)</th>
+        <th style="width: 48%;">ความหมายและบทบาทหน้าที่ทางวิศวกรรม</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${acronyms.map(a => `
+        <tr>
+          <td><strong>${this.escapeHtml(a.term)}</strong></td>
+          <td><em>${this.escapeHtml(a.full)}</em></td>
+          <td>${this.escapeHtml(a.def)}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  </table>
+
+  <h3>4. ผังงานกระบวนการทำงานของระบบ (System Algorithm Flowchart)</h3>
+  <div class="flowchart-box">
+    ${svgContent}
+  </div>
+
+  <h3>5. ซอร์สโค้ดภาษาซีและภาษาแอสเซมบลีฉบับสมบูรณ์ (Source Code)</h3>
+  <h4>5.1 ซอร์สโค้ดภาษาซีระดับรีจิสเตอร์ (Embedded C / AVR-GCC):</h4>
+  <pre>${this.escapeHtml(lab.avrCode || lab.arduinoCode || '// ไม่มีข้อมูลโค้ด C')}</pre>
+
+  <h4>5.2 ซอร์สโค้ดภาษาแอสเซมบลี (AVR Assembly GNU Syntax):</h4>
+  <pre>${this.escapeHtml(lab.asmCode || '; ไม่มีข้อมูลโค้ด Assembly')}</pre>
+
+  <h3>6. สรุปและอภิปรายผลการทดลอง (Conclusion & Discussion)</h3>
+  <div style="padding: 8pt 10pt; background-color: #f8fafc; border: 1pt solid #e2e8f0;">
+    ${this.escapeHtml(obsText).replace(/\n/g, '<br>')}
+  </div>
+</div>
+</body>
+</html>`;
+  },
+
+  exportWord: function(labId) {
+    const lab = LABS_DATA.find(l => l.id === labId) || LABS_DATA[0];
+    const wordContent = this.buildWordDocument(labId);
+    const blob = new Blob(['\ufeff' + wordContent], { type: 'application/msword;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `รายงานผลการทดลอง_${lab.id}_${this.student.id}.doc`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   },
 
   downloadHtml: function(labId) {
